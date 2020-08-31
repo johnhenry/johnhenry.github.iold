@@ -704,7 +704,7 @@ export default async ({ path }) => {
       if(!loaded.ok){
         throw new Error(defaults.status)
       }
-      onFileLoaded(await loaded.text());
+      await onFileLoaded(await loaded.text());
       console.log(`conponents loaded.`);
   }catch ({message}) {
     console.log(`conponents not loaded: ${message}`);
