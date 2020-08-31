@@ -286,7 +286,10 @@ const pathname = globalThis.location.href;
 const local = pathname.substring(0, pathname.lastIndexOf('/')); // This folder's location
 const remote = `${globalThis.location.origin}/app/web/htmlbuilder@0.1.0`; // Remote folder's location
 const replacements = [// These routes replace calls to the remote application with calls to the local one.
-  new Route(ActionSingle(`${local}/defaults.html`), `${local}/defaults.html`)
+  new Route(ActionSingle(`${local}/defaults.html`), `${local}/defaults.html`),
+  new Route(ActionSingle(`${local}/index.webmanifest`), `${local}/index.webmanifest`),
+  new Route(ActionSingle(`${local}/icons/icon-32.png`), `${local}/icons/icon-32.png`),
+  new Route(ActionSingle(`${local}/icons/icon-512.png`), `${local}/icons/icon-512.png`)
 ];
 
 // This route forwards requests to from local app to the target
