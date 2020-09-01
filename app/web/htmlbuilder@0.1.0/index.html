@@ -13,6 +13,19 @@
 </head>
 <body>
   <div class="sidebar">
+    <div id="exports">
+      <a id="download-full-button" download="full.html">full</a>
+      <a id="download-backup-button" download="backup.html">backup</a>
+      <a id="reset-button" href="#">reset</a>
+    </div>
+    <div id="update-components" class="hidden">
+      <div class="form">
+        <label>id</label><span id="update-component-id"></span>
+        <label>content</label><span><input id="update-component-content-before">...<input id="update-component-content-after"></span>
+        <button id="update-attribute-button">+ att</button><div id="update-component-attributes" class="form" ></div>
+        <div></div><button id="update-component-button" >update</button>
+      </div>
+    </div>
     <div class="components">
       <div class="form">
         <label>tag</label><input id="create-component-tag">
@@ -25,14 +38,6 @@
       </ul>
       <button id="toggle-archive">toggle archived</button>
     </div>
-    <div id="update-components" class="hidden">
-      <div class="form">
-        <label>id</label><span id="update-component-id"></span>
-        <label>content</label><span><input id="update-component-content-before">...<input id="update-component-content-after"></span>
-        <button id="update-attribute-button">+ att</button><div id="update-component-attributes" class="form" ></div>
-        <div></div><button id="update-component-button" >update</button>
-      </div>
-    </div>
     <div >
       <div id="styles"></div>
       <button id="add-style">+ rule</button>
@@ -42,10 +47,6 @@
   <main>
     <div id="inputs"></div>
     <div id="outputs"></div>
-    <div id="exports">
-      <a id="download-full-button" download="full.html">full</a>
-      <a id="download-backup-button" download="backup.html">backup</a>
-    </div>
   </main>
 </body>
 </html>

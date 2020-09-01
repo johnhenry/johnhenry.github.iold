@@ -5,7 +5,8 @@ import insertAfter from "./insert-after.mjs";
 import merge from "./merge.mjs"
 import { match, rules } from "./style-utilities/index.mjs";
 // functional (should be imported)
-const DEFAULT_URL = "./defaults.html"
+const DEFAULT_URL = "./defaults.html";
+const LOCAL_STORAGE_KEY = "DEFAULTS";
 const genId = (length = 5) => String(Math.random()).substr(2, length);
 const allowDrop = (event) => event.preventDefault();
 const dragComponent = (event) => {
@@ -61,6 +62,7 @@ let document; // Actually not neccessary -- need to investigate
 
 let downloadFullButton;
 let downloadBackupButton;
+let resetButton;
 
 
 const outputElementsByInput = new Map();
@@ -221,7 +223,7 @@ const setCreateForm = (id) => {
 };
 
 const handleComponentListDblClick = ({target})=>{
-  if(target !== componentList){
+  if(target.dataset.id){
     setCreateForm(target.dataset.id);
   }
 }
@@ -396,6 +398,9 @@ const loadChild = (child, parentElement) => {
     parentElement.append(inputElement);
     render(inputs);
     for(const kid of child.children){
+      if(kid.nodeType ==! 1){
+        continue;
+      }
       loadChild(kid, inputElement);
     }
     
@@ -601,26 +606,31 @@ ${r}
 
 import { generateImportStatements, generateFull, generateBackup, generateBackupHTML } from "./exports.mjs";
 
+const prepareTextForDownload = (text)=>`data:text/plain;charset=utf-8,${encodeURIComponent(text)}`;
 
 const setHTMLCode = ()=>{
   const style = outputStyles.innerHTML;
-  const FULL_TEXT = `data:text/plain;charset=utf-8,${encodeURIComponent(
-    generateFull(
-      processHTML(String(outputs.innerHTML)),
-      style,
-      generateImportStatements(registeredComponents)))}`;
-  const BACKUP_TEXT = `data:text/plain;charset=utf-8,${encodeURIComponent(generateBackup(
+  const FULL_TEXT = generateFull(
+    processHTML(String(outputs.innerHTML)),
+    style,
+    generateImportStatements(registeredComponents));
+  const BACKUP_TEXT = generateBackup(
     JSON.stringify(Object.values(registeredComponents), null, ' '),
     style,
-    generateBackupHTML(inputs)))}`;
-  downloadFullButton.setAttribute("href", FULL_TEXT);
-  downloadBackupButton.setAttribute("href", BACKUP_TEXT);
+    generateBackupHTML(inputs));
+  window.localStorage.setItem(LOCAL_STORAGE_KEY, BACKUP_TEXT);
+  downloadBackupButton.setAttribute("href", prepareTextForDownload(BACKUP_TEXT));
+  downloadFullButton.setAttribute("href", prepareTextForDownload(FULL_TEXT));
 }
 
 const toggleArchive = ()=>{
   componentList.classList.toggle('show-archive');
 }
 
+const resetApp = ()=>{
+  window.localStorage.removeItem(LOCAL_STORAGE_KEY);
+  window.location.reload();
+}
 
 export default async ({ path }) => {
   window = path[0];
@@ -684,11 +694,13 @@ export default async ({ path }) => {
 
   updateComponentButton.addEventListener('click', commitUpdate);
 
-  updateComponentAttributes.addEventListener("click", setCreateForm);
+  updateComponentAttributes.addEventListener("click", handleComponentListDblClick);
 
 
   downloadFullButton = document.getElementById('download-full-button');
   downloadBackupButton = document.getElementById('download-backup-button');
+  resetButton = document.getElementById('reset-button');
+  resetButton.addEventListener("click", resetApp);
   
 
   const observer = new MutationObserver(setHTMLCode);
@@ -696,17 +708,29 @@ export default async ({ path }) => {
   // // Start observing the target node for configured mutations
   observer.observe(outputs, { attributes: true, childList: true, subtree: true });
   observer.observe(componentList, { attributes: true, childList: true, subtree: true });
-  setHTMLCode();
 
   // initialize components
-  try {
-    const loaded = await window.fetch(DEFAULT_URL);
-      if(!loaded.ok){
-        throw new Error(defaults.status)
-      }
-      await onFileLoaded(await loaded.text());
-      console.log(`conponents loaded.`);
-  }catch ({message}) {
+  try{
+    let data = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+    if(!data){
+      throw new Error('no data loaded');
+    }
+    await onFileLoaded(data);
+    console.log(`conponents loaded.`);
+  }catch({message}){
     console.log(`conponents not loaded: ${message}`);
+    try {
+      const loaded = await window.fetch(DEFAULT_URL);
+        if(!loaded.ok){
+          throw new Error(defaults.status)
+        }
+        await onFileLoaded(await loaded.text());
+        console.log(`default conponents loaded.`);
+    }catch ({message}) {
+      console.log(`default conponents not loaded: ${message}`);
+    }
   }
+
+  setHTMLCode();
+
 }
