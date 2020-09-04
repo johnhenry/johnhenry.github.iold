@@ -1,0 +1,26 @@
+{
+  "name": "johnhenry.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "prettier": "^2.1.1",
+    "rollup": "^2.26.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "lint": "prettier --write . ",
+    "build:forsnakenbuilder": "rollup ./forsnakenbuilder/service-worker-prototype.mjs > ./forsnakenbuilder/service-worker.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnhenry/johnhenry.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnhenry/johnhenry.github.io/issues"
+  },
+  "homepage": "https://github.com/johnhenry/johnhenry.github.io#readme"
+}

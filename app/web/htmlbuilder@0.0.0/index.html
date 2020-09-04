@@ -153,7 +153,8 @@
         border: 1px solid black;
         border-left: none;
       }
-      body main #topbar a:hover, body main #topbar a.selected {
+      body main #topbar a:hover,
+      body main #topbar a.selected {
         background-color: grey;
       }
       body main #topbar a,
@@ -223,14 +224,14 @@
       body #sidebar #create #download_components_button:not([href]) {
         display: none;
       }
-      .hidden{
+      .hidden {
         display: none;
       }
     </style>
   </head>
   <body>
     <div id="sidebar">
-      <div id="create" >
+      <div id="create">
         <!-- prettier-ignore -->
         <div class="form">
           <label>Tag</label> <input id="add_tag" /> 
@@ -263,25 +264,26 @@
         <a href="#export">Export</a>
         <a href="#settings">Settings</a>
       </div>
-      <div id="settings" class="view">
-        Settings
-      </div>
+      <div id="settings" class="view">Settings</div>
       <div id="export" class="view">
         <pre id="code"></pre>
         <a id="download_button" download="export.html">↓</a>
       </div>
       <div id="output" class="view"></div>
-      <div id="guide" class="view">
-        Guide
-      </div>
-
+      <div id="guide" class="view">Guide</div>
     </main>
     <script>
-      const output = document.getElementById('output').attachShadow({ mode: "open" });
-      const output_style = document.createElement('style')
+      const output = document
+        .getElementById("output")
+        .attachShadow({ mode: "open" });
+      const output_style = document.createElement("style");
       output.appendChild(output_style);
       // https://stackoverflow.com/questions/4793604/how-to-insert-an-element-after-another-element-in-javascript-without-using-a-lib
-      const insertAfter = (newNode, referenceNode) => referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+      const insertAfter = (newNode, referenceNode) =>
+        referenceNode.parentNode.insertBefore(
+          newNode,
+          referenceNode.nextSibling
+        );
       const genId = (length = 5) => String(Math.random()).substr(2, length);
       const stringifyAttributes = (attributes) =>
         Object.entries(attributes)
@@ -315,91 +317,106 @@
         return format(div, 0).innerHTML;
       };
 
-      const elementFromPlaygroundElement = (child)=>{
-          const element = document.createElement(child.dataset.tagName);
-          for (const [key, value] of Object.entries(JSON.parse(child.dataset.attributes))) {
-            element.setAttribute(key, value);
-          }
-          const contentNode = document.createTextNode(child.dataset.content || "");
-          const postcontentNode = document.createTextNode(child.dataset.postcontent || "");
-          element.appendChild(contentNode);
-          element.appendChild(postcontentNode);
-          return element;
-      }
+      const elementFromPlaygroundElement = (child) => {
+        const element = document.createElement(child.dataset.tagName);
+        for (const [key, value] of Object.entries(
+          JSON.parse(child.dataset.attributes)
+        )) {
+          element.setAttribute(key, value);
+        }
+        const contentNode = document.createTextNode(
+          child.dataset.content || ""
+        );
+        const postcontentNode = document.createTextNode(
+          child.dataset.postcontent || ""
+        );
+        element.appendChild(contentNode);
+        element.appendChild(postcontentNode);
+        return element;
+      };
       const playgroundMap = new Map();
       const reversePlaygroundMap = new Map();
       const newRender = (playgroundElement) => {
-          if(!playgroundElement.parentElement){
-            const outputPartner = playgroundMap.get(playgroundElement);
-            (outputPartner.parentElement || output).removeChild(outputPartner);
-            return;
-          }
-          const element = playgroundMap.get(playgroundElement);
-          // 0. Existance
-          // Ensure companion element is rendered in output
-          const playgroundParent = playgroundElement.parentElement;
-          const outputPartner = playgroundMap.get(playgroundParent) || output;
-          // if(!outputPartner.contains(element)){
-          //   outputPartner.appendChild(element);
-          // }
-          outputPartner.prepend(element)
-          // 1. Attributes
-          // Get desired attribues
-          const originalEntries = Array.from(element.attributes).map(({name, value})=>[name, value]);
-          const originalAttributes = Object.fromEntries(originalEntries);
-          // List of desired attribures
-          const newAttributes = JSON.parse(playgroundElement.dataset.attributes||"{}");
-          
-          for(const [name, value] of originalEntries){
-            if(newAttributes[name] === value){
-              // If name and value are similar in both, we delete them as they are not necessary.
-              delete newAttributes[name];
-              delete originalAttributes[name];
-            }else if (!(name in newAttributes)) {
-              // If value with name doesnt' exist in desired attributes, mark it for deletion.
-              newAttributes[name] = null
-            }
-          }
-          // Create "diff" objects. Items in originalAttributes will be overwritten by those in newAttributes
-          const mergedAttributes = { 
-            ...originalAttributes,
-            ...newAttributes
-          };
-          for(const [key, value] of Object.entries(mergedAttributes) ){
-            if(value === null){
-              // Remove values marked for deletion
-              element.removeAttribute(key);
-            }else{
-              // set values marked for change
-              element.setAttribute(key, value);
-            }
-          }
-          // 2. Content
-          if(element.firstChild){
-            if(element.firstChild.textContent !== playgroundElement.dataset.content){
-            element.firstChild.textContent !== playgroundElement.dataset.content;
-            }
-            if(element.lastChild.textContent !== playgroundElement.dataset.content){
-              element.lastChild.textContent !== playgroundElement.dataset.content;
-            }
-          }
-          // 3. Remove any displayed children not corresponding to displayed playground items.
-          for(const outy of (element.children)){
-            const pgElement = reversePlaygroundMap.get(outy);
-            if(!playgroundElement.contains(pgElement)){
-              element.removeChild(outy);
-            }
-          }
-          // 4. Add and render any corresponding children that arent' displlayed.
-          for(const pgElement of (playgroundElement.children)){
-            if(pgElement.nodeType === 3){
-              continue;
-            }
-            const outElement = playgroundMap.get(pgElement);// find associated element
+        if (!playgroundElement.parentElement) {
+          const outputPartner = playgroundMap.get(playgroundElement);
+          (outputPartner.parentElement || output).removeChild(outputPartner);
+          return;
+        }
+        const element = playgroundMap.get(playgroundElement);
+        // 0. Existance
+        // Ensure companion element is rendered in output
+        const playgroundParent = playgroundElement.parentElement;
+        const outputPartner = playgroundMap.get(playgroundParent) || output;
+        // if(!outputPartner.contains(element)){
+        //   outputPartner.appendChild(element);
+        // }
+        outputPartner.prepend(element);
+        // 1. Attributes
+        // Get desired attribues
+        const originalEntries = Array.from(
+          element.attributes
+        ).map(({ name, value }) => [name, value]);
+        const originalAttributes = Object.fromEntries(originalEntries);
+        // List of desired attribures
+        const newAttributes = JSON.parse(
+          playgroundElement.dataset.attributes || "{}"
+        );
 
-            element.prepend(outElement);
+        for (const [name, value] of originalEntries) {
+          if (newAttributes[name] === value) {
+            // If name and value are similar in both, we delete them as they are not necessary.
+            delete newAttributes[name];
+            delete originalAttributes[name];
+          } else if (!(name in newAttributes)) {
+            // If value with name doesnt' exist in desired attributes, mark it for deletion.
+            newAttributes[name] = null;
           }
-      }
+        }
+        // Create "diff" objects. Items in originalAttributes will be overwritten by those in newAttributes
+        const mergedAttributes = {
+          ...originalAttributes,
+          ...newAttributes,
+        };
+        for (const [key, value] of Object.entries(mergedAttributes)) {
+          if (value === null) {
+            // Remove values marked for deletion
+            element.removeAttribute(key);
+          } else {
+            // set values marked for change
+            element.setAttribute(key, value);
+          }
+        }
+        // 2. Content
+        if (element.firstChild) {
+          if (
+            element.firstChild.textContent !== playgroundElement.dataset.content
+          ) {
+            element.firstChild.textContent !==
+              playgroundElement.dataset.content;
+          }
+          if (
+            element.lastChild.textContent !== playgroundElement.dataset.content
+          ) {
+            element.lastChild.textContent !== playgroundElement.dataset.content;
+          }
+        }
+        // 3. Remove any displayed children not corresponding to displayed playground items.
+        for (const outy of element.children) {
+          const pgElement = reversePlaygroundMap.get(outy);
+          if (!playgroundElement.contains(pgElement)) {
+            element.removeChild(outy);
+          }
+        }
+        // 4. Add and render any corresponding children that arent' displlayed.
+        for (const pgElement of playgroundElement.children) {
+          if (pgElement.nodeType === 3) {
+            continue;
+          }
+          const outElement = playgroundMap.get(pgElement); // find associated element
+
+          element.prepend(outElement);
+        }
+      };
 
       const allowDrop = (ev) => {
         ev.preventDefault();
@@ -428,7 +445,9 @@
             base_id,
           ] = registeredComponents.get(componentId);
           const id = genId();
-          const first = `<${tag}[${base_id}]:${id} ${stringifyAttributes(JSON.parse(defaults))}>${content || ""}`;
+          const first = `<${tag}[${base_id}]:${id} ${stringifyAttributes(
+            JSON.parse(defaults)
+          )}>${content || ""}`;
           const last = `${postcontent || ""}</${tag}>`;
           const element = document.createElement("div");
           element.id = `component_${id}`;
@@ -445,18 +464,19 @@
           const outElement = elementFromPlaygroundElement(element);
           playgroundMap.set(element, outElement);
           reversePlaygroundMap.set(outElement, element);
-          if(ev.target.firstChild){
+          if (ev.target.firstChild) {
             insertAfter(element, ev.target.firstChild);
           } else {
             // ev.target.appendChild(element);
             ev.target.prepend(element);
           }
           newRender(element);
-        } else if (id) {// move within playground
+        } else if (id) {
+          // move within playground
           const element = document.getElementById(id);
-          if(event.target === playground){
+          if (event.target === playground) {
             ev.target.prepend(element);
-          }else{
+          } else {
             insertAfter(element, ev.target.firstChild);
           }
           newRender(element);
@@ -520,7 +540,10 @@
           li.innerText = id;
           li.title = process(
             `<${tag} ${stringifyAttributes(JSON.parse(defaults))} >` +
-              (content || "") + "{}" + "" + (postcontent || "") +
+              (content || "") +
+              "{}" +
+              "" +
+              (postcontent || "") +
               `</${tag}>`
           );
           components.appendChild(li);
@@ -581,7 +604,7 @@
           add_tag.value = ""; // reset
 
           if (!tag) {
-            throw new Error('must define tag');
+            throw new Error("must define tag");
           }
 
           const content = add_content.value || "";
@@ -602,16 +625,23 @@
           defaults_form.innerHTML = "";
           //
           const id = genId();
-          await createComponent({ tag, definition, defaults, content, postcontent, id });
+          await createComponent({
+            tag,
+            definition,
+            defaults,
+            content,
+            postcontent,
+            id,
+          });
         } catch (e) {
           alert(e.message);
         }
-      }
+      };
       const populateUpdate = (event) => {
         event.stopPropagation();
-        const { target, id} = event;
+        const { target, id } = event;
         if (target !== playground) {
-          update.classList.remove('hidden');
+          update.classList.remove("hidden");
           update_id.innerText = target.id.split("_")[1];
           update_content.value = target.dataset.content ?? "";
           update_post_content.value = target.dataset.postcontent ?? "";
@@ -625,16 +655,16 @@
             att_form.append(k, v);
           }
         }
-      }
+      };
       const depopulateUpdate = () => {
-        update.classList.add('hidden');
+        update.classList.add("hidden");
         update_id.innerText = "";
         update_content.value = "";
         update_post_content.value = "";
         att_form.innerHTML = "";
-      }
-      const populateCreate = ({ target:{tagName, innerText} }) => {
-        if (tagName == 'LI') {
+      };
+      const populateCreate = ({ target: { tagName, innerText } }) => {
+        if (tagName == "LI") {
           const [
             tag,
             defaults,
@@ -656,14 +686,13 @@
             defaults_form.append(k, v);
           }
         }
-      }
-
+      };
 
       document.body.addEventListener("click", depopulateUpdate);
       add_button.addEventListener("click", addComponent);
       playground.addEventListener("click", populateUpdate);
       components.addEventListener("click", populateCreate);
-      update.addEventListener("click", (event)=>{
+      update.addEventListener("click", (event) => {
         event.stopPropagation();
       });
       update_button.addEventListener("click", () => {
@@ -697,7 +726,7 @@
         defaults_form.append(k, v);
       });
       const updateStyle = () => {
-        output_style.innerHTML = "\n" + (style_box.value || '').trim()+ "\n";
+        output_style.innerHTML = "\n" + (style_box.value || "").trim() + "\n";
       };
       style_box.addEventListener("paste", updateStyle);
       style_box.addEventListener("keyup", updateStyle);
@@ -706,23 +735,21 @@
 
       // navigation
       const setHash = (
-          { oldURL, newURL } = { oldURL: undefined, newURL: undefined }
-        ) => {
-          if(oldURL && oldURL === newURL ){
-            return;
+        { oldURL, newURL } = { oldURL: undefined, newURL: undefined }
+      ) => {
+        if (oldURL && oldURL === newURL) {
+          return;
+        }
+        for (const child of topbar.children) {
+          if (child.getAttribute("href") === window.location.hash) {
+            child.classList.add("selected");
+          } else {
+            child.classList.remove("selected");
           }
-          for(const child of topbar.children){
-            if(child.getAttribute('href') === window.location.hash){
-              child.classList.add('selected');
-            }else{
-              child.classList.remove('selected');
-            }
-          }
-        };
+        }
+      };
       setHash();
       window.onhashchange = setHash;
-
-
 
       const preamble = `<!DOCTYPE html>
       <html lang="en">
@@ -733,10 +760,9 @@
       // NOTE: My testing enviornment injects code at the end of the page. Ths particular pattern confuses it.
       const postamble = "<" + "/body>" + `</html>`;
 
+      // Create an observer instance linked to the callback function
 
-// Create an observer instance linked to the callback function
-
-const setHTMLCode = () => {
+      const setHTMLCode = () => {
         const import_statments = [];
         let count = 0;
         for (const [id, [tag, defaults, definition]] of registeredComponents) {
@@ -753,8 +779,8 @@ const setHTMLCode = () => {
 
         const baseHTML = process(String(output.innerHTML));
         code.innerText = baseHTML;
-        const fullHTML = 
-`<!DOCTYPE html>
+        const fullHTML =
+          `<!DOCTYPE html>
   <html lang="en">
     <head>
       <meta charset="UTF-8">
@@ -771,19 +797,20 @@ const setHTMLCode = () => {
           "href",
           `data:text/plain;charset=utf-8,${encodeURIComponent(fullHTML)}`
         );
-};
-setHTMLCode();
+      };
+      setHTMLCode();
 
-const observer = new MutationObserver(setHTMLCode);
+      const observer = new MutationObserver(setHTMLCode);
 
-// // Start observing the target node for configured mutations
-observer.observe(output, { attributes: true, childList: true, subtree: true });
+      // // Start observing the target node for configured mutations
+      observer.observe(output, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+      });
 
-// // Later, you can stop observing
-// observer.disconnect(output);
-
-
-
+      // // Later, you can stop observing
+      // observer.disconnect(output);
     </script>
   </body>
 </html>

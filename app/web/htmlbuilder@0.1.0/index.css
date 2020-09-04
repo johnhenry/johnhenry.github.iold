@@ -15,45 +15,45 @@ body {
   flex-direction: row;
   height: 100%;
   color: rgba(100, 100, 100, 1);
-  background-color:rgba(238, 238, 238, 1);
+  background-color: rgba(238, 238, 238, 1);
 }
 
-.sidebar{
+.sidebar {
   height: 100%;
   width: 256px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.sidebar > *, main >* {
-  flex-grow:1;
+.sidebar > *,
+main > * {
+  flex-grow: 1;
   border: 1px solid black;
   border-bottom: none;
 }
-main >* {
-  border-left:none;
+main > * {
+  border-left: none;
 }
 
-.components, .update-components {
-  padding:16px;
+.components,
+.update-components {
+  padding: 16px;
   display: flex;
   flex-direction: column;
 }
 
-#component-list .archived{
+#component-list .archived {
   color: red;
-  display:none;
+  display: none;
 }
 
-#component-list.show-archive .archived{
-  display:block;
-
+#component-list.show-archive .archived {
+  display: block;
 }
 
 #component-list.show-archive {
   border: 1px dashed orange;
 }
-
 
 .form {
   display: grid;
@@ -61,7 +61,7 @@ main >* {
   grid-template-rows: 1fr;
   max-width: 100%;
 }
-.form input{
+.form input {
   width: 100%;
 }
 
@@ -72,18 +72,17 @@ main {
   flex-direction: row;
   justify-content: space-between;
 }
-main >* {
+main > * {
   flex-grow: 1;
 }
 
-
-#inputs:empty::before{
+#inputs:empty::before {
   content: "Drag components here";
   text-align: center;
 }
 #inputs {
   max-width: 50%;
-  height:100%;
+  height: 100%;
   overflow: scroll;
 }
 
@@ -95,11 +94,10 @@ main >* {
   padding-left: 16px;
   justify-content: space-between;
 }
-#inputs div{
-  border-radius:5px;
+#inputs div {
+  border-radius: 5px;
   margin: 8px;
-  box-shadow: 
-    rgba(238, 238, 238, 1) 4px 4px 8px,
+  box-shadow: rgba(238, 238, 238, 1) 4px 4px 8px,
     rgba(170, 170, 170, 1) 4px 4px 8px;
 }
 
@@ -110,54 +108,50 @@ main >* {
 #inputs div::before {
   content: "<" attr(data-content-before-tag) ">" attr(data-content-before);
 }
-#inputs div::after{
-  content: attr(data-content-after) "</" attr(data-tag) " >"; 
+#inputs div::after {
+  content: attr(data-content-after) "</" attr(data-tag) " >";
 }
 
-
-#component-list li{
+#component-list li {
   list-style-type: none;
   padding: 8px;
-  border-radius:5px;
+  border-radius: 5px;
   margin: 8px;
-  box-shadow: 
-    rgba(238, 238, 238, 1) 4px 4px 8px,
+  box-shadow: rgba(238, 238, 238, 1) 4px 4px 8px,
     rgba(170, 170, 170, 1) 4px 4px 8px;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-#styles *{
-  display:block;
+#styles * {
+  display: block;
 }
-#styles span:nth-child(odd){
+#styles span:nth-child(odd) {
   padding-left: 4px;
   width: 100%;
 }
-#styles span:nth-child(odd)::after{
+#styles span:nth-child(odd)::after {
   content: "\20\20\20\20{";
-  text-align:right;
+  text-align: right;
   width: 100%;
 }
 
-#styles span:nth-child(even){
+#styles span:nth-child(even) {
   padding-left: 8px;
   width: 100%;
 }
-#styles span:nth-child(even)::after{
+#styles span:nth-child(even)::after {
   content: "      }";
   display: block;
 }
 
-
-#styles *.matched{
-  background-color:darkslategrey;
-  color:white;
+#styles *.matched {
+  background-color: darkslategrey;
+  color: white;
 }
 
 #exports {
-  flex-grow:0;
+  flex-grow: 0;
 }
-

@@ -5,16 +5,6 @@ export default class extends HTMLElement {
     super();
     this.kids = new Set();
     this.kidsByKey = new Map();
-    this.shadow = this.attachShadow({ mode: "open" });
-    this.slotted = this.shadow.appendChild(document.createElement("slot"));
-    this.slotted.style = "display:none";
-    this.content = this.shadow.appendChild(document.createElement("span"));
-    this.content.part = "content";
-    this.pop = this.pop.bind(this);
-    this.slotChange = this.slotChange.bind(this);
-    this.slotted.addEventListener("slotchange", this.slotChange);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onfocus = this.onFocus.bind(this);
   }
   onFocus() {
     if (this.lastClicked === undefined) {
@@ -48,6 +38,16 @@ export default class extends HTMLElement {
     }
   }
   connectedCallback() {
+    this.shadow = this.shadow || this.attachShadow({ mode: "open" });
+    this.slotted = this.shadow.appendChild(document.createElement("slot"));
+    this.slotted.style = "display:none";
+    this.content = this.shadow.appendChild(document.createElement("span"));
+    this.content.part = "content";
+    this.pop = this.pop.bind(this);
+    this.slotChange = this.slotChange.bind(this);
+    this.slotted.addEventListener("slotchange", this.slotChange);
+    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onfocus = this.onFocus.bind(this);
     this.endEvent = this.dataset.endEvent || "end";
   }
   static get observedAttributes() {

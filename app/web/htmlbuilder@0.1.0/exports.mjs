@@ -1,10 +1,9 @@
 import stringifyAttributes from "./stringify-attributes.mjs";
 
-
 export const generateImportStatements = (registeredComponents) => {
   const import_statments = [];
   let count = 0;
-  for (const [, {tag, definition}] of Object.entries(registeredComponents)) {
+  for (const [, { tag, definition }] of Object.entries(registeredComponents)) {
     if (!definition) {
       continue;
     }
@@ -16,9 +15,13 @@ export const generateImportStatements = (registeredComponents) => {
     );
   }
   return import_statments.join("");
-}
+};
 
-export const generateFull = (baseHTML, style, importStatements) =>`<!DOCTYPE html>
+export const generateFull = (
+  baseHTML,
+  style,
+  importStatements
+) => `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -35,7 +38,7 @@ ${style}
 ${baseHTML}
 </body></html>`;
 
-export const generateBackup = (components, styles, inputs) =>`<html>
+export const generateBackup = (components, styles, inputs) => `<html>
 <template id="components">
 ${components}
 </template>
@@ -87,7 +90,7 @@ body {
 </style>
 </html>`;
 
-export const generateBackupHTML = (inputs, top=0)=>{
+export const generateBackupHTML = (inputs, top = 0) => {
   return inputs.outerHTML;
   // const kids = [];
   // for(const input of inputs.children){
@@ -100,4 +103,4 @@ export const generateBackupHTML = (inputs, top=0)=>{
   //   const contentAfterRendered = (`${inputs.dataset.contentAfter || ""}</${inputs.dataset.tag}>`);
   //   return `<div data-id="${inputs.id.split('_')[1]}" data-tag="${inputs.dataset.tag}" data-component_id="${inputs.dataset.component_id}" data-attributes="${JSON.stringify(inputs.dataset.attributes)}" data-content-before="${inputs.dataset.contentBefore || ''}" data-content-after="${inputs.dataset.contentAfter || ''}" data-content-before-rendered="${contentBeforeRendered}" data-content-after-rendered="${contentAfterRendered}">${kids.join('\n')}</div>`;
   // }
-}
+};
