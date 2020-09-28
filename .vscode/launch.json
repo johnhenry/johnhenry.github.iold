@@ -1,0 +1,19 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  // https://stackoverflow.com/questions/61853754/how-to-debug-deno-in-vscode
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Deno",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": ["run", "--inspect-brk", "-A", "/Users/john/Projects/johnhenry.github.io/std/cbor0.0.0/index.mjs"],
+      "outputCapture": "std",
+      "port": 9229
+  }
+  ]
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script type="module">
+      const MAX = 1;
+      const THRESHOLD = 500;
+      const THEN = Number(window.sessionStorage.getItem('then')) || Date.now();
+      const NOW = Date.now();
+      window.sessionStorage.setItem('then', NOW);
+      const tries = Number(window.sessionStorage.getItem('tries') || 0);
+      if(NOW !== THEN && ((THEN - NOW) < THRESHOLD)){
+        window.sessionStorage.setItem('tries', tries + 1);
+      }
+      window.addEventListener("load", async (event) => {
+        try {
+          if(!(tries < MAX)){
+            window.sessionStorage.deleteItem('then');
+            window.sessionStorage.deleteItem('tries');
+            throw new Error('reload max reach. check service worker for error');
+          }
+          await window.navigator.serviceWorker.register("./service-worker.mjs");
+          window.location.reload();
+        } catch (error) {
+          window.document.write(error);
+        }
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

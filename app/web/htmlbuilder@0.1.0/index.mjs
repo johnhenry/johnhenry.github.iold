@@ -62,6 +62,8 @@ let document; // Actually not neccessary -- need to investigate
 let downloadFullButton;
 let downloadBackupButton;
 let resetButton;
+let reflowButton;
+
 
 const outputElementsByInput = new Map();
 const inputElementsByOutput = new Map(); // WeakMap?
@@ -578,7 +580,7 @@ const createComponentFromForm = async (clickEvent) => {
 };
 
 const handleClickOutput = ({ target }) =>
-  inputElementsByOutput.get(target).focus();
+  inputElementsByOutput.get(target)?.focus();
 
 const highlightStyles = (inputElement) => {
   if (inputElement) {
@@ -681,6 +683,11 @@ const resetApp = () => {
   window.localStorage.removeItem(LOCAL_STORAGE_KEY);
   window.location.reload();
 };
+const reflowApp = () => {
+  const html = outputs.innerHTML;
+  outputs.innerHTML = "";
+  outputs.innerHTML = html;
+};
 
 export default async ({ path }) => {
   window = path[0];
@@ -780,6 +787,8 @@ export default async ({ path }) => {
   downloadBackupButton = document.getElementById("download-backup-button");
   resetButton = document.getElementById("reset-button");
   resetButton.addEventListener("click", resetApp);
+  reflowButton = document.getElementById("reflow-button");
+  reflowButton.addEventListener("click", reflowApp);
 
   const observer = new MutationObserver(setHTMLCode);
 

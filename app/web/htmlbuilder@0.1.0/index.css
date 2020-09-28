@@ -1,3 +1,8 @@
+:root{
+  --font-color:  rgba(100, 100, 100, 1);
+  --background-color: rgba(238, 238, 238, 1);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -14,8 +19,8 @@ body {
   display: flex;
   flex-direction: row;
   height: 100%;
-  color: rgba(100, 100, 100, 1);
-  background-color: rgba(238, 238, 238, 1);
+  color: var(--font-color);
+  background-color: var(--background-color);
 }
 
 .sidebar {
@@ -154,4 +159,13 @@ main > * {
 
 #exports {
   flex-grow: 0;
+  display:flex;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-items: center;
+}
+
+a, a:active, a:visited, a:link {
+  color: var(--font-color);
+  text-decoration: none;
 }

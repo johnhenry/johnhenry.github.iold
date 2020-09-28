@@ -1,0 +1,53 @@
+FROM scratch
+COPY . .
+ADD . .
+WORKDIR .
+REGISTER <directive> <file> <name>
+REGISTER html5:latest index.html HTML
+HTML.init
+HTML.setLang en
+HTML.setCharSet UTF-8
+HTML.setMeta viewport "width=device-width, initial-scale=1.0"
+HTML.setManifest index.webmanifest
+HTML.importStyle ./style.css
+HTML.setTitle "Loading Remote Applicaion"
+HTML.serviceWorker service-worker.mjs <retires> <threshold>
+HTML.registerComponent <component name> <path-to-component?
+HTML.setBody "<body>Loading Remote Applicaion</body>"
+HTML.copyStyle <path to style>
+HTML.copyScript <path to script>
+HTML.embedStyle <path to style>
+HTML.embedScript <path to script>
+HTML.finalize
+
+REGISTER routere-worker:latest service-worker.mjs SW
+SW.reset
+SW.precache logo.png
+SW.cache *.png
+SW.override http://localhost:8080/app/web/forsnaken/internal-timer.component.mjs https://johnhenry.github.io/app/web/forsnaken/internal-timer.component.mjs
+SW.target ${globalThis.location.origin}/app/web/htmlbuilder@0.1.0
+SW.finalize ## any necessary transformations
+
+REGISTER style:latest style.css STYLE
+STYLE.init
+STYLE.rootCustomProperties --background-color #000000 --font-color #00ff00
+STYLE.embed <path to style>
+STYLE.import <path to style>
+STYLE.inject div a a {}
+STYLE.finalize
+
+REGISTER blog-menu:latest . BLOGMENU
+BLOGMENU.input "SELECT ..." 
+BLOGMENU.perPage 8
+BlOGMENU.pattern 0 | 1 | index 0 | index 1 | index 2
+BLOGMENU.finalize
+
+REGISTER blog-post:latest . BLOGPOST
+BLOGPOST.input "SELECT ..." 
+BLOGMENU.finalize
+
+REGISTER minify:latest . MINIFY
+MINIFY.minifyHTML **/*.html
+MINIFY.minifySCRIPT **/*.mjs
+MINIFY.minifySTYLE **/*.css
+MINIFY.minifyAll

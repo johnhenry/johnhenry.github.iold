@@ -8,9 +8,9 @@ const updateRequest = async (oldRequest, newURL, newInit = {}) => {
     oldInit[key] = oldRequest[key];
   }
   if (
-    oldRequest.method.toUpperCase() !== "HEAD" &&
-    oldRequest.method.toUpperCase() !== "GET"
-  ) {
+  oldRequest.method.toUpperCase() !== "HEAD" &&
+  oldRequest.method.toUpperCase() !== "GET")
+  {
     const blob = await oldRequest.blob();
     if (blob.size > 0) {
       oldInit.body = blob;
@@ -20,7 +20,7 @@ const updateRequest = async (oldRequest, newURL, newInit = {}) => {
 };
 
 // Visit given url
-const ActionSingle = (url) => () => fetch(url); // String => stagic get of single address
+const ActionSingle = url => () => fetch(url); // String => stagic get of single address
 
 const Route = class {
   constructor(action, match = false) {
@@ -30,26 +30,26 @@ const Route = class {
         url: false,
         method: false,
         headers: false,
-        body: false,
-      };
+        body: false };
+
     } else if (
-      typeof match === "string" ||
-      match instanceof RegExp ||
-      Array.isArray(match)
-    ) {
+    typeof match === "string" ||
+    match instanceof RegExp ||
+    Array.isArray(match))
+    {
       this.__match = {
         url: match,
         method: false,
         headers: false,
-        body: false,
-      };
+        body: false };
+
     } else {
       this.__match = {
         url: match.url || false,
         method: match.method || false,
         headers: match.headers || false,
-        body: match.body || false,
-      };
+        body: match.body || false };
+
     }
   }
   __test(request) {
@@ -172,13 +172,13 @@ const Route = class {
   async send(currentRequest, currentResponse) {
     if (this.__test(currentRequest)) {
       return this.__action(
-        currentRequest,
-        currentResponse,
-        this.__exec(currentRequest)
-      );
+      currentRequest,
+      currentResponse,
+      this.__exec(currentRequest));
+
     }
-  }
-};
+  }};
+
 
 const Router = class {
   constructor(...routes) {
@@ -220,8 +220,7 @@ const Router = class {
   }
   get routes() {
     return this.__routes;
-  }
-};
+  }};
 
 const pathname = globalThis.location.href;
 const local = pathname.substring(0, pathname.lastIndexOf("/")); // This folder's location
