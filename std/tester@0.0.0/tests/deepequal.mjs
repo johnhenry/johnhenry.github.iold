@@ -45,7 +45,7 @@ const deepEqual = (a, b) => {
   return a !== a && b !== b;
 }
 export default (actual, expected, message = "should be deep equal", operator="deepEqual") =>{
-  if(deepEqual(actual) === deepEqual(expected) ){
+  if(deepEqual(actual, expected)){
     return message;
   }
   return new TestError(message, {actual, expected, operator});

@@ -44,26 +44,40 @@ const compressBits = (...bits)=>{
   return bytes;
 }
 
-export const encode = (number, {bias=1023, exponenSize=11, size=64}={bias:1023, exponenSize:11, size:64}) => {
+export const encode = (number, {bias=1023, exSize=11, size=64}={bias:1023, exSize:11, size:64}) => {
   const sign = Number(number < 0);
+  const bits = new Array(size).fill(0);
   if(sign){
     number *= -1;
   }
-  const [whole, fraction] = splitDecimal(number, true);
-  let together = [...whole, ...fraction].slice(1);
-  let e;
-  if (!whole.length) {
-    // cauculate using fraction part
-    e = bias - 1 - fraction.indexOf(1);
+  let exponent;
+  let together;
+  // Handle infinity
+  if (Math.abs(number) === Infinity) {
+    exponent = [];
+    while(exponent.length < exSize){
+      exponent.unshift(1);
+    }
+    together = [];
+  } else if (number !== 0) {
+    const [whole, fraction] = splitDecimal(number, true);
+    together = [...whole, ...fraction].slice(1);
+    let e;
+    if (!whole.length) {
+      // cauculate using fraction part
+      e = bias - 1 - fraction.indexOf(1);
+    } else {
+      // cauculate using whole part
+      e = whole.length - 1 + bias;
+    }
+    exponent = getBinaryWhole(e);
   } else {
-    // cauculate using whole part
-    e = whole.length - 1 + bias;
+    exponent = [];
+    together = [];
   }
-  const exponent = getBinaryWhole(e);
-  while(exponent.length < exponenSize){
+  while(exponent.length < exSize){
     exponent.unshift(0);
   }
-  const bits = new Array(size).fill(0);
   const insert = [sign, ...exponent, ...together];
   bits.splice(0, insert.length, ...insert);
   return Uint8ClampedArray.from([...compressBits(...bits)]);
@@ -90,13 +104,17 @@ export const decode64 = (bytes, offset=0) => {
   const sixth = bytes[offset++];
   const seventh = bytes[offset++];
   const eighth = bytes[offset++];
-  const sign = (-1)**(first & 0b10000000);
+  const sign = first & 0b10000000 ? -1 : 1;
   let ex_ = first & 0b01111111;
   ex_ = ex_ << 4;
   let _ponent = second & 0b11110000;
   _ponent = _ponent >> 4;
   let exponent = (ex_ | _ponent) - 1023;
-  
+  if(exponent === -1023){
+    if(!second && !third && !fourth && !fifth && !sixth && !seventh && !eighth){
+      return 0;
+    }
+  }  
   const num = reduceBits(4, [second, third, fourth, fifth, sixth, seventh, eighth], (previous, current, index) => {
     exponent--;
     return current 
