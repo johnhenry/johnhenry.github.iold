@@ -153,3 +153,9 @@ flocker asset extract <bundle id> <name space> <path to file or folder within bu
 flocker metadata --graphql --sql --query=""
 ```
  
+
+ gen-bundle -dir . -baseURL http://. -o foo.wbn
+
+gen-bundle -dir static -baseURL https://. -o foo.wbn -primaryURL https://. -ignoreErrors
+
+gen-bundle -dir static -baseURL http://. -o bar.wbn -primaryURL http://. -ignoreErrors

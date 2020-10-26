@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "cbor": "^5.1.0",
     "prettier": "^2.1.1",
     "rollup": "^2.26.9",
-    "rollup-plugin-url-resolve": "^0.1.1"
+    "rollup-plugin-url-resolve": "^0.1.1",
+    "wbn": "0.0.5"
   },
   "devDependencies": {},
   "scripts": {

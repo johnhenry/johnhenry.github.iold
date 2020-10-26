@@ -1,8 +1,8 @@
 
-const log = console.log;
+const TAP_VERSION = 13; 
 import TestError from "./testerror.mjs"
-export default async function(title, generator){
-  log(`TAP version ${13}`)
+export default async function(title, generator, log=console.log){
+  log(`TAP version ${TAP_VERSION}`)
   log(`# ${title}`);
   let index = 1;
   let planCalled = false;

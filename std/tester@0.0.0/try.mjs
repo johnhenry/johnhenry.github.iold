@@ -2,6 +2,7 @@ import TAPRunner from "./TAPRunner.mjs";
 import equal from "./tests/equal.mjs";
 import deepEqual from "./tests/deepequal.mjs";
 import ok from "./tests/ok.mjs";
+import notok from "./tests/notok.mjs";
 
 TAPRunner("A", function *(plan){
   plan(2);
@@ -13,4 +14,5 @@ TAPRunner("B", function *(){
   yield ok(1);
   yield ok(true);
   yield ok(false);
+  yield notok(false);
 });
