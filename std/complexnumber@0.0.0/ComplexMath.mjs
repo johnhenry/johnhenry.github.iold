@@ -1,5 +1,5 @@
 import ComplexNumber from './ComplexNumber.mjs';
-import { createMultiply, createKronickerProduct } from '../matrixmath@0.0.0/index.mjs';
+import { createMultiply, createKroneckerProduct } from '../matrixmath@0.0.0/index.mjs';
 
 export const add = (alpha=0, beta=0)=>new ComplexNumber(alpha+beta, alpha.i+beta.i);
 
@@ -65,7 +65,5 @@ export const power2 = (alpha, beta) => {
 export const power = (alpha, beta=1, selector=0) => {		
   return power2(Math.E, multiply(beta, naturalLogarithm(alpha, selector)));
 }
-
 export const matrixMultiply = createMultiply(add, multiply);
-
-export const kronickerProduct = createKronickerProduct(multiply);
+export const kroneckerProduct = createKroneckerProduct(multiply);

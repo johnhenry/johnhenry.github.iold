@@ -60,8 +60,6 @@ export const sNOT = matrixTransform(
   [ [divide(add(1, i),2), subtract(subtract(1, i),2)],
     [subtract(subtract(1, i),2), divide(add(1, i),2)]]);
 
-
-
 export const Word = (...values) =>{
   let val;
   return {

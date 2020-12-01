@@ -1,0 +1,4 @@
+:root::before{
+  content: 'If you can see this, you have properly imported this script. \00000a Now, Delete the code here and make it your own!';
+  white-space: pre;
+}
