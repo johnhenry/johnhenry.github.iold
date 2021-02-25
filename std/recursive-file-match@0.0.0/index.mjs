@@ -11,7 +11,7 @@ const recursiveFileMatch = async function *(startPath, filter){
       yield * await recursiveFileMatch(filename, filter); //recurse
     }
     else if (filter.test(filename)) {
-      const match = filter.exec(filename)[1];
+      const match = path.join(startPath, filter.exec(filename)[1]);
       yield [match, filename];
     }
   }

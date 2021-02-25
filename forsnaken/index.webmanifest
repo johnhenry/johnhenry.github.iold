@@ -1,0 +1,9 @@
+{
+  "name": "Forsnaken",
+  "short_name": "Builder",
+  "description": "Application for building forsnakern",
+  "icons": [
+  ],
+  "display": "standalone",
+  "start_url": "/forsnaken/"
+}
