@@ -3,4 +3,7 @@ export default class extends Error{
     super(message);
     this.val = val;
   }
+  [Symbol.iterator](){
+    return Object.entries(this.val).values();
+  }
 };

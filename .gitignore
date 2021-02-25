@@ -1,5 +1,2 @@
 node_modules/*
-std/cbor@0.0.0/test.mjs
-.gitignore
 .DS_Store
-*.code-workspace

@@ -1,3 +1,0 @@
-[submodule "app/web/forsnaken"]
-	path = app/web/forsnaken
-	url = https://github.com/johnhenry/forsnaken.git

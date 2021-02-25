@@ -1,18 +1,5 @@
-import TAPRunner from "./TAPRunner.mjs";
-import equal from "./tests/equal.mjs";
-import deepEqual from "./tests/deepequal.mjs";
-import ok from "./tests/ok.mjs";
-import notok from "./tests/notok.mjs";
-
-TAPRunner("A", function *(plan){
-  plan(2);
-  yield equal();
-  yield deepEqual({}, {}, "they should have same stuff");
-});
-
-TAPRunner("B", function *(){
-  yield ok(1);
-  yield ok(true);
-  yield ok(false);
-  yield notok(false);
-});
+import { print } from "./TAPRunner.mjs";
+import tests from './sample.test.mjs';
+for await (const [name, test] of Object.entries(tests)){
+  await print(test, name);
+}

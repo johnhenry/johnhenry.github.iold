@@ -4,16 +4,15 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "cbor": "^5.1.0",
+    "esbuild": "^0.8.51",
     "prettier": "^2.1.1",
-    "rollup": "^2.26.9",
-    "rollup-plugin-url-resolve": "^0.1.1",
+    "showdown": "^1.9.1",
     "wbn": "0.0.5"
   },
-  "devDependencies": {},
   "scripts": {
     "lint": "prettier --write . ",
-    "build:forsnakenbuilder": "rollup --config ./rollup.config.js ./forsnakenbuilder/service-worker-prototype.mjs > ./forsnakenbuilder/service-worker.mjs"
+    "build:service-workers": "node build-service-workers.mjs",
+    "build:readmes-indexes": "node build-readme-indexes.mjs"
   },
   "repository": {
     "type": "git",
