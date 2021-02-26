@@ -12,7 +12,8 @@
   "scripts": {
     "lint": "prettier --write . ",
     "build:service-workers": "node build-service-workers.mjs",
-    "build:readmes-indexes": "node build-readme-indexes.mjs"
+    "build:readmes-indexes": "node build-readme-indexes.mjs",
+    "build:notes": "node build-notes.mjs"
   },
   "repository": {
     "type": "git",
