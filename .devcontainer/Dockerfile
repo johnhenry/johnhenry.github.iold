@@ -5,7 +5,7 @@ RUN apt-get install -y zsh
 ## Install oh-my-zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 COPY .oh-my-zsh /root/.oh-my-zsh/
-COPY .zshrc /root/
+COPY .zshrc /root/.zshrc
 ## install node apps
 RUN npm install -g http-server live-server esbuild
 ## install deno
