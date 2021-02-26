@@ -2,16 +2,17 @@
 /* @import '../vendor/reset@2.0.0/index.css'; */
 @import './colors.css';
 @import './sizes.css';
-/* @import 'https://fonts.googleapis.com/css?family=Tangerine'; */
+@import './fonts.css';
 
 html {
   /* colors */
   color: var(--color);
   background-color: var(--bg-color);
+  /* spacing */
   padding: 0;
   margin: 0;
   /* text */
-  /* font-family: Tangerine, serif; */
+  font-family: var(--font-family);
 }
 
 body {

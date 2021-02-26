@@ -14,7 +14,6 @@ const bodyWrapper = (title="A Note", body)=>`
 </html>
 `
 
-
 for await (const [match] of recursiveFileMatch('./notes/', /([A-Za-z0-9\-\_]+).md/)) {
   const infile = `${match}.md`;
   const outfile = `${match}.html`;
