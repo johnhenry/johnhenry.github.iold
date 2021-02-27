@@ -4,16 +4,17 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "esbuild": "^0.8.51",
+    "esbuild": "^0.8.53",
     "prettier": "^2.1.1",
     "showdown": "^1.9.1",
     "wbn": "0.0.5"
   },
   "scripts": {
     "lint": "prettier --write . ",
-    "build:service-workers": "node build-service-workers.mjs",
-    "build:readmes-indexes": "node build-readme-indexes.mjs",
-    "build:notes": "node build-notes.mjs"
+    "build:service-workers": "node scripts/build-service-workers.mjs",
+    "build:readme-indexes": "node scripts/build-readme-indexes.mjs",
+    "build:notes": "node scripts/build-notes.mjs",
+    "test": "node scripts/run-tests.mjs"
   },
   "repository": {
     "type": "git",

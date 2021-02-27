@@ -1,48 +1,26 @@
-@import '../vendor/normalize.css@8.0.1/index.css';
-/* @import '../vendor/reset@2.0.0/index.css'; */
+@import '../vendor/css/normalize.css@8.0.1/index.css';
+/* @import '../vendor/css/reset@2.0.0/index.css'; */
+@import '../std/css/unstyled-links@0.0.0/index.css';
+@import '../std/css/universal-box-sizing@0.0.0/index.css';
+/* @import '../std/css/disable-interactivity@0.0.0/index.css'; */
 @import './colors.css';
 @import './sizes.css';
 @import './fonts.css';
-
+@import './components/ul-menu.css';
 html {
-  /* colors */
-  color: var(--color);
-  background-color: var(--bg-color);
-  /* spacing */
+  /* Section: Positioning */
+  /* Section: Display & Box Model */
   padding: 0;
   margin: 0;
-  /* text */
+  /* Section: Color */
+  color: var(--color);
+  background-color: var(--bg-color);
+  /* Section: Text */
   font-family: var(--font-family);
+  /* Section: Other */
 }
 
 body {
   margin: var(--margin);
   padding: var(--padding);
 }
-
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-
-.ul-menu {
-  display: flex;
-  list-style: none;
-  padding: 0;
-
-}
-
-.ul-menu > li {
-  padding: inherit;
-  margin: 0 8px;
-}
-
-.ul-menu > li > a {
-  display: inline-grid;
-  padding: 4px 40px;
-  border: 1px solid var(--color);
-  border-radius: 4px;
-  place-items: center;
-}
-

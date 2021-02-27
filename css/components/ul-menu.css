@@ -1,0 +1,19 @@
+.ul-menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+
+}
+
+.ul-menu > li {
+  padding: inherit;
+  margin: 0 8px;
+}
+
+.ul-menu > li > a {
+  display: inline-grid;
+  padding: 4px 40px;
+  border: 1px solid var(--color);
+  border-radius: 4px;
+  place-items: center;
+}

@@ -1,5 +1,5 @@
 (() => {
-  // std/router@0.0.0/index.mjs
+  // std/js/router@0.0.0/index.mjs
   var updateRequest = async (oldRequest, newURL, newInit = {}) => {
     const oldInit = {};
     for (const key of Object.keys(Request.prototype)) {

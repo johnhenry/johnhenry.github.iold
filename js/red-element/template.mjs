@@ -1,1 +1,1 @@
-export default '<slot part=content /><style>*{color:red}</style>'
+export default '<slot part=content /><style>*{color:red}</style>';
