@@ -1,8 +1,3 @@
-@import '../vendor/css/normalize.css@8.0.1/index.css';
-/* @import '../vendor/css/reset@2.0.0/index.css'; */
-@import '../std/css/unstyled-links@0.0.0/index.css';
-@import '../std/css/universal-box-sizing@0.0.0/index.css';
-/* @import '../std/css/disable-interactivity@0.0.0/index.css'; */
 @import './colors.css';
 @import './sizes.css';
 @import './fonts.css';
@@ -20,7 +15,28 @@ html {
   /* Section: Other */
 }
 
-body {
-  margin: var(--margin);
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+a[download]::after {
+  content: '⇣';
+}
+a[target=_blank]::after {
+  content: '⤏';
+}
+
+.holy-grail {
+  display: grid;
+  grid-template-rows: min-content min-content 1fr min-content;
+  height: 100vh;
+}
+.holy-grail > * {
   padding: var(--padding);
+  gap: var(--margin);
+  border: 1px solid var(--color);
+}
+.holy-grail > aside, .holy-grail > main {
+  overflow-y: scroll;
 }

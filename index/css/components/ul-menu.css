@@ -1,19 +1,21 @@
 .ul-menu {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
-
+  gap: 4px;
 }
 
 .ul-menu > li {
   padding: inherit;
-  margin: 0 8px;
+  margin: 0 1px;
 }
 
 .ul-menu > li > a {
-  display: inline-grid;
+  display: inline-flex;
   padding: 4px 40px;
   border: 1px solid var(--color);
   border-radius: 4px;
   place-items: center;
+  gap: 4px;
 }

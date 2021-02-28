@@ -44,7 +44,8 @@ const deepEqual = (a, b) => {
   // true if both NaN, false otherwise
   return a !== a && b !== b;
 }
-export default (actual, expected, message = "should be deep equal", operator="deepEqual") =>{
+export const DefaultMessage = "should be deep equal";
+export default (actual, expected, message = DefaultMessage, operator="deepequal") =>{
   if(deepEqual(actual, expected)){
     return message;
   }

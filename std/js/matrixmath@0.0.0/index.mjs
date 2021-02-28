@@ -53,10 +53,6 @@ export const collapse = (vector=[],binaryOperation=(a,b)=>a+b,defaultObject=0) =
   return collapse(newVector, binaryOperation, defaultObject);
 }
 
-
-
-
-
 export const createMultiply = (add=(a,b)=>a+b, multiply=(a,b)=>a*b) => (alpha , beta) =>{
   const kroneckerProduct = createKroneckerProduct(multiply);
   const kroneckerList = [];

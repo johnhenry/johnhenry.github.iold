@@ -1,5 +1,6 @@
-import TestError from "../testerror.mjs"
-export default (actual, unexpected, message = "should not be strictly equal", operator="notequal") =>{
+import TestError from "../testerror.mjs";
+export const DefaultMessage = "should be strictly not equal";
+export default (actual, unexpected, message = DefaultMessage, operator="notequal") =>{
   if(actual !== unexpected){
     return message;
   }

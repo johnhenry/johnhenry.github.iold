@@ -1,5 +1,6 @@
-import TestError from "../testerror.mjs"
-export default (actual, expected, message = "should be strictly equal", operator="equal") =>{
+import TestError from "../testerror.mjs";
+export const DefaultMessage = "should be strictly equal";
+export default (actual, expected, message = DefaultMessage, operator="equal") =>{
   if(actual === expected){
     return message;
   }

@@ -1,5 +1,6 @@
-import TestError from "../testerror.mjs"
-export default (actual, message = "should be falsy", operator="notok") =>{
+import TestError from "../testerror.mjs";
+export const DefaultMessage = "should be falsy";
+export default (actual, message = DefaultMessage, operator="notok") =>{
   if(!actual){
     return message;
   }

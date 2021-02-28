@@ -1,4 +1,3 @@
-
 const TAP_VERSION = 13;
 import TestError from "./testerror.mjs";
 
@@ -96,9 +95,15 @@ export const run = async function * (
   }
 };
 
-export const print = async function (test, title, log=console.log){
-  log(`TAP version ${TAP_VERSION}`);
+export const print = async function (test, title, log = console.log, logError=console.error, logVersion = true, ){
+  if(logVersion){
+    log(`TAP version ${TAP_VERSION}`);
+  }
   for await (const output of run(test, title, TAPResultPass, TAPResultFail, TAPResultCounts, TAPResultRange)) {
-    log(output);
+    if(output instanceof TestError){
+      logError(output);
+    } else {
+      log(output);
+    }
   }
 };
