@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "esbuild": "^0.8.53",
+    "fs-extra": "^9.1.0",
     "prettier": "^2.1.1",
     "showdown": "^1.9.1",
     "wbn": "0.0.5"
@@ -13,6 +14,7 @@
     "lint": "prettier --write . ",
     "build:service-workers": "node scripts/build-service-workers.mjs",
     "build:readme-indexes": "node scripts/build-readme-indexes.mjs",
+    "build:versions": "node scripts/build-versions.mjs",
     "build:notes": "node scripts/build-notes.mjs",
     "test": "node scripts/run-tests.mjs"
   },

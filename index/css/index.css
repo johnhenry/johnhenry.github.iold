@@ -1,4 +1,5 @@
 @import './colors.css';
+@import './colors.dark.css' (prefers-color-scheme: dark);
 @import './sizes.css';
 @import './fonts.css';
 @import './components/ul-menu.css';
