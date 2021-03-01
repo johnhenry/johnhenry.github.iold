@@ -16,7 +16,7 @@ const bodyWrapper = (body)=>`
 
 const reg = /(.+).md/;
 
-for await (const infile of recursiveFileMatch('./notes/', reg)) {
+for (const infile of recursiveFileMatch('./notes/', reg)) {
   const outfile = `${reg.exec(infile)[1]}.html`;
   fs.writeFileSync(outfile, converter.makeHtml(fs.readFileSync(infile, 'utf8')));
   console.log(`${infile} => ${outfile}`);

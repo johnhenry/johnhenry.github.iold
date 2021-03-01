@@ -5,7 +5,7 @@ const converter = new showdown.Converter();
 
 const reg = /(.*readme).md/;
 
-for await (const infile of recursiveFileMatch('./std/', reg)) {
+for (const infile of recursiveFileMatch('./std/', reg)) {
   const outfile = `${reg.exec(infile)[1]}.html`;
   fs.writeFileSync(outfile, converter.makeHtml(fs.readFileSync(infile, 'utf8')));
   console.log(`${infile} => ${outfile}`);
