@@ -29,7 +29,7 @@ for(const [name, versions] of Object.entries(record)){
   fse.copySync(version, latest);
   // remove tests from latest version
   for (const file of recursiveFileMatch(latest, /(.+).tests.mjs/)) {
-    console.log(`removing test file: ${file}`);
+    console.log(`removing test: ${file}`);
     fse.removeSync(file);
   }
 }
