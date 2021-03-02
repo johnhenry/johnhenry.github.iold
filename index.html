@@ -6,28 +6,31 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <title>John Henry</title>
     <style>
-      @import 'vendor/css/normalize.css@8.0.1/index.css';
-      @import 'std/css/universal-unstyled-links@0.0.0/index.css';
-      @import 'std/css/universal-box-sizing@0.0.0/index.css';
-      @import 'std/css/holy-grail@0.0.0/index.css';
-      @import 'std/css/holy-grail@0.0.0/index-small.css' (max-width: 800px);
-      @import 'index/css/index.css';
+      @import './vendor/css/normalize.css@8.0.1/index.css';
+      @import './std/css/universal-unstyled-links@0.0.0/index.css';
+      @import './std/css/universal-box-sizing@0.0.0/index.css';
+      @import './std/css/holy-grail@0.0.0/index.css';
+      @import './std/css/holy-grail@0.0.0/index-small.css' (max-width: 800px);
+      @import './index/css/index.css';
     </style>
     <script type="module">
-      import '/vendor/js/htmx@1.2.1/index.js';
-      import '/index/js/index.mjs'
+      import './vendor/js/htmx@1.2.1/index.js';
+      import './index/js/index.mjs'
+      import './std/js/css-mouse-variables@0.0.0/index.mjs';
     </script>
   </head>
-  <body >
+  <body>
     <div class="holy-grail" >
-      <header><h1><a href="/">john henry</a></h1></header>
+      <header>
+        <h1><a href="/">john henry</a></h1>
+      </header>
       <nav>
         <h2>notes</h2>
         <ul class="ul-menu">
-          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/methods-for-generating-random-numbers.html">Methods for generating random numbers</a></li>
-          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/motivations-for-negative-strings-in-programming-languages.html">Motivations for negative strings in programming languages</a></li>
-          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/quirks-in-programming-languages.html">Quirks in programming languages</a></li>
-          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/things-in-javascript.html">Things in javascript</a></li>
+          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/methods-for-generating-random-numbers.html" href="#">Methods for generating random numbers</a></li>
+          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/motivations-for-negative-strings-in-programming-languages.html"href="#" >Motivations for negative strings in programming languages</a></li>
+          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/quirks-in-programming-languages.html" href="#">Quirks in programming languages</a></li>
+          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/things-in-javascript.html" href="#">Things in javascript</a></li>
         </ul>
       </nav>
       <main id="main"></main>
@@ -54,6 +57,8 @@
         </ul>
       </footer>
     </div>
+    <div class="mouse-follower"><div></div></div>
+    <div class="mouse-chaser"></div>
   </body>
 </html>
 

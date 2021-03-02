@@ -1,0 +1,14 @@
+.mouse-chaser {
+  --font-size: 16px;
+  position: absolute;
+  font-size: var(--font-size);
+  pointer-events: none;
+  left: calc(var(--mouse-x) * 1px);
+  top: calc(var(--mouse-y) * 1px - calc(var(--font-size)* 2));
+  transition: 2s;
+  transition-timing-function: var(--ttf-bounce);
+}
+.mouse-chaser::before {
+  content: '[ ' var(--mouse-x-str) ' : ' var(--mouse-y-str) ' ]';
+  visibility: var(--mouse-up-visibility, hidden);
+}
