@@ -52,7 +52,11 @@
         x:i,
         y:f(i),
         irisoffset:12,
-        eyerotation: Math.random()*Math.PI
+        eyerotation: Math.random()*Math.PI,
+        upperlip: Math.random() * 8 ,
+        lowerlip: Math.random() * 64 ,
+        nosescale: Math.random(),
+        eyesize: Math.random() * ( 32 - 4 + 1 ) + 23,
       });
     }
     const graph = document.getElementById('graph');
