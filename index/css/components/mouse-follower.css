@@ -2,6 +2,7 @@
   border-radius: 50%;
   position: absolute;
   border: 1px solid var(--color);
+  border-top: none;
   box-sizing: border-box;
   width: 50px;
   height: 50px;
