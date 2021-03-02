@@ -1,5 +1,5 @@
 .mouse-chaser {
-  --font-size: 16px;
+  --font-size: 12px;
   position: absolute;
   font-size: var(--font-size);
   pointer-events: none;

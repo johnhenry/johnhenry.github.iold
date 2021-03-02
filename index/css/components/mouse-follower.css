@@ -1,16 +1,17 @@
 .mouse-follower {
+  --size: 75px;
   border-radius: 50%;
   position: absolute;
   border: 1px solid var(--color);
   border-top: none;
   box-sizing: border-box;
-  width: 50px;
-  height: 50px;
+  width: calc(var(--mouse-magnorm) * var(--size));
+  height: calc(var(--mouse-magnorm) * var(--size));
   transition: 2s;
   transition-timing-function: var(--ttf-bounce);
-  transform: rotate(calc(var(--mouse-arctan2) * 1rad + 0.25turn));
-  left: -25px;
-  top: -25px;
+  transform: rotate(calc(var(--mouse-ang) * 1rad));
+  left: calc(var(--mouse-magnorm) / 2 * var(--size) * -1);
+  top: calc(var(--mouse-magnorm) / 2 * var(--size) * -1);
 }
 .mouse-follower > * {
   display: grid;

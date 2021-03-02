@@ -1,5 +1,4 @@
 // HTML Details, Select, Input[type=radio]
-
 export default class extends HTMLElement {
   constructor() {
     super();

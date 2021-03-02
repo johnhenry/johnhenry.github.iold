@@ -1,3 +1,4 @@
+/* https://css-tricks.com/the-holy-grail-layout-with-css-grid/ */
 .holy-grail {
   display: grid;
   grid-template-columns: 1fr 3fr;

@@ -1,5 +1,5 @@
 @import './colors.css';
-@import './colors.dark.css' (prefers-color-scheme: dark);
+@import './colors.dark.css' screen and (prefers-color-scheme: dark);
 @import './sizes.css';
 @import './fonts.css';
 @import './transition-timing-functions.css';
