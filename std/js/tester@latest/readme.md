@@ -135,6 +135,27 @@ if(result instanceof Error){
   throw result;
 };
 ```
+
+#### subtestpass
+
+```javascript
+import { subtestpass, pass } from "./index.mjs";
+const result = await subtestpass(function *(){yield pass();});
+if(result instanceof Error){
+  throw result;
+};
+```
+
+#### subtestfail
+
+```javascript
+import { subtestfail, fail } from "./index.mjs";
+const result = await subtestfail(function *(){yield fail();});
+if(result instanceof Error){
+  throw result;
+};
+```
+
 ### creating external assertions
 
 Assertions have the following general form:
