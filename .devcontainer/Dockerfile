@@ -12,5 +12,4 @@ COPY .zshrc /root/
 RUN npm install -g http-server live-server esbuild
 ## install deno
 RUN curl -fsSL https://deno.land/x/install/install.sh | sh
-RUN curl -fsSL https://deno.land/x/install/install.sh | sh
 ENV PATH="/root/.deno/bin/:${PATH}"
