@@ -7,8 +7,9 @@
   top: calc(var(--mouse-y) * 1px - calc(var(--font-size)* 2));
   transition: 2s;
   transition-timing-function: var(--ttf-bounce);
+  opacity: var(--mouse-magnorm);
 }
 .mouse-chaser::before {
   content: '[ ' var(--mouse-x-str) ' : ' var(--mouse-y-str) ' ]';
-  visibility: var(--mouse-up-visibility, hidden);
+  opacity: var(--mouse-up, 0);
 }

@@ -12,6 +12,7 @@
   transform: rotate(calc(var(--mouse-ang) * 1rad));
   left: calc(var(--mouse-magnorm) / 2 * var(--size) * -1);
   top: calc(var(--mouse-magnorm) / 2 * var(--size) * -1);
+  opacity: var(--mouse-up, 0);
 }
 .mouse-follower > * {
   display: grid;
@@ -19,5 +20,4 @@
 }
 .mouse-follower > *::before {
   content: "⇡";
-  visibility: var(--mouse-up-visibility, hidden);
 }

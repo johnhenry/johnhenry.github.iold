@@ -296,4 +296,7 @@ export const Router = class {
   get routes() {
     return this.__routes;
   }
+  // [Symbol.iterator]{
+  //   return this.routes();
+  // }
 };

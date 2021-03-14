@@ -9,7 +9,7 @@ const ServerProxy = class{
   }
   send(request){
     // TODO get code from service workers
-    const newRequest = update(this.__address, this.__init)
+    const newRequest = update(this.__address, this.__init);
     return fetch(newRequest);
   }
 }
@@ -17,7 +17,6 @@ const ServerProxy = class{
 const forward = (stream, outgoing)=>{
 
 }
-
 
 const fetch = async (request) => {
   const { host } = request.headers;
@@ -29,7 +28,7 @@ const fetch = async (request) => {
   return response();
 };
 
-const request = new Reuest();
+const request = new Request();
 const response = await fetch(request);
 
 const proxy = new ServerProxy('http://localhost:8080');
@@ -56,8 +55,10 @@ const FetchEvent = class extends Event {
     forward(this.__connection, response);
   }
 }
-const FetchEventEmitter = class{
-  constructor(){}
+const FetchEventEmitter = class extends EventTarget{
+  constructor({port, signal}){
+
+  }
   sendStream(stream){
     this.dispatchEvent(new FetchEvent(stream));
   }

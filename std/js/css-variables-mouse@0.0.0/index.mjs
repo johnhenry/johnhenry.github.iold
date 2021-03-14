@@ -1,19 +1,13 @@
 // https://codepen.io/bramus/pen/eBZgPB
 // https://css-tricks.com/how-to-map-mouse-position-in-css/
 // https://codersblock.com/blog/what-can-you-put-in-a-css-variable/
+// https://developer.mozilla.org/en-US/docs/Web/CSS/env()
 const target = globalThis.document;
-const wrapString = (number)=>`'${number}'`;
-const setWindowSize = ()=>{
-  target.documentElement.style.setProperty('--window-width', globalThis.innerWidth);
-  target.documentElement.style.setProperty('--window-height', globalThis.innerHeight);
-  target.documentElement.style.setProperty('--window-width-str', wrapString(globalThis.innerWidth));
-  target.documentElement.style.setProperty('--window-height-str', wrapString(globalThis.innerHeight));
-  target.documentElement.style.setProperty('--mouse-up-visibility', 'visible');
-  target.documentElement.style.setProperty('--mouse-down-visibility', '');
+import wrapString from "../wrap-number-string@0.0.0/index.mjs";
+const init = ()=>{
+  target.documentElement.style.setProperty('--mouse-up', '1');
 }
-globalThis.addEventListener('load', setWindowSize);
-globalThis.addEventListener('resize', setWindowSize);
-
+globalThis.addEventListener('load', init);
 
 target.addEventListener('mousemove', ({clientX, clientY,}) => {
   const angle = Math.atan2(clientY, clientX) + Math.PI/2;
@@ -29,15 +23,14 @@ target.addEventListener('mousemove', ({clientX, clientY,}) => {
   target.documentElement.style.setProperty('--mouse-mag-str', wrapString(magnitude));
   target.documentElement.style.setProperty('--mouse-magnorm', magnitudeNormalized);
   target.documentElement.style.setProperty('--mouse-magnorm-str', wrapString(magnitudeNormalized));
-
 });
 
 target.addEventListener('mouseup', () => {
-  target.documentElement.style.setProperty('--mouse-up-visibility', 'visible');
-  target.documentElement.style.setProperty('--mouse-down-visibility', '');
+  target.documentElement.style.setProperty('--mouse-up', '1');
+  target.documentElement.style.setProperty('--mouse-down', '');
 });
 
 target.addEventListener('mousedown', () => {
-  target.documentElement.style.setProperty('--mouse-up-visibility', '');
-  target.documentElement.style.setProperty('--mouse-down-visibility', 'visible');
+  target.documentElement.style.setProperty('--mouse-up', '');
+  target.documentElement.style.setProperty('--mouse-down', '1');
 });
