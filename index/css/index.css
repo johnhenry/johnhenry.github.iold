@@ -1,12 +1,23 @@
+@import '../../vendor/css/normalize.css@8.0.1/index.css';
+@import '../../std/css/universal-unstyled-links@0.0.0/index.css';
+@import '../../std/css/universal-box-sizing@0.0.0/index.css';
 @import './colors.css';
 @import './colors.dark.css' screen and (prefers-color-scheme: dark);
 @import './sizes.css';
 @import './fonts.css';
 @import './transition-timing-functions.css';
-@import './components/ul-menu.css';
 @import './components/mouse-chaser.css';
 @import './components/mouse-follower.css';
-
+@import './components/card.css';
+@import './components/gallery.css';
+@import './components/button.css';
+@import './components/link.css';
+@import './components/horizontal-menu.css';
+:root{
+  --card-width: 300px;
+  --header-height: 64px;
+  --footer-height: 64px;
+}
 html {
   /* Section: Positioning */
   /* Section: Display & Box Model */
@@ -25,12 +36,6 @@ html, body {
   margin: 0;
 }
 
-a[download]::after {
-  content: '⇣';
-}
-a[target=_blank]::after {
-  content: '⤏';
-}
 
 .holy-grail {
   display: grid;
@@ -44,4 +49,82 @@ a[target=_blank]::after {
 }
 .holy-grail > aside, .holy-grail > main {
   overflow-y: scroll;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  position: relative;
+}
+body > header {
+  background-color: var(--bg-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: var(--header-height);
+  width: 100vw;
+  display:flex;
+  padding: 16px;
+}
+body > header > h1{
+  flex: 0 1 auto;
+  display: inline;
+  margin:0;
+}
+
+body > footer{
+  background-color: var(--bg-color);
+  padding: 16px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: var(--footer-height);
+  width: 100vw;
+}
+
+section {
+  padding: 16px;
+  min-height: 100vh;
+  padding-top: var(--header-height);
+  padding-bottom: var(--footer-height);
+  width: 100vw;
+}
+
+section#main{
+  background-image: url("../../vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg");
+  background-size: cover;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+section#main .horizontal-menu {
+  justify-content: center;
+}
+section#about{
+  background-color: var(--color);
+  color: var(--bg-color);
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+section#about img {
+  max-width: 240px;
+}
+section#projects{
+  background-image: url("../../vendor/img/www.pexels.com/efdal-yildiz/flock-of-birds-1920x1410.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction:column;
+}
+@media screen and (prefers-color-scheme: dark){
+  section#projects{
+    background-image: url("../../vendor/img/www.pexels.com/felix-mittermeier/blue-and-purple-cosmic-sky-1920x1080.jpg");
+  }
+}
+section#projects h1{
+  flex: 0 1 auto;
 }

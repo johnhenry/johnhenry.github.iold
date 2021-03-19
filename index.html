@@ -6,59 +6,63 @@
     <link rel="icon" href="data:image/png;base64, iVBORw0KGgo=">
     <title>John Henry</title>
     <style>
-      @import './vendor/css/normalize.css@8.0.1/index.css';
-      @import './std/css/universal-unstyled-links@0.0.0/index.css';
-      @import './std/css/universal-box-sizing@0.0.0/index.css';
-      @import './std/css/holy-grail@0.0.0/index.css';
-      @import './std/css/holy-grail@0.0.0/index-small.css' (max-width: 800px);
       @import './index/css/index.css';
     </style>
     <script type="module">
-      import './vendor/js/htmx@1.2.1/index.js';
-      import './index/js/index.mjs'
-      import './std/js/css-variables-window@0.0.0/index.mjs';
-      import './std/js/css-variables-mouse@0.0.0/index.mjs';
+      import './index/js/index.mjs';
     </script>
   </head>
   <body>
-    <div class="holy-grail" >
-      <header>
-        <h1><a href="/">john henry</a></h1>
-      </header>
-      <nav>
-        <h2>notes</h2>
-        <ul class="ul-menu">
-          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/methods-for-generating-random-numbers.html" href="#">Methods for generating random numbers</a></li>
-          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/motivations-for-negative-strings-in-programming-languages.html"href="#" >Motivations for negative strings in programming languages</a></li>
-          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/quirks-in-programming-languages.html" href="#">Quirks in programming languages</a></li>
-          <li><a hx-trigger="click" hx-target="#main" hx-swap="innerHTML" hx-get="./notes/things-in-javascript.html" href="#">Things in javascript</a></li>
-        </ul>
-      </nav>
-      <main id="main"></main>
-      <aside>
-        <h2>web apps</h2>
-        <ul class="ul-menu">
-          <li><a href="./forsnaken/">forsnaken</a></li>
-          <li><a href="./forsnakenbuilder/">forsnaken<wbr />builder</a></li>
-        </ul>
-        <h2>cli apps</h2>
-        <ul class="ul-menu">
-          <li><a href="./app/cli/explode@0.0.0/explode" download="explode">explode</a></li>
-          <li><a href="./app/cli/implode@0.0.0/implode" download="implode">implode</a></li>
-        </ul>
-        <h2>libraries</h2>
-        <ul class="ul-menu">
-          <li><a href="./std/">std lib</a></li>
-        </ul>
-      </aside>
-      <footer>
-        <ul class="ul-menu">
-          <li><a href="https://twitter.com/iamjohnhenry" target="_blank">twitter</a></li>
-          <li><a href="https://github.com/johnhenry" target="_blank">github</a></li>
-        </ul>
-      </footer>
-    </div>
-    <div class="mouse-follower"><div></div></div>
+    <section id="main">
+      <ul class='horizontal-menu'>
+        <li><a href="#about" class="button">About</a></li>
+        <li><a href="#projects" class="button button-inverted">Projects</a></li>
+      </ul>
+    </section>
+    <section id="about">
+      <div>
+        <h2>About</h2>
+        <p title="&quot;I'm not an rapper.&quot;">"Be the be the <i>Supa Hot Fire</i> you wish to see in the world." -- John Henry</p>
+      </div>
+      <div>
+        <img src="./vendor/img/www.pexels.com/roberto-shumski/scenic-photo-of-lake-surrounded-by-trees-300.jpg">
+      </div>
+    </section>
+    <section id="projects" >
+      <h2>Projects</h2>
+      <main class="gallery">
+        <a class="card" href='/cli/'>
+          <img src="./vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg">
+          <header>Command Line Tools</header>
+          <footer>Collection of cli tools</footer>
+        </a>
+        <a class="card" href='/forsnaken/' >
+          <img src="./forsnaken/screenshot.png">
+          <header>Forsnaken</header>
+          <footer>A snake game built using web technologies.</footer>
+        </a>
+        <a class="card" href='/forsnakenbuilder/'>
+          <img src="./forsnakenbuilder/screenshot.png">
+          <header>Forsnaken Builder</header>
+          <footer>Build a snake game or other application using web technologies.</footer>
+        </a>
+      </main>
+    </section>
+    <header>
+      <div class="mouse-follower"><div></div></div>
+      <h1><a href="/#main">john henry</a></h1>
+      <ul class="horizontal-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </header>
+    <footer>
+      <ul class='horizontal-menu'>
+        <li><a href="https://twitter.com/iamjohnhenry" target="_blank">twitter</a></li>
+        <li><a href="https://github.com/johnhenry" target="_blank">github</a></li>
+        <li><a href="#" target="_blank">© 2021 John Henry</a></li>
+      </ul>
+    </footer>
     <div class="mouse-chaser"></div>
   </body>
 </html>

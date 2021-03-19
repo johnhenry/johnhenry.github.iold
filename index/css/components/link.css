@@ -1,0 +1,6 @@
+a[download]::after {
+  content: '⇣';
+}
+a[target=_blank]::after {
+  content: ' ⤏';
+}

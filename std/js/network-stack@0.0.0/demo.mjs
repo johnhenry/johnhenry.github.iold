@@ -1,5 +1,7 @@
 import FetchEventEmitter from "./FetchEventEmitter/index.mjs";
-import { Response } from "./server/index.mjs"
+// import FetchEvent from "./FetchEventEmitter/FetchEvent.mjs";
+
+// import { Response } from "./server/index.mjs"
 const port = 8080;
 const server = new FetchEventEmitter(Deno.listen({port}));
 

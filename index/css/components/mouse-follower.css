@@ -1,5 +1,5 @@
 .mouse-follower {
-  --size: 75px;
+  --size: 50px;
   border-radius: 50%;
   position: absolute;
   border: 1px solid var(--color);

@@ -1,5 +1,4 @@
 import { Request } from "../server/index.mjs";
-
 export default class extends Event{
   constructor(connection, eventInit){
     super("fetch", eventInit);

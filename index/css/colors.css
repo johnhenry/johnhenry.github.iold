@@ -1,4 +1,7 @@
 :root {
-  --color: #1E1E1E;
-  --bg-color: white;
+  --darkness: #221E1E;
+  --light: #ffffff;
+
+  --color: var(--darkness);
+  --bg-color: var(--light);
 }
