@@ -1,5 +1,5 @@
 a[download]::after {
-  content: '⇣';
+  content: ' ⇣';
 }
 a[target=_blank]::after {
   content: ' ⤏';

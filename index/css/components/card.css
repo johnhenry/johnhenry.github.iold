@@ -54,12 +54,29 @@
 }
 
 a.card[download]::after {
+  position: absolute;
+  right:0;
+  bottom:0;
   content: '⇣';
+  padding-right:4px;
+  padding-bottom:4px;
 }
+a.card[download]:hover::after {
+  transform: rotate(-45deg);
+  transition: 0.5s;
+}
+
+
 a.card[target=_blank]::after {
   position: absolute;
   right:0;
   bottom:0;
   content: '⤏';
   padding-right:4px;
+  padding-bottom:4px;
+}
+
+a.card[target=_blank]:hover::after {
+  transform: rotate(45deg);
+  transition: 0.5s;
 }

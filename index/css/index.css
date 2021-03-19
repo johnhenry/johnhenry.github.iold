@@ -8,10 +8,10 @@
 @import './transition-timing-functions.css';
 @import './components/mouse-chaser.css';
 @import './components/mouse-follower.css';
+@import './components/link.css';
 @import './components/card.css';
 @import './components/gallery.css';
 @import './components/button.css';
-@import './components/link.css';
 @import './components/horizontal-menu.css';
 :root{
   --card-width: 300px;
