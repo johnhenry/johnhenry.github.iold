@@ -122,7 +122,7 @@ section#projects{
 }
 @media screen and (prefers-color-scheme: dark){
   section#projects{
-    background-image: url("../../vendor/img/www.pexels.com/felix-mittermeier/blue-and-purple-cosmic-sky-1920x1080.jpg");
+    background-image: url("../../vendor/img/www.pexels.com/felix-mittermeier/blue-and-purple-cosmic-sky.jpg");
   }
 }
 section#projects h1{
