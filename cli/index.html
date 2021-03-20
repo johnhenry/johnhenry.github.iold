@@ -8,9 +8,6 @@
   <title>Command Line Interface</title>
   <style>
       @import '../index/css/index.css';
-      :root{
-        --card-width: 300px;
-      }
       .card {
         background-image: url('../vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg');
         background-size: cover;
@@ -18,19 +15,17 @@
   </style>
   <script type="module">
     import '../index/js/index.mjs';
-
   </script>
 </head>
-<body>
+<body class="fullscreen-sections-with-header-and-footer">
   <section>
     <h1>Command Line Interface Programs</h1>
     This is a set of command line interfaces tools that i've built for repetative tasks.
-
     <h2>Explode</h2>
     Explode moves the contents of a folder into it's parent, and once empty,
     deletes the folder.
     <div class="gallery">
-      <a class="card" href="../std/bash/explode@0.0.0/explode" download="explode">
+      <a class="card card-short" href="../std/bash/explode@0.0.0/explode" download="explode">
         <header>Explode </header>
         <footer>Download for Mac & Linux</footer>
       </a>
@@ -39,11 +34,11 @@
     Implode moves moves a file into a folder of the same name, minus the extension.
     Note there are two versions: Max & Linux.
     <div class="gallery">
-      <a class="card" href="../std/bash/implode@0.0.0/implode.mac" download="implode">
+      <a class="card card-short" href="../std/bash/implode@0.0.0/implode.mac" download="implode">
         <header>Implode</header>
         <footer>Download for Mac</footer>
       </a>
-      <a class="card" href="../std/bash/implode@0.0.0/implode.linux" download="implode">
+      <a class="card card-short" href="../std/bash/implode@0.0.0/implode.linux" download="implode">
         <header>Implode</header>
         <footer>Download for Linux</footer>
       </a>
@@ -51,7 +46,7 @@
   </section>
   <div class="mouse-chaser"></div>
   <header>
-    <div class="mouse-follower"><div></div></div>
+    <div class="mouse-follower"></div>
     <h1><a href="/#main">john henry</a></h1>
   </header>
 </body>

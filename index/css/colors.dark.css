@@ -1,4 +1,4 @@
 :root {
-  --color: var(--light);
-  --bg-color: var(--darkness);
+  --color: var(--color-theme-dark);
+  --bgcolor: var(--bgcolor-theme-dark);;
 }
