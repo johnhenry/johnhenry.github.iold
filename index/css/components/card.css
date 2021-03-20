@@ -59,6 +59,7 @@ a.card[download]::after {
   padding-right:4px;
   padding-bottom:4px;
   transition: 0.25s;
+  z-index: var(--footer-z);
 }
 a.card[download]:hover::after {
   transform: rotate(-45deg);
@@ -74,6 +75,7 @@ a.card[target=_blank]::after {
   padding-right:4px;
   padding-bottom:4px;
   transition: 0.25s;
+  z-index: var(--footer-z);
 }
 
 a.card[target=_blank]:hover::after {

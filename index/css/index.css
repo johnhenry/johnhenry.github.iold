@@ -14,6 +14,9 @@
 @import './components/gallery.css';
 @import './components/button.css';
 @import './components/horizontal-menu.css';
+@import './components/place-center.css';
+@import './components/side-by-side/index.css';
+@import './components/side-by-side/shrink.css' screen and (max-width: 600px);
 
 :root{
   --card-width: 300px;
@@ -41,11 +44,12 @@ section#main{
   background-size: cover;
 }
 
+section#about > main {
+  gap:16px;
+}
+
 section#main .horizontal-menu {
   justify-content: center;
-}
-section#about img {
-  max-width: 240px;
 }
 section#projects{
   background-image: url("../../vendor/img/www.pexels.com/efdal-yildiz/flock-of-birds.jpg");
@@ -57,14 +61,5 @@ section#projects{
   }
 }
 
-.place-center {
-  display: inline-grid;
-  place-items: center;
-  align-content: center;
-}
 
-.left-right {
-  display: grid;
-  grid-template-columns: 300px 300px;
-}
 

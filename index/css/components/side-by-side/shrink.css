@@ -1,0 +1,3 @@
+.side-by-side.side-by-side-shrink {
+  grid-template-columns: 1fr;
+}
