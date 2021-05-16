@@ -1,4 +1,4 @@
-# Methods for generating random numbers
+# Random Generators: Methods for generating random numbers
 
 These are methods of generating a sample, *x*, for a given random variable, *X*.
 
@@ -64,4 +64,12 @@ const x = Math.random() < 0.5; // R<0.5
 
 ```javascript
 const x = X[ Math.floor( Math.random() * X.length ) ]; // X[⌊R*|X|⌋]
+```
+
+## Bytes
+
+### X = TypedArray<number>(N)
+
+```javascript
+const x = globalThis.crypto.getRandmoValues(new Uint8ClampedArray(N)); // X[⌊R*|X|⌋]
 ```

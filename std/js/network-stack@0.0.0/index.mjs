@@ -2,18 +2,17 @@
 //////////
 // import { Request, Response, ServerProxy } from "./client";
 
+const responseFromFetch = (response:Promise<response>)=>{
+
+}
 const ServerProxy = class{
-  constructor(address, init){
-    this.__address = address;
-    this.__init = init;
+  constructor(connection){
+    this.__connection = connection;
   }
   send(request){
-    // TODO get code from service workers
-    const newRequest = update(this.__address, this.__init);
-    return fetch(newRequest);
+    return new Response(globalThis.fetch(response))
   }
 }
-
 const forward = (stream, outgoing)=>{
 
 }
@@ -55,7 +54,7 @@ const FetchEvent = class extends Event {
     forward(this.__connection, response);
   }
 }
-const FetchEventEmitter = class extends EventTarget{
+const ClientProxy = class extends EventTarget{
   constructor({port, signal}){
 
   }
@@ -103,13 +102,13 @@ const route = new Route((request, _, _)=>{
   }
 });
 const router = new Router(route);
-const fetchEventEmitter = new FetchEventEmitter();
+const server = new ClientProxy();
 
-fetchEventEmitter.addEventListener('fetch', (event) => event.respondWith(router.send(event.request)));
-fetchEventEmitter.addEventListener('fetch', async (event) => event.waitUntil(event.respondWith(await server.send(event.request))));
+server.addEventListener('fetch', (event) => event.respondWith(router.send(event.request)));
+server.addEventListener('fetch', async (event) => event.waitUntil(event.respondWith(await server.send(event.request))));
 
 for await (const stream of Deno.listen({port:8080})){
-  fetchEventEmitter.sendStream(stream);
+  server.sendStream(stream);
 }
 
 request({hostname:'http://www.example.com'})`GET / HTTP/1.1
@@ -200,4 +199,44 @@ Content-Length: 10
 I AM THING
 
 `;
+}
+{
+  const host ='https://www.example.com';
+  const resolveDNS = async (str) =>'0.0.0.0';
+  const client = new ServerProxy(
+    await Deno.connect({ hostname: await resolveDNS(host), port: 8080 }));
+
+  const request =
+  @mergeHeaders({host})
+  @removeHeader('host')
+  new Request('');
+
+  const response = client.send(new Request(''));
+
+  console.log('version:', await response.version);
+  console.log('code:', await response.code);
+  if(!response.ok){
+    throw new Error('Response not ok');
+  }
+  console.log('message:', await response.message);
+  for await (const [key, value] of await response.headerIteratorReady){
+    console.log(`${key}:${value}`);
+  }
+  
+  const headers = await response.headersReady
+  // console.log('headers:',headers );
+  await response.bodyStarted;
+  switch(headers.get('content-type')){
+    case 'application/x-www-form-urlencoded':
+      console.log(await response.formData());
+      break;
+    case 'application/json':
+      console.log(await response.json());
+      break;
+    default:
+      console.log(await response.text());
+      break;
+  }
+  // fetchEvent.respondWith(new Response());
+  server.close();
 }

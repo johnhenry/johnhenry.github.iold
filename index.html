@@ -12,8 +12,8 @@
       import './index/js/index.mjs';
     </script>
   </head>
-
   <body class="fullscreen-sections-with-header-and-footer">
+
     <header>
       <span class="mouse-follower"></span>
       <h1><a href="/#main">john henry</a></h1>
@@ -36,7 +36,7 @@
       </main>
     </section>
 
-    <section id="about" class="">
+    <section id="about">
       <h2>About</h2>
       <main class="place-center">
         <div class="side-by-side side-by-side-shrink">
@@ -54,7 +54,7 @@
       </main>
     </section>
 
-    <section id="projects" class="">
+    <section id="projects">
       <h2>Projects</h2>
       <main class="gallery">
         <a class="card" href='/cli/'>
@@ -75,6 +75,18 @@
       </main>
     </section>
 
+    <section id="projects">
+      <h2>Projects</h2>
+      <link rel="stylesheet" href="/vendor/highlight.js@10.7.1/styles/androidstudio.css">
+      <pre class="code">
+        <code>
+          for(let i = 0; i < 10; i++){
+
+          }
+        </code>
+      </pre>
+    </section>
+
     <footer>
       <ul class='horizontal-menu'>
         <li><a href="https://twitter.com/iamjohnhenry" target="_blank">twitter</a></li>
@@ -82,7 +94,16 @@
         <li><a href="#" target="_blank">© 2021 John Henry</a></li>
       </ul>
     </footer>
-    <span class="mouse-chaser"></span>
+
+    <span class="mouse-chaser" style="--mouse-z:var(--header-z)"></span>
+    <script type="module">
+      import hljs from '/vendor/highlight.js@10.7.1/index.mjs';
+      document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+      });
+    });
+    </script>
   </body>
 </html>
 

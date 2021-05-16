@@ -2,7 +2,6 @@
 import InvertedPromise from '../../invertedpromise@0.0.0/index.mjs';
 import InvertedIterator from '../../invertediterator@0.0.0/index.mjs';
 
-const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 export default class {
   constructor(connection) {
@@ -44,7 +43,7 @@ export default class {
   }
   async init(connection, timeout=100, highWaterMark=1024){
     const chars = [];
-    const headerIteratorController = InvertedIterator();
+    const headersIteratorController = InvertedIterator();
     while (true) {
       const {promise:timeoutPromise, resolve:timeoutPromiseResolve} = InvertedPromise();
       setTimeout(timeoutPromiseResolve, timeout, null);
@@ -65,7 +64,7 @@ export default class {
               case 2:
                 chars.pop();//remove '\r'
                 this.versionReadyResolve(chars.join(''));
-                this.headerIteratorReadyResolve(headerIteratorController.iterator)
+                this.headerIteratorReadyResolve(headersIteratorController.iterator)
               break;
             }
             while(chars.length){
@@ -83,12 +82,12 @@ export default class {
               const key = key_.trim().toLowerCase();
               const value = value_.trim();
               this._headers.append(key, value);
-              headerIteratorController.resolve([key, value.trim()]);
+              headersIteratorController.resolve([key, value.trim()]);
               while(chars.length){
                 chars.pop();
               }
             }else{
-              headerIteratorController.end();
+              headersIteratorController.end();
               this.headersReadyResolve(this._headers);
               this.stage++;
               break;

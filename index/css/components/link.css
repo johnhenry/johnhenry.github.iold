@@ -1,5 +1,5 @@
 a[download]::after {
-  display:inline-block;
+  display: inline-block;
   content: ' ⇣';
   transition: 0.25s;
 }
@@ -9,8 +9,7 @@ a[download]:hover::after {
 }
 
 a[target=_blank]::after {
-  display:inline-block;
-
+  display: inline-block;
   content: ' ⤏';
   transition: 0.25s;
 }

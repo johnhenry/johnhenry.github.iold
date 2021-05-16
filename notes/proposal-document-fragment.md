@@ -100,8 +100,30 @@ https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
 </script>
 ...
 ```
+### Main file
 
-
-
-
-Uint8Array, in Deno?
+```javascript
+const guardPolyfill = {
+  test(){
+    return window.feature;
+  }
+  // test: function or boolean
+  onpass(error){
+   if(error){
+     return console.log('import of polyfill for feature failed.', error);
+   }
+   console.log('polyfill for feature downloaded');
+  }
+  onfail(){
+   console.log('downloading polyfill');
+  }
+  onerror(){
+   console.log('downloading polyfill');
+  }
+  success(){
+   console.log('downloading polyfill');
+  }
+}
+import "./freature-polyfill.csv" assert { type: "text", guard: guardPolyfill /*function or boolean*/ };
+console.log(window.feature);
+```
