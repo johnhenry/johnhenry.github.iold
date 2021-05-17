@@ -17,7 +17,7 @@
     "build:versions": "node scripts/build-versions.mjs",
     "build:notes": "node scripts/build-notes.mjs",
     "test": "node scripts/run-tests.mjs",
-    "act":"act --secret-file secrets/actions.secrets"
+    "act": "act --secret-file secrets/actions.secrets"
   },
   "repository": {
     "type": "git",
