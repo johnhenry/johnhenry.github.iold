@@ -1,3 +1,7 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Library/Random Generators" />
+
 # Random Generators: Methods for generating random numbers
 
 These are methods of generating a sample, _x_, for a given random variable, _X_.
@@ -60,7 +64,7 @@ const x = Math.random() < 0.5; // R<0.5
 
 ## Multiset (Array)
 
-### X = []:Array<any>
+### X = []:Array< any >
 
 ```javascript
 const x = X[Math.floor(Math.random() * X.length)]; // X[⌊R*|X|⌋]
@@ -68,7 +72,7 @@ const x = X[Math.floor(Math.random() * X.length)]; // X[⌊R*|X|⌋]
 
 ## Bytes
 
-### X = TypedArray<number>(N)
+### X = TypedArray< number >(N)
 
 ```javascript
 const x = globalThis.crypto.getRandmoValues(new Uint8ClampedArray(N)); // X[⌊R*|X|⌋]

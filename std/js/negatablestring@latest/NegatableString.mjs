@@ -9,16 +9,7 @@ export const NegatableString = class {
     this.rep.forEach(Object.freeze);
   }
   consoleIterator(nColor = NCOLOR, pColor = COLOR, color = COLOR) {
-    const colors = [];
-    const string = this.rep
-      .map(([x, negative]) => {
-        colors.push(`color:${negative ? nColor : pColor}`);
-        return `%c${x}`;
-      })
-      .concat("%c")
-      .join("");
-    colors.push(`color:${color}`);
-    return [string, ...colors];
+    return consoleIterator(this, nColor, pColor, color);
   }
   toString(nStart = "", nEnd = "", pStart = "", pEnd = "") {
     return this.rep
@@ -153,4 +144,22 @@ export const scale = (string, scalar = 1) => {
   newRep = newRep.concat(rep.slice(0, len));
   const result = new NegatableString(newRep);
   return scalar < 0 ? invert(result) : result;
+};
+
+export const consoleIterator = (
+  str,
+  nColor = NCOLOR,
+  pColor = COLOR,
+  color = COLOR
+) => {
+  const colors = [];
+  const string = str.rep
+    .map(([x, negative]) => {
+      colors.push(`color:${negative ? nColor : pColor}`);
+      return `%c${x}`;
+    })
+    .concat("%c")
+    .join("");
+  colors.push(`color:${color}`);
+  return [string, ...colors];
 };

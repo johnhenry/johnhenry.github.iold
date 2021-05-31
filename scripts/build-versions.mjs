@@ -4,7 +4,11 @@ import fse from "fs-extra";
 import numlistCompare from "../std/js/numlist-compare@0.0.0/index.mjs";
 import recursiveFileMatch from "../std/js/recursive-file-match@0.0.0/index.mjs";
 
-const TEST_FILE_EXPRESSIONS = [/(.+)\.test\.mjs/];
+const REMOVE_FILES = [
+  /(.+)\.tester\.test\.mjs/,
+  /(.+)\.test\.mjs/,
+  /(.+)\.stories\.mjs/,
+];
 
 const startPath = "./std/js/";
 const reg = /(.*)@(\d+\.\d+\.\d+)$/;
@@ -34,7 +38,7 @@ for (const [name, versions] of Object.entries(record)) {
   console.log(`copying: ${version} => ${latest}`);
   fse.copySync(version, latest);
   // remove tests from latest version
-  for (const expression of TEST_FILE_EXPRESSIONS) {
+  for (const expression of REMOVE_FILES) {
     for (const file of recursiveFileMatch(latest, expression)) {
       console.log(`removing test: ${file}`);
       fse.removeSync(file);
