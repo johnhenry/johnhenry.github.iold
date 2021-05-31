@@ -1,4 +1,3 @@
 node_modules/
-secrets/
-
+.github/workflows/.secrets
 .DS_Store

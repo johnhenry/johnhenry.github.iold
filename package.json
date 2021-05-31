@@ -6,6 +6,7 @@
   "dependencies": {
     "esbuild": "^0.8.53",
     "fs-extra": "^9.1.0",
+    "jest": "^27.0.3",
     "prettier": "^2.1.1",
     "showdown": "^1.9.1",
     "wbn": "0.0.5"
@@ -16,8 +17,10 @@
     "build:readme-indexes": "node scripts/build-readme-indexes.mjs",
     "build:versions": "node scripts/build-versions.mjs",
     "build:notes": "node scripts/build-notes.mjs",
-    "test": "node scripts/run-tests.mjs",
-    "act": "act --secret-file secrets/actions.secrets"
+    "act": "act --secret-file .github/workflows/.secrets",
+    "test:tester": "node scripts/run-tester-tests.mjs",
+    "test:jest": "jest --passWithNoTests --config=./config/jest.config.js",
+    "test": "npm run test:tester -s && npm run test:jest -s"
   },
   "repository": {
     "type": "git",
