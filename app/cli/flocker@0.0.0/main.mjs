@@ -1,11 +1,13 @@
 import * as handlers from "./handlers.mjs";
 export default async (args) => {
-  const {_: [dir = ".", ...rest]} = args;
+  const {
+    _: [dir = ".", ...rest],
+  } = args;
   delete args._;
-  try{
+  try {
     await handlers[dir]?.(args, rest);
-  }catch(error){
+  } catch (error) {
     handlers.error(error);
   }
-  handlers[dir] || await handlers.error(null, args, dir, ...rest);
+  handlers[dir] || (await handlers.error(null, args, dir, ...rest));
 };

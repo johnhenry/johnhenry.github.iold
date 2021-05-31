@@ -1,10 +1,14 @@
 import TestError from "../testerror.mjs";
 export const DefaultMessage = "should throw error";
-export default async (actual, message = DefaultMessage, operator="throws") =>{
-  try{
+export default async (
+  actual,
+  message = DefaultMessage,
+  operator = "throws"
+) => {
+  try {
     await actual();
-  }catch{
+  } catch {
     return message;
   }
-  return new TestError(message, {actual, operator});
-}
+  return new TestError(message, { actual, operator });
+};

@@ -2,11 +2,14 @@
 <html>
   <head>
     <script type="module">
-      import { shadowOpen } from './textElement.mjs';
-      customElements.define('red-element', shadowOpen`<slot part=content /><style>*{color:red}</style>`);
+      import { shadowOpen } from "./textElement.mjs";
+      customElements.define(
+        "red-element",
+        shadowOpen`<slot part=content /><style>*{color:red}</style>`
+      );
     </script>
     <style>
-      red-element::part(content){
+      red-element::part(content) {
         color: green;
       }
       .blue {
@@ -17,9 +20,17 @@
   <body>
     <red-element>
       <ul>
-        <li>By default the content is <span style='color:red'>colored red</span>, as defined by the "style" tag present in the shadow root.</li>
-        <li>This can be overridden by defining styles on the "::part(content)" psudeo-element </li>
-        <li class="blue">Additionally, elements passed in can be styled as normal</li>
+        <li>
+          By default the content is <span style="color: red">colored red</span>,
+          as defined by the "style" tag present in the shadow root.
+        </li>
+        <li>
+          This can be overridden by defining styles on the "::part(content)"
+          psudeo-element
+        </li>
+        <li class="blue">
+          Additionally, elements passed in can be styled as normal
+        </li>
       </ul>
     </red-element>
   </body>

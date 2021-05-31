@@ -1,5 +1,5 @@
 ```html
-<input id = file type="file" is="input-file-sqlite">
+<input id="file" type="file" is="input-file-sqlite" />
 ```
 
 ```javascript

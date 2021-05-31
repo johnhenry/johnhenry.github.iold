@@ -1,9 +1,9 @@
 import { NegatableString } from "./NegatableString.mjs";
-String.prototype.consoleIterator = function(...args){
+String.prototype.consoleIterator = function (...args) {
   return NegatableString.prototype.consoleIterator.apply(this, args);
-}
+};
 Object.defineProperty(String.prototype, "rep", {
   get: function () {
-    return this.split('').map(char=>[char, false]);
-  }
+    return this.split("").map((char) => [char, false]);
+  },
 });

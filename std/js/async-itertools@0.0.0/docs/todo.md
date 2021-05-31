@@ -3,16 +3,20 @@
 # Todo
 
 ## Iterator vs Iterable
+
 Clarify difference between "iterables", which have a next method, and "iterators", which produce iterables
 via the [Symbol.iterable] method.
 
-Note: 
+Note:
+
 ```javascript
-const a = function *(){};
+const a = function* () {};
 a();
-a()[Symbol.iterator]()
+a()[Symbol.iterator]();
 ```
-### "next" function 
+
+### "next" function
+
 ```javascript
 const next = (iterator)=>{
     const {value, done};
@@ -30,12 +34,13 @@ try{
 }
 ```
 
-### "extractIterator" function 
+### "extractIterator" function
+
 ```javascript
-const extractIterator = iterable=>iterable[Sumbol.iterator];
-const a = extractIterator([1,2,3]);
-next(a);//1
-next(a);//2
-next(a);//3
-next(a);// throws error
+const extractIterator = (iterable) => iterable[Sumbol.iterator];
+const a = extractIterator([1, 2, 3]);
+next(a); //1
+next(a); //2
+next(a); //3
+next(a); // throws error
 ```

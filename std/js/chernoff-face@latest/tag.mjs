@@ -1,1 +1,1 @@
-export default 'chernoff-face';
+export default "chernoff-face";

@@ -19,9 +19,9 @@ const diff = (originalEntries, newAttributes) => {
 };
 
 export default (element, newAttributes) => {
-  const originalEntries = Array.from(
-    element.attributes
-  ).map(({ name, value }) => [name, value]);
+  const originalEntries = Array.from(element.attributes).map(
+    ({ name, value }) => [name, value]
+  );
   // Create "diff" objects. Items in originalAttributes will be overwritten by those in newAttributes
   const mergedAttributes = diff(originalEntries, newAttributes);
   for (const [key, value] of Object.entries(mergedAttributes)) {

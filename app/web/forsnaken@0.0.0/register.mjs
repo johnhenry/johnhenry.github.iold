@@ -30,7 +30,7 @@ for (const [tagName, className] of [
   ["forsnaken-snake", SnakeComponentSnake],
   ["forsnaken-apple", SnakeComponentApple],
   ["forsnaken-wall", SnakeComponentWall],
-  ["imagedata-emitter", ImageDataEmitter]
+  ["imagedata-emitter", ImageDataEmitter],
 ]) {
   customElements.define(tagName, className);
 }

@@ -27,8 +27,8 @@ const iterator = {
 ```
 
 The next method must return an object with two keys:
-  value (optional, any type) - value currently expressed by iterator
-  done (truthy) - indicates that the iterator has finished
+value (optional, any type) - value currently expressed by iterator
+done (truthy) - indicates that the iterator has finished
 
 ```javascript
 const iterator = {
@@ -44,26 +44,26 @@ const iterator = {
 
 ```javascript
 const iterator2 = {
-  [Symbol.iterator](){
+  [Symbol.iterator]() {
     const values = [0, 1, 2, 3];
     return {
-      next(){
+      next() {
         return values.length
-          ? {value: this.shift(), done: false }
-          : {done: true};
-      }
+          ? { value: this.shift(), done: false }
+          : { done: true };
+      },
     };
-  }
-};// a slightly more creative iterator
+  },
+}; // a slightly more creative iterator
 ```
 
 Calling a generator results in an iterator.
 
 ```javascript
-const generator = function * () {
+const generator = function* () {
   const values = [0, 1, 2, 3];
-  while(values.length){
-    yield values.shift()
+  while (values.length) {
+    yield values.shift();
   }
 };
 
@@ -90,30 +90,31 @@ const iterator = {
 ```
 
 But there is special syntax that allows your method to be a generator
+
 ```javascript
 const iterator = {
-  *[Symbol.iterator](){
+  *[Symbol.iterator]() {
     const values = [0, 1, 2, 3];
-    while(values.length){
+    while (values.length) {
       yield values.shift();
     }
-  }
-} // does the same as previous
+  },
+}; // does the same as previous
 ```
 
 This works for classes as well
 
 ```javascript
 const iterator = class {
-  constructor(){
+  constructor() {
     this.values = [0, 1, 2, 3];
   }
-  *[Symbol.iterator](){
-    while(this.values.length){
+  *[Symbol.iterator]() {
+    while (this.values.length) {
       yield this.values.shift();
     }
   }
-}
+};
 ```
 
 ## Transform args

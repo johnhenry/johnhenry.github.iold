@@ -1,9 +1,9 @@
 export default class {
-  constructor(stream){
+  constructor(stream) {
     this.stream = stream;
   }
-  fetch(request){
+  fetch(request) {
     placeRequest(this.stream, request);
     return new Response(this.stream);
-  };
+  }
 }

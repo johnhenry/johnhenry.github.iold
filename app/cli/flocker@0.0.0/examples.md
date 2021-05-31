@@ -1,9 +1,8 @@
 # lander examples
 
-
 ## bundle
-Build bundle from directory like `docker build`.
 
+Build bundle from directory like `docker build`.
 
 Build and tag a bundle from . and use FlockeFile if found
 
@@ -23,11 +22,9 @@ Build a bundle from . and dump result to stdout
 flocker bundle --dump . > bundle.crob
 ```
 
-
 ## bundles
 
 Interact with existing bundles
-
 
 List bundles
 
@@ -57,7 +54,7 @@ Similar to `docker run`
 flocker bundles mount <BUNDLE ID>
 ```
 
-Extract contents 
+Extract contents
 
 ```sh
 flocker bundles mount --extract-only <BUNDLE ID> <folder>
@@ -71,7 +68,6 @@ MOUNT ID            BUNDLE              CREATED              STATUS             
 <MOUNT ID>          <BUNDLE ID>         About a minute ago   Up About a minute   admiring_fermi
 ```
 
-
 ### mounts commit
 
 Commit edits to bundle
@@ -80,9 +76,7 @@ Commit edits to bundle
 flocker mounts commit <MOUNT ID>
 ```
 
-
 ## route
-
 
 ```sh
 flocker route --live <MOUNT ID | BUNDLE ID | PATH TO FOLDER | PATH TO CROB FILE> [ip]:[port]/[path]
@@ -96,7 +90,6 @@ flocker route --live --single-file  <PATH TO FILE> [ip]:[port]/[path]
 flocker route --passthrough <PATH TO API> [ip]:[port]/[path]
 ```
 
-
 ## routes
 
 ```sh
@@ -109,7 +102,6 @@ ROUTE ID            TARGET              IP                    PATH              
 flocker routes open <ROUTE ID>
 ```
 
-
 ## servers
 
 ```sh
@@ -118,7 +110,7 @@ flocker server create [ip]:<port>
 
 ```sh
 flocker servers
-SERVER ID           PORT              CREATED              STATUS              IP           BUNDLE              LOCATION           ATTRIBUTES           
+SERVER ID           PORT              CREATED              STATUS              IP           BUNDLE              LOCATION           ATTRIBUTES
 <SERVER ID>         <PORT>            About a minute ago   Paused              <IP>         <MOUNT ID>          <MOUNT ID>         cors,live
 ```
 
@@ -127,13 +119,13 @@ SERVER ID           PORT              CREATED              STATUS              I
 ```sh
 flocker directives
 DIRECTIVE ID            TAG                     CREATED              STATUS              NAMES
-<DIRECTIVE ID>          <DIRECTIVE TAG>         
+<DIRECTIVE ID>          <DIRECTIVE TAG>
 ```
 
 ## asset
 
 ```sh
-flocker asset add <name space> --tag-releative-path/--tag-path --delete <path to file or folder>       
+flocker asset add <name space> --tag-releative-path/--tag-path --delete <path to file or folder>
 ```
 
 ```sh
@@ -142,19 +134,17 @@ ASSET ID            TAG                 MIME             PATH              PORT 
 <ROUTE ID>          <BUNDLE ID>         text/html             /mounted-path     8080              <SERVER ID>         SERVER
 ```
 
-
 ```sh
 flocker asset extract <bundle id> <name space> <path to file or folder within bundle>
 ```
 
-
 ## metadata
+
 ```sh
 flocker metadata --graphql --sql --query=""
 ```
- 
 
- gen-bundle -dir . -baseURL http://. -o foo.wbn
+gen-bundle -dir . -baseURL http://. -o foo.wbn
 
 gen-bundle -dir static -baseURL https://. -o foo.wbn -primaryURL https://. -ignoreErrors
 

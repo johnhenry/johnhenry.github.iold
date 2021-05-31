@@ -1,4 +1,4 @@
-import { HAULT } from './iterator-tools.mjs';
+import { HAULT } from "./iterator-tools.mjs";
 
 /**
  * Reduce function for iterators -- appends items to iterator
@@ -13,13 +13,13 @@ import { HAULT } from './iterator-tools.mjs';
  */
 
 const reduce = function* (iterator, reduce, init, ignore_hault = false) {
-    for (const item of iterator) {
-        init = reduce(init, item, iterator);
-        if (!ignore_hault && init === HAULT){
-            break;
-        }
-        yield* init;
+  for (const item of iterator) {
+    init = reduce(init, item, iterator);
+    if (!ignore_hault && init === HAULT) {
+      break;
     }
+    yield* init;
+  }
 };
 
 /**
@@ -33,18 +33,19 @@ const reduce = function* (iterator, reduce, init, ignore_hault = false) {
  * @returns iterator if no items are passed; empty iterator if nothing is passed
  * @ignore
  */
-const reduceAsync = async function* (iterator, reduce, init, ignore_hault = false) {
-    for await (const item of iterator) {
-        init = reduce(init, item, iterator);
-        if(!ignore_hault && init === HAULT){
-            break;
-        }
-        yield* init;
+const reduceAsync = async function* (
+  iterator,
+  reduce,
+  init,
+  ignore_hault = false
+) {
+  for await (const item of iterator) {
+    init = reduce(init, item, iterator);
+    if (!ignore_hault && init === HAULT) {
+      break;
     }
+    yield* init;
+  }
 };
 
-export{
-    reduce,
-    reduceAsync,
-    HAULT
-};
+export { reduce, reduceAsync, HAULT };

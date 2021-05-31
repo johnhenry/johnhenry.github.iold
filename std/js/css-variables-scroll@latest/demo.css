@@ -3,8 +3,12 @@ html {
   width: 200%;
 }
 .horizontal::before {
-  content: var(--window-scroll-vertical-str) '/' var(--window-scroll-vertical-max-str) ':' var(--window-scroll-vertical-ratio-str);
+  content: var(--window-scroll-vertical-str) "/"
+    var(--window-scroll-vertical-max-str) ":"
+    var(--window-scroll-vertical-ratio-str);
 }
 .vertical::before {
-  content: var(--window-scroll-horizontal-str) '/' var(--window-scroll-horizontal-max-str) ':' var(--window-scroll-horizontal-ratio-str);
+  content: var(--window-scroll-horizontal-str) "/"
+    var(--window-scroll-horizontal-max-str) ":"
+    var(--window-scroll-horizontal-ratio-str);
 }

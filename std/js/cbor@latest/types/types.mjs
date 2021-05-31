@@ -17,28 +17,28 @@ export const TAG = 6 << 5; // 2**7 + 2**6 + 0000 === 0b11000000 === 192
 export const SIM = 7 << 5; // 2**7 + 2**6 + 2**5 === 0b11100000 === 224
 export const BYTE_ARGUMENT = 0b00011111; // 31
 export const BREAKCODE = 0b11111111; // 255
-export const readFirstByte = (byte)=>({
+export const readFirstByte = (byte) => ({
   type: byte & SIM,
-  argument: byte & BYTE_ARGUMENT
+  argument: byte & BYTE_ARGUMENT,
 });
-export const getTypeString = (type)=>{
-  switch(type){
-    case INT: 
-      return 'INT';
+export const getTypeString = (type) => {
+  switch (type) {
+    case INT:
+      return "INT";
     case NIN:
-      return 'NIN';
+      return "NIN";
     case BYT:
-      return 'BYT';
+      return "BYT";
     case STR:
-      return 'STR';
+      return "STR";
     case ARR:
-      return 'ARR';
+      return "ARR";
     case TAG:
-      return 'TAG';
+      return "TAG";
     case MAP:
-      return 'MAP';
+      return "MAP";
     case SIM:
-      return 'SIM';
+      return "SIM";
   }
   return type;
-}
+};

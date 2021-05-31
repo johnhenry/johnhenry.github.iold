@@ -46,7 +46,7 @@ Note: Automatic API generation is not currently fully accurate.
 
 Asynchronous Channel
 
-* * *
+---
 
 ### namespace transducerReturners
 
@@ -57,19 +57,19 @@ Functions that return transducers
 - transduceSync
 - transduceAsync
 
-* * *
+---
 
 ### class AsyncChannel
 
 Asynchronous Channel class
 
-* * *
+---
 
 ### function break
 
 Pause Asynchronous Channel
 
-* * *
+---
 
 ### function concatAsync
 
@@ -81,7 +81,7 @@ Concatinates sequence of asynchronous iterables
 
 **Returns:** iterator generating sequence of combined from given iterables; empty iterator if nothing is passed
 
-* * *
+---
 
 ### function concatSync
 
@@ -93,7 +93,7 @@ Concatinates sequence of synchronous iterables
 
 **Returns:** iterator generating sequence of combined from given iterables; empty iterator if nothing is passed
 
-* * *
+---
 
 ### function conjoinAsync
 
@@ -106,7 +106,7 @@ Appends items to asynchronous iterator
 
 **Returns:** copy of initial iterator with items appended
 
-* * *
+---
 
 ### function conjoinSync
 
@@ -119,27 +119,27 @@ Appends items to synchronous iterator
 
 **Returns:** copy of initial iterator with items appended
 
-* * *
+---
 
 ### function constructor
 
 Asynchronous Channel constructor
 
-* * *
+---
 
 ### function emptySync
 
 "The" Empty Iterator
- Immediately finishes and yields nothing.
+Immediately finishes and yields nothing.
 
-* * *
+---
 
 ### function emptySync
 
 "The" Empty Asynchronous Iterator
- Immediately finishes and yields nothing.
+Immediately finishes and yields nothing.
 
-* * *
+---
 
 ### function filter
 
@@ -151,7 +151,7 @@ Create a transducer that filters values
 
 **Returns:** transducer
 
-* * *
+---
 
 ### function group
 
@@ -164,7 +164,7 @@ Note: this currently returns arrays -- would sets make more sense?
 
 **Returns:** transducer
 
-* * *
+---
 
 ### function iterateAsync
 
@@ -185,13 +185,13 @@ Create an asynchronous sequence of numbers
 _Log an infinite sequence of numbers starting with 5_
 
 > ```javascript
-> import { number } from '...';
-> for await(const num of number.iterateAsync(5)){
-> console.log(num);
+> import { number } from "...";
+> for await (const num of number.iterateAsync(5)) {
+>   console.log(num);
 > }
 > ```
 
-* * *
+---
 
 ### function iterateSync
 
@@ -212,13 +212,13 @@ Create a sequence of numbers
 _Log an infinite sequence of numbers starting with 5_
 
 > ```javascript
-> import { number } from '...';
-> for(const num of number.iterateSync(5)){
-> console.log(num);
+> import { number } from "...";
+> for (const num of number.iterateSync(5)) {
+>   console.log(num);
 > }
 > ```
 
-* * *
+---
 
 ### function map
 
@@ -230,13 +230,13 @@ Create a transducer that maps values
 
 **Returns:** transducer
 
-* * *
+---
 
 ### function put
 
 Put item onto Asynchronous Channel
 
-* * *
+---
 
 ### function reduce
 
@@ -255,15 +255,15 @@ The primary purpose of this is to allow pausing of asynchronous functions
 _Pause a function for 5000 milliseconds_
 
 > ```javascript
-> import { pause } from '...';
-> (async ()=>{
->  console.log('hello');
->  await pause(5000);
->  console.log('there.');
+> import { pause } from "...";
+> (async () => {
+>   console.log("hello");
+>   await pause(5000);
+>   console.log("there.");
 > })();
 > ```
 
-* * *
+---
 
 ### function reduce
 
@@ -278,7 +278,7 @@ Reduce function for iterators -- appends items to iterator
 
 **Returns:** iterator if no items are passed; empty iterator if nothing is passed
 
-* * *
+---
 
 ### function reduceAsync
 
@@ -293,7 +293,7 @@ Reduce function for asynchronous iterators -- appends items to asynchronous iter
 
 **Returns:** iterator if no items are passed; empty iterator if nothing is passed
 
-* * *
+---
 
 ### function run
 
@@ -304,13 +304,13 @@ Reduce function for asynchronous iterators -- appends items to asynchronous iter
 | `program` | iterator | iterator                                |
 | `render`  | render   | function to render output from iterator |
 
-* * *
+---
 
 ### function take
 
 Take item off of Asynchronous Channel
 
-* * *
+---
 
 ### function take
 
@@ -322,7 +322,7 @@ Create a transducer that halts after a given number of values
 
 **Returns:** transducer
 
-* * *
+---
 
 ### function take
 
@@ -336,7 +336,7 @@ Similar to #Array.reduce
 
 **Returns:** transducer
 
-* * *
+---
 
 ### function teeAsync
 
@@ -354,44 +354,44 @@ Note: This may actually not work due to iterators being "pull" streams
 _Split an iterator into 4_
 
 > ```javascript
-> import { teeAsync, number } from '...';
-> const streams = teeAsync(4)(number)
-> for await (const num of streams[0]){
+> import { teeAsync, number } from "...";
+> const streams = teeAsync(4)(number);
+> for await (const num of streams[0]) {
 >   console.info(num);
-> };
-> for await (const num of streams[1]){
+> }
+> for await (const num of streams[1]) {
 >   console.log(num);
-> };
-> for await (const num of streams[2]){
+> }
+> for await (const num of streams[2]) {
 >   console.warn(num);
-> };
-> for await (const num of streams[3]){
+> }
+> for await (const num of streams[3]) {
 >   console.error(num);
-> };
+> }
 > const LIMIT = 2 ** 2;
 > const transduce = transduceAsync(
->     filter(x => x % 2),
->     map(x => x + 1),
->     take(LIMIT),
+>   filter((x) => x % 2),
+>   map((x) => x + 1),
+>   take(LIMIT)
 > );
 > for await (const result of transduce(iterateAsync(Infinity))) {
 >   console.log(result);
 > }
 > ```
 
-* * *
+---
 
 ### function throw
 
 Stop Asynchronous Channel
 
-* * *
+---
 
 ### function toString
 
 Return string representation of Asynchronous Channel
 
-* * *
+---
 
 ### function transduceAsync
 
@@ -411,25 +411,21 @@ Create a function that transduces an asynchronous iterator from a list of transd
 _Asynchronously log transduced numbers_
 
 > ```javascript
-> import { transduceAsync, transducers, number } from '...';
-> const {iterateAsync} = number;
-> const {
->     map,
->     filter,
->     take,
-> } = transducers;
+> import { transduceAsync, transducers, number } from "...";
+> const { iterateAsync } = number;
+> const { map, filter, take } = transducers;
 > const LIMIT = 2 ** 2;
 > const transduce = transduceAsync(
->     filter(x => x % 2),
->     map(x => x + 1),
->     take(LIMIT),
+>   filter((x) => x % 2),
+>   map((x) => x + 1),
+>   take(LIMIT)
 > );
 > for await (const result of transduce(iterateAsync(Infinity))) {
 >   console.log(result);
 > }
 > ```
 
-* * *
+---
 
 ### function transduceSync
 
@@ -449,37 +445,33 @@ Create a function that transduces a synchronous iterator from a list of transduc
 _Synchronously log transduced numbers_
 
 > ```javascript
-> import { transduceSync, transducers, number } from '...';
-> const {iterateSync} = number;
-> const {
->     map,
->     filter,
->     take,
-> } = transducers;
+> import { transduceSync, transducers, number } from "...";
+> const { iterateSync } = number;
+> const { map, filter, take } = transducers;
 > const LIMIT = 2 ** 2;
 > const transduce = transduceSync(
->     filter(x => x % 2),
->     map(x => x + 1),
->     take(LIMIT),
+>   filter((x) => x % 2),
+>   map((x) => x + 1),
+>   take(LIMIT)
 > );
 > for await (const result of transduce(iterateSync(Infinity))) {
 >   console.log(result);
 > }
 > ```
 
-* * *
+---
 
 ### function withEmitter
 
 Decorate Asynchronous Channel with generic emitter
 
-* * *
+---
 
 ### function withWebSocket
 
 Decorate Asynchronous Channel with websocket
 
-* * *
+---
 
 ### function zipSync
 
@@ -491,7 +483,7 @@ Zips synchronous iterators
 
 **Returns:** an iterator who's members are the members of the given iterators zipped sequencially
 
-* * *
+---
 
 ### constant CHANNEL_END
 
@@ -596,7 +588,7 @@ Constant signaling channel's end
 
 Asynchronous Channel
 
-* * *
+---
 
 ## namespace transducerReturners
 
@@ -607,19 +599,19 @@ Functions that return transducers
 - transduceSync
 - transduceAsync
 
-* * *
+---
 
 ## class AsyncChannel
 
 Asynchronous Channel class
 
-* * *
+---
 
 ## function break
 
 Pause Asynchronous Channel
 
-* * *
+---
 
 ## function concatAsync
 
@@ -631,7 +623,7 @@ Concatinates sequence of asynchronous iterables
 
 **Returns:** iterator generating sequence of combined from given iterables; empty iterator if nothing is passed
 
-* * *
+---
 
 ## function concatSync
 
@@ -643,7 +635,7 @@ Concatinates sequence of synchronous iterables
 
 **Returns:** iterator generating sequence of combined from given iterables; empty iterator if nothing is passed
 
-* * *
+---
 
 ## function conjoinAsync
 
@@ -656,7 +648,7 @@ Appends items to asynchronous iterator
 
 **Returns:** copy of initial iterator with items appended
 
-* * *
+---
 
 ## function conjoinSync
 
@@ -669,27 +661,27 @@ Appends items to synchronous iterator
 
 **Returns:** copy of initial iterator with items appended
 
-* * *
+---
 
 ## function constructor
 
 Asynchronous Channel constructor
 
-* * *
+---
 
 ## function emptySync
 
 "The" Empty Iterator
- Immediately finishes and yields nothing.
+Immediately finishes and yields nothing.
 
-* * *
+---
 
 ## function emptySync
 
 "The" Empty Asynchronous Iterator
- Immediately finishes and yields nothing.
+Immediately finishes and yields nothing.
 
-* * *
+---
 
 ## function filter
 
@@ -701,7 +693,7 @@ Create a transducer that filters values
 
 **Returns:** transducer
 
-* * *
+---
 
 ## function group
 
@@ -714,7 +706,7 @@ Note: this currently returns arrays -- would sets make more sense?
 
 **Returns:** transducer
 
-* * *
+---
 
 ## function iterateAsync
 
@@ -735,13 +727,13 @@ Create an asynchronous sequence of numbers
 _Log an infinite sequence of numbers starting with 5_
 
 > ```javascript
-> import { number } from '...';
-> for await(const num of number.iterateAsync(5)){
-> console.log(num);
+> import { number } from "...";
+> for await (const num of number.iterateAsync(5)) {
+>   console.log(num);
 > }
 > ```
 
-* * *
+---
 
 ## function iterateSync
 
@@ -762,13 +754,13 @@ Create a sequence of numbers
 _Log an infinite sequence of numbers starting with 5_
 
 > ```javascript
-> import { number } from '...';
-> for(const num of number.iterateSync(5)){
-> console.log(num);
+> import { number } from "...";
+> for (const num of number.iterateSync(5)) {
+>   console.log(num);
 > }
 > ```
 
-* * *
+---
 
 ## function map
 
@@ -780,19 +772,19 @@ Create a transducer that maps values
 
 **Returns:** transducer
 
-* * *
+---
 
 ## function put
 
 Put item onto Asynchronous Channel
 
-* * *
+---
 
 ## function put
 
 Take item off of Asynchronous Channel
 
-* * *
+---
 
 ## function reduce
 
@@ -811,15 +803,15 @@ The primary purpose of this is to allow pausing of asynchronous functions
 _Pause a function for 5000 milliseconds_
 
 > ```javascript
-> import { pause } from '...';
-> (async ()=>{
->  console.log('hello');
->  await pause(5000);
->  console.log('there.');
+> import { pause } from "...";
+> (async () => {
+>   console.log("hello");
+>   await pause(5000);
+>   console.log("there.");
 > })();
 > ```
 
-* * *
+---
 
 ## function reduce
 
@@ -834,7 +826,7 @@ Reduce function for iterators -- appends items to iterator
 
 **Returns:** iterator if no items are passed; empty iterator if nothing is passed
 
-* * *
+---
 
 ## function reduceAsync
 
@@ -849,7 +841,7 @@ Reduce function for asynchronous iterators -- appends items to asynchronous iter
 
 **Returns:** iterator if no items are passed; empty iterator if nothing is passed
 
-* * *
+---
 
 ## function run
 
@@ -860,7 +852,7 @@ Reduce function for asynchronous iterators -- appends items to asynchronous iter
 | `program` | iterator | iterator                                |
 | `render`  | render   | function to render output from iterator |
 
-* * *
+---
 
 ## function take
 
@@ -872,7 +864,7 @@ Create a transducer that halts after a given number of values
 
 **Returns:** transducer
 
-* * *
+---
 
 ## function take
 
@@ -886,7 +878,7 @@ Similar to #Array.reduce
 
 **Returns:** transducer
 
-* * *
+---
 
 ## function teeAsync
 
@@ -904,44 +896,44 @@ Note: This may actually not work due to iterators being "pull" streams
 _Split an iterator into 4_
 
 > ```javascript
-> import { teeAsync, number } from '...';
-> const streams = teeAsync(4)(number)
-> for await (const num of streams[0]){
+> import { teeAsync, number } from "...";
+> const streams = teeAsync(4)(number);
+> for await (const num of streams[0]) {
 >   console.info(num);
-> };
-> for await (const num of streams[1]){
+> }
+> for await (const num of streams[1]) {
 >   console.log(num);
-> };
-> for await (const num of streams[2]){
+> }
+> for await (const num of streams[2]) {
 >   console.warn(num);
-> };
-> for await (const num of streams[3]){
+> }
+> for await (const num of streams[3]) {
 >   console.error(num);
-> };
+> }
 > const LIMIT = 2 ** 2;
 > const transduce = transduceAsync(
->     filter(x => x % 2),
->     map(x => x + 1),
->     take(LIMIT),
+>   filter((x) => x % 2),
+>   map((x) => x + 1),
+>   take(LIMIT)
 > );
 > for await (const result of transduce(iterateAsync(Infinity))) {
 >   console.log(result);
 > }
 > ```
 
-* * *
+---
 
 ## function throw
 
 Stop Asynchronous Channel
 
-* * *
+---
 
 ## function toString
 
 Return string representation of Asynchronous Channel
 
-* * *
+---
 
 ## function transduceAsync
 
@@ -961,25 +953,21 @@ Create a function that transduces an asynchronous iterator from a list of transd
 _Asynchronously log transduced numbers_
 
 > ```javascript
-> import { transduceAsync, transducers, number } from '...';
-> const {iterateAsync} = number;
-> const {
->     map,
->     filter,
->     take,
-> } = transducers;
+> import { transduceAsync, transducers, number } from "...";
+> const { iterateAsync } = number;
+> const { map, filter, take } = transducers;
 > const LIMIT = 2 ** 2;
 > const transduce = transduceAsync(
->     filter(x => x % 2),
->     map(x => x + 1),
->     take(LIMIT),
+>   filter((x) => x % 2),
+>   map((x) => x + 1),
+>   take(LIMIT)
 > );
 > for await (const result of transduce(iterateAsync(Infinity))) {
 >   console.log(result);
 > }
 > ```
 
-* * *
+---
 
 ## function transduceSync
 
@@ -999,37 +987,33 @@ Create a function that transduces a synchronous iterator from a list of transduc
 _Synchronously log transduced numbers_
 
 > ```javascript
-> import { transduceSync, transducers, number } from '...';
-> const {iterateSync} = number;
-> const {
->     map,
->     filter,
->     take,
-> } = transducers;
+> import { transduceSync, transducers, number } from "...";
+> const { iterateSync } = number;
+> const { map, filter, take } = transducers;
 > const LIMIT = 2 ** 2;
 > const transduce = transduceSync(
->     filter(x => x % 2),
->     map(x => x + 1),
->     take(LIMIT),
+>   filter((x) => x % 2),
+>   map((x) => x + 1),
+>   take(LIMIT)
 > );
 > for await (const result of transduce(iterateSync(Infinity))) {
 >   console.log(result);
 > }
 > ```
 
-* * *
+---
 
 ## function withEmitter
 
 Decorate Asynchronous Channel with generic emitter
 
-* * *
+---
 
 ## function withWebSocket
 
 Decorate Asynchronous Channel with websocket
 
-* * *
+---
 
 ## function zipSync
 
@@ -1041,7 +1025,7 @@ Zips synchronous iterators
 
 **Returns:** an iterator who's members are the members of the given iterators zipped sequencially
 
-* * *
+---
 
 ## constant CHANNEL_END
 

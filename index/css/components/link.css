@@ -1,6 +1,6 @@
 a[download]::after {
   display: inline-block;
-  content: ' ⇣';
+  content: " ⇣";
   transition: 0.25s;
 }
 a[download]:hover::after {
@@ -8,12 +8,12 @@ a[download]:hover::after {
   transition: 0.5s;
 }
 
-a[target=_blank]::after {
+a[target="_blank"]::after {
   display: inline-block;
-  content: ' ⤏';
+  content: " ⤏";
   transition: 0.25s;
 }
-a[target=_blank]:hover::after {
+a[target="_blank"]:hover::after {
   transform: rotate(45deg);
   transition: 0.5s;
 }

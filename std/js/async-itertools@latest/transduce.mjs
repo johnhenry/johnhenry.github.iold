@@ -1,14 +1,11 @@
 import {
-    conjoinSync,
-    conjoinAsync,
-    reduceSync,
-    reduceAsync
-} from './iterator-tools.mjs';
+  conjoinSync,
+  conjoinAsync,
+  reduceSync,
+  reduceAsync,
+} from "./iterator-tools.mjs";
 
-import {
-    emptySync,
-    emptyAsync,
-} from './empty-iterator.mjs';
+import { emptySync, emptyAsync } from "./empty-iterator.mjs";
 
 /**
  * Transduce
@@ -16,19 +13,17 @@ import {
  * @name transduce
  * @ignore
  */
-const transduce = (
-    itemCollection,
-    reducer,
-    lastreducer,
-    init,
-    reduce) => reduce(itemCollection, reducer(lastreducer), init);
+const transduce = (itemCollection, reducer, lastreducer, init, reduce) =>
+  reduce(itemCollection, reducer(lastreducer), init);
 /**
  * Compose Functions
  * @kind function
  * @name composeFunctions
  * @ignore
  */
-const composeFunctions = (...functions) => (input) =>
+const composeFunctions =
+  (...functions) =>
+  (input) =>
     functions.reduceRight((input, func) => func(input), input);
 
 /**
@@ -37,8 +32,17 @@ const composeFunctions = (...functions) => (input) =>
  * @name createCustomTranduce
  * @ignore
  */
-const createCustomTranduce = (conjoin, empty, reduce) => (...functions) => (itemCollection) =>
-    transduce(itemCollection, composeFunctions(...functions), conjoin, empty, reduce);
+const createCustomTranduce =
+  (conjoin, empty, reduce) =>
+  (...functions) =>
+  (itemCollection) =>
+    transduce(
+      itemCollection,
+      composeFunctions(...functions),
+      conjoin,
+      empty,
+      reduce
+    );
 
 /**
  * Create a function that transduces an asynchronous iterator from a list of transducer function
@@ -68,11 +72,10 @@ const createCustomTranduce = (conjoin, empty, reduce) => (...functions) => (item
  * ```
  */
 export const transduceAsync = createCustomTranduce(
-    conjoinAsync,
-    emptyAsync,
-    reduceAsync,
+  conjoinAsync,
+  emptyAsync,
+  reduceAsync
 );
-
 
 /**
  * Create a function that transduces a synchronous iterator from a list of transducer function
@@ -102,7 +105,7 @@ export const transduceAsync = createCustomTranduce(
  * ```
  */
 export const transduceSync = createCustomTranduce(
-    conjoinSync,
-    emptySync,
-    reduceSync,
+  conjoinSync,
+  emptySync,
+  reduceSync
 );

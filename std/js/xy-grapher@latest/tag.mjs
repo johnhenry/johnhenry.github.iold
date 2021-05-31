@@ -1,1 +1,1 @@
-export default 'xy-grapher';
+export default "xy-grapher";

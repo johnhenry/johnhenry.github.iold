@@ -1,24 +1,24 @@
-@import '../../vendor/css/normalize.css@8.0.1/index.css';
-@import '../../std/css/universal-unstyled-links@0.0.0/index.css';
-@import '../../std/css/universal-box-sizing@0.0.0/index.css';
-@import './colors.css';
-@import './colors.dark.css' screen and (prefers-color-scheme: dark);
-@import './sizes.css';
-@import './fonts.css';
-@import './transition-timing-functions.css';
-@import './components/mouse-chaser.css';
-@import './components/mouse-follower.css';
-@import './components/fullscreen-sections-with-header-and-footer.css';
-@import './components/link.css';
-@import './components/card.css';
-@import './components/gallery.css';
-@import './components/button.css';
-@import './components/horizontal-menu.css';
-@import './components/place-center.css';
-@import './components/side-by-side/index.css';
-@import './components/side-by-side/shrink.css' screen and (max-width: 600px);
+@import "../../vendor/css/normalize.css@8.0.1/index.css";
+@import "../../std/css/universal-unstyled-links@0.0.0/index.css";
+@import "../../std/css/universal-box-sizing@0.0.0/index.css";
+@import "./colors.css";
+@import "./colors.dark.css" screen and (prefers-color-scheme: dark);
+@import "./sizes.css";
+@import "./fonts.css";
+@import "./transition-timing-functions.css";
+@import "./components/mouse-chaser.css";
+@import "./components/mouse-follower.css";
+@import "./components/fullscreen-sections-with-header-and-footer.css";
+@import "./components/link.css";
+@import "./components/card.css";
+@import "./components/gallery.css";
+@import "./components/button.css";
+@import "./components/horizontal-menu.css";
+@import "./components/place-center.css";
+@import "./components/side-by-side/index.css";
+@import "./components/side-by-side/shrink.css" screen and (max-width: 600px);
 
-:root{
+:root {
   --card-width: 300px;
   --header-height: 64px;
   --footer-height: 64px;
@@ -31,7 +31,8 @@ html {
   scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
 }
@@ -39,27 +40,24 @@ section {
   gap: 32px;
 }
 
-section#main{
+section#main {
   background-image: url("../../vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg");
   background-size: cover;
 }
 
 section#about > main {
-  gap:16px;
+  gap: 16px;
 }
 
 section#main .horizontal-menu {
   justify-content: center;
 }
-section#projects{
+section#projects {
   background-image: url("../../vendor/img/www.pexels.com/efdal-yildiz/flock-of-birds.jpg");
   background-size: cover;
 }
-@media screen and (prefers-color-scheme: dark){
-  section#projects{
+@media screen and (prefers-color-scheme: dark) {
+  section#projects {
     background-image: url("../../vendor/img/www.pexels.com/felix-mittermeier/blue-and-purple-cosmic-sky.jpg");
   }
 }
-
-
-

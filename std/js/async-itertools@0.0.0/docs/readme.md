@@ -15,9 +15,9 @@ The module standardizes a core set of fast, memory efficient tools that are usef
   - [Create a guessing game with AsyncChannel](./how-to/guessing-game.md)
   - [Creating your own transducers](./how-to/creating-your-own-transducers.md)
 - Discussions
-  -  [Writing Programs with Asynchronous Iterators](./discussion/writing-programs.md)
-  -  [Transforming data with Asynchronous Transducers](./discussion/transforming-data.md)
-  -  [Synchronous Counterparts](./discussion/synchronous-counterparts.md)
-  -  [Comparison to Python's Itertools Library](./discussion/python-itertools.md)
+  - [Writing Programs with Asynchronous Iterators](./discussion/writing-programs.md)
+  - [Transforming data with Asynchronous Transducers](./discussion/transforming-data.md)
+  - [Synchronous Counterparts](./discussion/synchronous-counterparts.md)
+  - [Comparison to Python's Itertools Library](./discussion/python-itertools.md)
 - [Reference](./reference.md) - Automatically generated API documentation
 - [Todo](./todo.md) - Working on this next

@@ -9,7 +9,7 @@ const deepEqual = (a, b) => {
     if (Array.isArray(a)) {
       length = a.length;
       if (length != b.length) return false;
-      for (i = length; i-- !== 0;) {
+      for (i = length; i-- !== 0; ) {
         if (!deepEqual(a[i], b[i])) return false;
       }
       return true;
@@ -29,11 +29,11 @@ const deepEqual = (a, b) => {
     length = keys.length;
     if (length !== Object.keys(b).length) return false;
 
-    for (i = length; i-- !== 0;) {
+    for (i = length; i-- !== 0; ) {
       if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
     }
 
-    for (i = length; i-- !== 0;) {
+    for (i = length; i-- !== 0; ) {
       var key = keys[i];
       if (!deepEqual(a[key], b[key])) return false;
     }
@@ -43,15 +43,20 @@ const deepEqual = (a, b) => {
 
   // true if both NaN, false otherwise
   return a !== a && b !== b;
-}
+};
 export const DefaultMessage = "should be deep equal";
-export default (actual, expected, message = DefaultMessage, operator="deepequal") =>{
-  if(deepEqual(actual, expected)){
+export default (
+  actual,
+  expected,
+  message = DefaultMessage,
+  operator = "deepequal"
+) => {
+  if (deepEqual(actual, expected)) {
     return message;
   }
-  return new TestError(message, {actual:JSON.stringify(actual), expected:JSON.stringify(expected), operator});
-}
-
-
-
-
+  return new TestError(message, {
+    actual: JSON.stringify(actual),
+    expected: JSON.stringify(expected),
+    operator,
+  });
+};

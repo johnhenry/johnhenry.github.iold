@@ -64,7 +64,6 @@ let downloadBackupButton;
 let resetButton;
 let reflowButton;
 
-
 const outputElementsByInput = new Map();
 const inputElementsByOutput = new Map(); // WeakMap?
 const registeredComponents = {};

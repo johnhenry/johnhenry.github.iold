@@ -353,9 +353,9 @@
         outputPartner.prepend(element);
         // 1. Attributes
         // Get desired attribues
-        const originalEntries = Array.from(
-          element.attributes
-        ).map(({ name, value }) => [name, value]);
+        const originalEntries = Array.from(element.attributes).map(
+          ({ name, value }) => [name, value]
+        );
         const originalAttributes = Object.fromEntries(originalEntries);
         // List of desired attribures
         const newAttributes = JSON.parse(
@@ -436,14 +436,8 @@
         const id = ev.dataTransfer.getData("id");
         if (componentId) {
           // add new element to playground
-          const [
-            tag,
-            defaults,
-            definition,
-            content,
-            postcontent,
-            base_id,
-          ] = registeredComponents.get(componentId);
+          const [tag, defaults, definition, content, postcontent, base_id] =
+            registeredComponents.get(componentId);
           const id = genId();
           const first = `<${tag}[${base_id}]:${id} ${stringifyAttributes(
             JSON.parse(defaults)
@@ -665,14 +659,8 @@
       };
       const populateCreate = ({ target: { tagName, innerText } }) => {
         if (tagName == "LI") {
-          const [
-            tag,
-            defaults,
-            definition,
-            content,
-            postcontent,
-            base_id,
-          ] = registeredComponents.get(innerText);
+          const [tag, defaults, definition, content, postcontent, base_id] =
+            registeredComponents.get(innerText);
           add_tag.value = tag;
           add_content.value = content;
           add_post_content.value = postcontent;

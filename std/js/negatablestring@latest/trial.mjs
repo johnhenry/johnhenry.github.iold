@@ -1,21 +1,35 @@
-import './string-prototype.mjs';
-import {negater, scale, concat } from './NegatableString.mjs';
-const NEGATIVE_COLOR = 'red';
-const POSITIVE_COLOR = 'lightblue';
+import "./string-prototype.mjs";
+import { negater, scale, concat } from "./NegatableString.mjs";
+const NEGATIVE_COLOR = "red";
+const POSITIVE_COLOR = "lightblue";
 ////
-const REVERSED = scale('DESREVER', -1);
+const REVERSED = scale("DESREVER", -1);
 console.log(REVERSED.toString());
 console.log(...REVERSED.consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR));
-console.log(...REVERSED.toString().consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR));
+console.log(
+  ...REVERSED.toString().consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR)
+);
 console.log(REVERSED.toString("~"));
 
 ////
-console.log(...negater("mississippi").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR));
-console.log(...negater("m~iss~iss~ipp~i").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR));
-console.log(...negater("mis~sis~sip~pi").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR));
-console.log(...negater("mi~ssi~ssi~ppi").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR));
-console.log(...negater("mi~ss~is~si~pp~i").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR));
-console.log(...negater("1~-1", "-").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR));
+console.log(
+  ...negater("mississippi").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR)
+);
+console.log(
+  ...negater("m~iss~iss~ipp~i").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR)
+);
+console.log(
+  ...negater("mis~sis~sip~pi").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR)
+);
+console.log(
+  ...negater("mi~ssi~ssi~ppi").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR)
+);
+console.log(
+  ...negater("mi~ss~is~si~pp~i").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR)
+);
+console.log(
+  ...negater("1~-1", "-").consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR)
+);
 ////
 const factor = 4;
 const HELLO = "HELLO";
@@ -23,18 +37,45 @@ const OLLEH = scale(HELLO, -1);
 // const GOODBYE = "GOODBYE";
 const EYBDOOG = scale("GOODBYE", -1);
 
-const [string0, ...colors0] = HELLO.consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR);
-const [string1, ...colors1] = EYBDOOG.consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR);
-const [string2, ...colors2] = scale(concat(HELLO, EYBDOOG), factor).consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR);
-console.log(`("${string0}" + "${string1}") * ${factor} => "${string2}"`, ...colors0, ...colors1, ...colors2);
+const [string0, ...colors0] = HELLO.consoleIterator(
+  NEGATIVE_COLOR,
+  POSITIVE_COLOR
+);
+const [string1, ...colors1] = EYBDOOG.consoleIterator(
+  NEGATIVE_COLOR,
+  POSITIVE_COLOR
+);
+const [string2, ...colors2] = scale(
+  concat(HELLO, EYBDOOG),
+  factor
+).consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR);
+console.log(
+  `("${string0}" + "${string1}") * ${factor} => "${string2}"`,
+  ...colors0,
+  ...colors1,
+  ...colors2
+);
 
-const [stringB, ...colorsB] = OLLEH.consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR);
-const [stringC, ...colorsC] = scale(concat(HELLO, OLLEH), factor).consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR);
-console.log(`("${string0}" + "${stringB}") * ${factor} => "${stringC}"`, ...colors0, ...colorsB, ...colorsC);
+const [stringB, ...colorsB] = OLLEH.consoleIterator(
+  NEGATIVE_COLOR,
+  POSITIVE_COLOR
+);
+const [stringC, ...colorsC] = scale(
+  concat(HELLO, OLLEH),
+  factor
+).consoleIterator(NEGATIVE_COLOR, POSITIVE_COLOR);
+console.log(
+  `("${string0}" + "${stringB}") * ${factor} => "${stringC}"`,
+  ...colors0,
+  ...colorsB,
+  ...colorsC
+);
 
-console.log(concat(scale('http://', -1), "http://www.google.com", true).toString());
+console.log(
+  concat(scale("http://", -1), "http://www.google.com", true).toString()
+);
 
-// const lordsprayer = 
+// const lordsprayer =
 // `Our Father, who art in heaven,
 // hallowed be thy Name,
 // thy kingdom come,

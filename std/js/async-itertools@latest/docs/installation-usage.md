@@ -25,10 +25,10 @@ The traditional way to load javascript in browsers.
 
 ```html
 <html>
-    <script src='./node_modules/async-itertools/dist/asyncItertools.mjs'></script>
-    <script>
-        // do stuff with asyncItertools
-    </script>
+  <script src="./node_modules/async-itertools/dist/asyncItertools.mjs"></script>
+  <script>
+    // do stuff with asyncItertools
+  </script>
 </html>
 ```
 
@@ -37,7 +37,7 @@ The traditional way to load javascript in browsers.
 The traditional way to load javascript in node.
 
 ```javascript
-const asyncItertools = require('./node_modules/async-itertools/dist/cjs/index.cjs');
+const asyncItertools = require("./node_modules/async-itertools/dist/cjs/index.cjs");
 // do stuff with asyncItertools
 ```
 
@@ -47,15 +47,15 @@ The modern way to load javascript in browsers and node.
 
 ```html
 <html>
-    <script type='module'>
-        import * as asyncItertools from './node_modules/async-itertools/dist/index.mjs';
-        // do stuff with asyncItertools
-    </script>
+  <script type="module">
+    import * as asyncItertools from "./node_modules/async-itertools/dist/index.mjs";
+    // do stuff with asyncItertools
+  </script>
 </html>
 ```
 
 ```javascript
 // import * as asyncItertools from './node_modules/async-itertools/dist/index.mjs';
-import * as asyncItertools from 'async-itertools';
+import * as asyncItertools from "async-itertools";
 // do stuff with asyncItertools
 ```

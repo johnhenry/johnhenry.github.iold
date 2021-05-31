@@ -11,13 +11,12 @@
   grid-column: 1 / 2;
   grid-row: 2 / 4;
 }
-.holy-grail > nav{
+.holy-grail > nav {
   grid-column: 2 / 3;
 }
-.holy-grail > main{
+.holy-grail > main {
   grid-column: 2 / 3;
 }
 .holy-grail > footer {
   grid-column: 1 / -1;
 }
-

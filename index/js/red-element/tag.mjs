@@ -1,1 +1,1 @@
-export default 'red-element';
+export default "red-element";

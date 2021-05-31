@@ -1,5 +1,5 @@
 .fullscreen-sections-with-header-and-footer {
-  --header-z:3;
+  --header-z: 3;
   position: relative;
 }
 .fullscreen-sections-with-header-and-footer > header {
@@ -9,23 +9,25 @@
   left: 0;
   height: var(--header-height);
   width: 100vw;
-  display:flex;
+  display: flex;
   padding: 16px;
   z-index: var(--header-z);
 }
-.fullscreen-sections-with-header-and-footer > header > :is(h1, h2, h3, h4, h5, h6){
-  width:100%;
+.fullscreen-sections-with-header-and-footer
+  > header
+  > :is(h1, h2, h3, h4, h5, h6) {
+  width: 100%;
   text-align: left;
   flex: 0 1 auto;
   display: inline;
-  margin:0;
+  margin: 0;
 }
 
-.fullscreen-sections-with-header-and-footer > header > *:last-child{
+.fullscreen-sections-with-header-and-footer > header > *:last-child {
   flex: 1 0 auto;
 }
 
-.fullscreen-sections-with-header-and-footer > footer{
+.fullscreen-sections-with-header-and-footer > footer {
   background-color: var(--bgcolor);
   padding: 16px;
   position: fixed;
@@ -46,12 +48,14 @@
   flex-direction: column;
 }
 
-.fullscreen-sections-with-header-and-footer > section > :is(h1, h2, h3, h4, h5, h6){
+.fullscreen-sections-with-header-and-footer
+  > section
+  > :is(h1, h2, h3, h4, h5, h6) {
   flex: 0 1 auto;
   width: 100%;
 }
 
-.fullscreen-sections-with-header-and-footer > section > *:last-child{
+.fullscreen-sections-with-header-and-footer > section > *:last-child {
   width: 100%;
   flex-grow: 1;
 }

@@ -2,5 +2,4 @@
 
 # Creating your own transducers
 
-## Create a statistical accumulator 
-
+## Create a statistical accumulator

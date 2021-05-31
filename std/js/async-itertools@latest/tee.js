@@ -1,5 +1,5 @@
-import { AsyncChannel } from './async-channel.mjs';
-import { iterateSync} from './number.mjs';
+import { AsyncChannel } from "./async-channel.mjs";
+import { iterateSync } from "./number.mjs";
 
 /**
  * Create a function that tees a emitted items to n iterators
@@ -36,23 +36,22 @@ import { iterateSync} from './number.mjs';
  * ```
  */
 
-
 /**
  * Tee Asynnchronous Iterator
  * @kind function
- * @name 
+ * @name
  */
 export const teeAsync = (num) => (asyncIterator) => {
-    const iterators = [];
-    for (const [,] of iterateSync(num)) {
-        iterators.push(new AsyncChannel());
+  const iterators = [];
+  for (const [,] of iterateSync(num)) {
+    iterators.push(new AsyncChannel());
+  }
+  setTimeout(async () => {
+    for await (const item of asyncIterator) {
+      for (const iterator of iterators) {
+        await iterator.put(item);
+      }
     }
-    setTimeout(async () => {
-        for await (const item of asyncIterator) {
-            for (const iterator of iterators) {
-                await iterator.put(item);
-            }
-        }
-    });
-    return iterators;
+  });
+  return iterators;
 };

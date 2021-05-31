@@ -8,13 +8,16 @@
       }
       oldInit[key] = oldRequest[key];
     }
-    if (oldRequest.method.toUpperCase() !== "HEAD" && oldRequest.method.toUpperCase() !== "GET") {
+    if (
+      oldRequest.method.toUpperCase() !== "HEAD" &&
+      oldRequest.method.toUpperCase() !== "GET"
+    ) {
       const blob = await oldRequest.blob();
       if (blob.size > 0) {
         oldInit.body = blob;
       }
     }
-    return new Request(newURL || oldRequest.url, {...oldInit, ...newInit});
+    return new Request(newURL || oldRequest.url, { ...oldInit, ...newInit });
   };
   var Route = class {
     constructor(action, match = false) {
@@ -24,21 +27,25 @@
           url: false,
           method: false,
           headers: false,
-          body: false
+          body: false,
         };
-      } else if (typeof match === "string" || match instanceof RegExp || Array.isArray(match)) {
+      } else if (
+        typeof match === "string" ||
+        match instanceof RegExp ||
+        Array.isArray(match)
+      ) {
         this.__match = {
           url: match,
           method: false,
           headers: false,
-          body: false
+          body: false,
         };
       } else {
         this.__match = {
           url: match.url || false,
           method: match.method || false,
           headers: match.headers || false,
-          body: match.body || false
+          body: match.body || false,
         };
       }
     }
@@ -161,7 +168,11 @@
     }
     async send(currentRequest, currentResponse) {
       if (this.__test(currentRequest)) {
-        return this.__action(currentRequest, currentResponse, this.__exec(currentRequest));
+        return this.__action(
+          currentRequest,
+          currentResponse,
+          this.__exec(currentRequest)
+        );
       }
     }
   };
@@ -187,7 +198,7 @@
           } else if (res === null) {
             return this.lastRoute.send(request);
           } else if (typeof res === "number") {
-            return new Response("", {status: res});
+            return new Response("", { status: res });
           } else if (typeof res === "string") {
             return new Response(res);
           } else if (Array.isArray(res)) {
@@ -196,7 +207,7 @@
         }
         throw new Error("matching route not found");
       } catch (error) {
-        return new Response(error, {status: 500});
+        return new Response(error, { status: 500 });
       }
     }
     get routes() {
@@ -209,10 +220,18 @@
   var local = pathname.substring(0, pathname.lastIndexOf("/"));
   var remote = `${globalThis.location.origin}/app/web/forsnaken@0.0.0`;
   var replacements = [];
-  var GetApplication = new Route(async (request, _, match) => fetch(await updateRequest(request, `${remote}/${match.url[1] || ""}`, {
-    mode: "cors"
-  })), new RegExp(`^${local}/?(.+)?$`));
+  var GetApplication = new Route(
+    async (request, _, match) =>
+      fetch(
+        await updateRequest(request, `${remote}/${match.url[1] || ""}`, {
+          mode: "cors",
+        })
+      ),
+    new RegExp(`^${local}/?(.+)?$`)
+  );
   var DefaultRoute = new Route((request) => fetch(request));
   var router = new Router(...replacements, GetApplication, DefaultRoute);
-  globalThis.addEventListener("fetch", (event) => event.respondWith(router.send(event.request)));
+  globalThis.addEventListener("fetch", (event) =>
+    event.respondWith(router.send(event.request))
+  );
 })();

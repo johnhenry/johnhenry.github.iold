@@ -3,17 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/png;base64, iVBORw0KGgo=">
+    <link rel="icon" href="data:image/png;base64, iVBORw0KGgo=" />
     <title>John Henry</title>
     <style>
-      @import './index/css/index.css';
+      @import "./index/css/index.css";
     </style>
     <script type="module">
-      import './index/js/index.mjs';
+      import "./index/js/index.mjs";
     </script>
   </head>
   <body class="fullscreen-sections-with-header-and-footer">
-
     <header>
       <span class="mouse-follower"></span>
       <h1><a href="/#main">john henry</a></h1>
@@ -27,7 +26,7 @@
       <main class="place-center">
         <div class="side-by-side side-by-side-shrink">
           <div class="place-center">
-            <a href="#about" class="button" >About</a>
+            <a href="#about" class="button">About</a>
           </div>
           <div class="place-center">
             <a href="#projects" class="button button-inverted">Projects</a>
@@ -41,14 +40,26 @@
       <main class="place-center">
         <div class="side-by-side side-by-side-shrink">
           <div class="place-center">
-            <p title="&quot;I'm not an rapper.&quot;" >"Be the be the <i>Supa Hot Fire</i> you wish to see in the world." <br /> -- John Henry</p>
+            <p title='"I&apos;m not an rapper."'>
+              "Be the be the <i>Supa Hot Fire</i> you wish to see in the world."
+              <br />
+              -- John Henry
+            </p>
           </div>
           <div class="place-center">
-            <img src="./vendor/img/www.pexels.com/roberto-shumski/scenic-photo-of-lake-surrounded-by-trees-300.jpg">
+            <img
+              src="./vendor/img/www.pexels.com/roberto-shumski/scenic-photo-of-lake-surrounded-by-trees-300.jpg"
+            />
           </div>
           <div class="place-center">
-            <img src="./vendor/img/www.pexels.com/roberto-shumski/scenic-photo-of-lake-surrounded-by-trees-300.jpg">
-            <p title="&quot;I'm not an rapper.&quot;" >"Be the be the <i>Supa Hot Fire</i> you wish to see in the world." <br /> -- John Henry</p>
+            <img
+              src="./vendor/img/www.pexels.com/roberto-shumski/scenic-photo-of-lake-surrounded-by-trees-300.jpg"
+            />
+            <p title='"I&apos;m not an rapper."'>
+              "Be the be the <i>Supa Hot Fire</i> you wish to see in the world."
+              <br />
+              -- John Henry
+            </p>
           </div>
         </div>
       </main>
@@ -57,27 +68,34 @@
     <section id="projects">
       <h2>Projects</h2>
       <main class="gallery">
-        <a class="card" href='/cli/'>
+        <a class="card" href="/cli/">
           <header>Command Line Tools</header>
-          <img src="./vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg">
+          <img
+            src="./vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg"
+          />
           <footer>Collection of cli tools</footer>
         </a>
-        <a class="card" href='/forsnaken/' target="_blank">
+        <a class="card" href="/forsnaken/" target="_blank">
           <header>Forsnaken</header>
-          <img src="./forsnaken/screenshot.png">
+          <img src="./forsnaken/screenshot.png" />
           <footer>A snake game built using web technologies.</footer>
         </a>
-        <a class="card" href='/forsnakenbuilder/' target="_blank">
+        <a class="card" href="/forsnakenbuilder/" target="_blank">
           <header>Forsnaken Builder</header>
-          <img src="./forsnakenbuilder/screenshot.png">
-          <footer>Build a snake game or other application using web technologies.</footer>
+          <img src="./forsnakenbuilder/screenshot.png" />
+          <footer>
+            Build a snake game or other application using web technologies.
+          </footer>
         </a>
       </main>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
-      <link rel="stylesheet" href="/vendor/highlight.js@10.7.1/styles/androidstudio.css">
+      <link
+        rel="stylesheet"
+        href="/vendor/highlight.js@10.7.1/styles/androidstudio.css"
+      />
       <pre class="code">
         <code>
           for(let i = 0; i < 10; i++){
@@ -88,22 +106,25 @@
     </section>
 
     <footer>
-      <ul class='horizontal-menu'>
-        <li><a href="https://twitter.com/iamjohnhenry" target="_blank">twitter</a></li>
-        <li><a href="https://github.com/johnhenry" target="_blank">github</a></li>
+      <ul class="horizontal-menu">
+        <li>
+          <a href="https://twitter.com/iamjohnhenry" target="_blank">twitter</a>
+        </li>
+        <li>
+          <a href="https://github.com/johnhenry" target="_blank">github</a>
+        </li>
         <li><a href="#" target="_blank">© 2021 John Henry</a></li>
       </ul>
     </footer>
 
-    <span class="mouse-chaser" style="--mouse-z:var(--header-z)"></span>
+    <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
     <script type="module">
-      import hljs from '/vendor/highlight.js@10.7.1/index.mjs';
-      document.addEventListener('DOMContentLoaded', (event) => {
-      document.querySelectorAll('pre code').forEach((block) => {
-        hljs.highlightElement(block);
+      import hljs from "/vendor/highlight.js@10.7.1/index.mjs";
+      document.addEventListener("DOMContentLoaded", (event) => {
+        document.querySelectorAll("pre code").forEach((block) => {
+          hljs.highlightElement(block);
+        });
       });
-    });
     </script>
   </body>
 </html>
-

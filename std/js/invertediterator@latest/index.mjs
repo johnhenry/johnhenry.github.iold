@@ -34,56 +34,56 @@
 // };
 // With Cache
 import InvertedPromise from "../invertedpromise@0.0.0/index.mjs";
-import pause from '../pause@0.0.0/index.mjs';
+import pause from "../pause@0.0.0/index.mjs";
 
-const END = Symbol('END');
+const END = Symbol("END");
 export default () => {
   let done;
   let promise;
   const out = {};
   const cache = [];
   const getNext = () => {
-    if(cache.length){
+    if (cache.length) {
       return { promise: cache.shift() };
     }
-    return promise = InvertedPromise();
+    return (promise = InvertedPromise());
   };
-  out.iterator = (async function * (){
-      try {
-        while(true){
-          if(done){
-            throw END;
-          }
-          await pause();
-          yield await getNext().promise;
-          await pause();
-          if(done){
-            throw END;
-          }
+  out.iterator = (async function* () {
+    try {
+      while (true) {
+        if (done) {
+          throw END;
         }
-      }catch(e){
-        if(e !== END){
-          throw e;
+        await pause();
+        yield await getNext().promise;
+        await pause();
+        if (done) {
+          throw END;
         }
       }
+    } catch (e) {
+      if (e !== END) {
+        throw e;
+      }
+    }
   })();
   out.resolve = async (value) => {
     await pause();
-    if(promise){
+    if (promise) {
       promise.resolve(value);
-    }else{
+    } else {
       cache.push(value);
     }
     await pause();
   };
   out.reject = (value) => {
-    if(promise){
+    if (promise) {
       promise.reject(value);
     }
   };
   out.end = () => {
     done = true;
-    if(promise){
+    if (promise) {
       promise.reject(END);
     }
   };

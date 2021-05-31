@@ -6,7 +6,7 @@
  * @see transduceAsync
  */
 
-import { HAULT } from './iterator-tools.mjs';
+import { HAULT } from "./iterator-tools.mjs";
 
 /**
  * Create a transducer that maps values
@@ -16,7 +16,7 @@ import { HAULT } from './iterator-tools.mjs';
  * @returns transducer
  */
 export const map = (transform) => (conjoin) => (init, item) =>
-    conjoin(init, transform(item));
+  conjoin(init, transform(item));
 
 /**
  * Create a transducer that filters values
@@ -26,7 +26,7 @@ export const map = (transform) => (conjoin) => (init, item) =>
  * @returns transducer
  */
 export const filter = (predicate) => (conjoin) => (init, item) =>
-    predicate(item) ? conjoin(init, item) : init;
+  predicate(item) ? conjoin(init, item) : init;
 
 /**
  * Create a transducer that halts after a given number of values
@@ -36,8 +36,9 @@ export const filter = (predicate) => (conjoin) => (init, item) =>
  * @returns transducer
  */
 export const take = (limit) => (conjoin) => {
-    let amount = 0;
-    return (init, item) => amount < limit ? (amount++ , conjoin(init, item)) : HAULT;
+  let amount = 0;
+  return (init, item) =>
+    amount < limit ? (amount++, conjoin(init, item)) : HAULT;
 };
 
 /**
@@ -49,18 +50,18 @@ export const take = (limit) => (conjoin) => {
  * @returns transducer
  */
 export const group = (limit) => (conjoin) => {
-    const partition = [];
-    return (init, item) => {
-        partition.push(item);
-        if (partition.length === limit) {
-            const subPartition = [];
-            for (let i = 0; i < limit; i++) {
-                subPartition.push(partition.shift());
-            }
-            return conjoin(init, subPartition);
-        }
-        return init;
-    };
+  const partition = [];
+  return (init, item) => {
+    partition.push(item);
+    if (partition.length === limit) {
+      const subPartition = [];
+      for (let i = 0; i < limit; i++) {
+        subPartition.push(partition.shift());
+      }
+      return conjoin(init, subPartition);
+    }
+    return init;
+  };
 };
 
 /**
@@ -72,10 +73,13 @@ export const group = (limit) => (conjoin) => {
  * @param {*} initial initial accumulation value
  * @returns transducer
  */
-export const accumulate = (func = (a, b) => a + b, initial = 0) => (conjoin) => (init, item) => {
+export const accumulate =
+  (func = (a, b) => a + b, initial = 0) =>
+  (conjoin) =>
+  (init, item) => {
     initial = func(initial, item);
     return conjoin(init, initial);
-};
+  };
 
 // https://stats.stackexchange.com/questions/235129/online-estimation-of-variance-with-limited-memory
 // const STATS_ACCUMULATOR = [

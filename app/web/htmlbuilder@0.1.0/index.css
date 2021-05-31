@@ -1,5 +1,5 @@
-:root{
-  --font-color:  rgba(100, 100, 100, 1);
+:root {
+  --font-color: rgba(100, 100, 100, 1);
   --background-color: rgba(238, 238, 238, 1);
 }
 
@@ -159,13 +159,16 @@ main > * {
 
 #exports {
   flex-grow: 0;
-  display:flex;
+  display: flex;
   justify-content: space-evenly;
   justify-items: center;
   align-items: center;
 }
 
-a, a:active, a:visited, a:link {
+a,
+a:active,
+a:visited,
+a:link {
   color: var(--font-color);
   text-decoration: none;
 }

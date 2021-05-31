@@ -1,31 +1,31 @@
-import clamp from '../clamp@0.0.0/index.mjs';
+import clamp from "../clamp@0.0.0/index.mjs";
 const observedattributes = [
-  'eyeoffset',
-  'lowerlip',
-  'upperlip',
-  'eyesize',
-  'irissize',
-  'lefteyex',
-  'righteyex',
-  'irisoffset',
-  'eyerotation',
-  'nosescale',
-  'noseoffset',
+  "eyeoffset",
+  "lowerlip",
+  "upperlip",
+  "eyesize",
+  "irissize",
+  "lefteyex",
+  "righteyex",
+  "irisoffset",
+  "eyerotation",
+  "nosescale",
+  "noseoffset",
 ];
 const genSVG = ({
-  eyeoffset=0,
-  lowerlip=64,
-  upperlip=0,
+  eyeoffset = 0,
+  lowerlip = 64,
+  upperlip = 0,
   eyesize = 24,
   irissize = 4,
   irisoffset = 0,
   eyerotation = 0,
   nosescale = 1,
   noseoffset = 112,
-}={})=>{
+} = {}) => {
   const lefteyex = 64 + Number(eyeoffset);
   const righteyex = 256 - lefteyex;
-  const rot = eyerotation * 180/Math.PI;
+  const rot = (eyerotation * 180) / Math.PI;
   return `<svg version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
       <!-- head -->
       <circle cx="50%" cy="50%" r="48%" />
@@ -43,14 +43,12 @@ const genSVG = ({
       <circle class="eye" cx="${righteyex}" cy="64" r="${eyesize}" />
       <circle class="iris" cx="${righteyex}" cy="64" r="${irissize}" transform-origin="${righteyex} 64" transform="rotate(${rot}) translate(0, ${irisoffset})" />
   </svg>`;
-}
+};
 
 //https://gomakethings.com/converting-a-string-into-markup-with-vanilla-js/
-const nodes = (attributes)=>new globalThis
-  .DOMParser()
-  .parseFromString(genSVG(attributes), 'text/html')
-  .body
-  .childNodes;
+const nodes = (attributes) =>
+  new globalThis.DOMParser().parseFromString(genSVG(attributes), "text/html")
+    .body.childNodes;
 
 export default class extends globalThis.HTMLElement {
   constructor() {
@@ -59,25 +57,25 @@ export default class extends globalThis.HTMLElement {
   static get observedAttributes() {
     return observedattributes;
   }
-  connectedCallback(){
+  connectedCallback() {
     this.render();
   }
-  disconnectedCallback(){
+  disconnectedCallback() {
     this.unrender();
   }
   attributeChangedCallback() {
     this.render();
   }
-  unrender(){
+  unrender() {
     while (this.firstChild) {
       this.removeChild(this.firstChild);
     }
   }
-  render(){
+  render() {
     const attributes = {};
-    for (var att, i = 0, atts = this.attributes, n = atts.length; i < n; i++){
-        att = atts[i];
-        attributes[att.nodeName] = att.nodeValue;
+    for (var att, i = 0, atts = this.attributes, n = atts.length; i < n; i++) {
+      att = atts[i];
+      attributes[att.nodeName] = att.nodeValue;
     }
     this.unrender();
     this.append(...nodes(attributes));

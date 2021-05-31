@@ -18,7 +18,8 @@ export const HAULT = Symbol();
  * })();
  * ```
  */
-export const pause = (milliseconds, value) => new Promise(resolve => setTimeout(resolve, milliseconds, value));
+export const pause = (milliseconds, value) =>
+  new Promise((resolve) => setTimeout(resolve, milliseconds, value));
 
 /**
  * Reduce function for iterators -- appends items to iterator
@@ -30,14 +31,19 @@ export const pause = (milliseconds, value) => new Promise(resolve => setTimeout(
  * @param {boolean} ignore_hault=false ignore when hault is passed
  * @returns iterator if no items are passed; empty iterator if nothing is passed
  */
-export const reduceSync = function* (iterator, reduce, init, ignore_hault = false) {
-    for (const item of iterator) {
-        init = reduce(init, item, iterator);
-        if (!ignore_hault && init === HAULT) {
-            break;
-        }
-        yield* init;
+export const reduceSync = function* (
+  iterator,
+  reduce,
+  init,
+  ignore_hault = false
+) {
+  for (const item of iterator) {
+    init = reduce(init, item, iterator);
+    if (!ignore_hault && init === HAULT) {
+      break;
     }
+    yield* init;
+  }
 };
 
 /**
@@ -50,16 +56,20 @@ export const reduceSync = function* (iterator, reduce, init, ignore_hault = fals
  * @param {boolean} ignore_hault ignore when hault is passed
  * @returns iterator if no items are passed; empty iterator if nothing is passed
  */
-export const reduceAsync = async function* (iterator, reduce, init, ignore_hault = false) {
-    for await (const item of iterator) {
-        init = reduce(init, item, iterator);
-        if (!ignore_hault && init === HAULT) {
-            break;
-        }
-        yield* init;
+export const reduceAsync = async function* (
+  iterator,
+  reduce,
+  init,
+  ignore_hault = false
+) {
+  for await (const item of iterator) {
+    init = reduce(init, item, iterator);
+    if (!ignore_hault && init === HAULT) {
+      break;
     }
+    yield* init;
+  }
 };
-
 
 /**
  * Concatinates sequence of synchronous iterables
@@ -70,9 +80,9 @@ export const reduceAsync = async function* (iterator, reduce, init, ignore_hault
  */
 
 export const concatSync = function* (...iterators) {
-    for (const iterator of iterators) {
-        yield* iterator;
-    }
+  for (const iterator of iterators) {
+    yield* iterator;
+  }
 };
 
 /**
@@ -85,12 +95,11 @@ export const concatSync = function* (...iterators) {
  */
 
 export const conjoinSync = function* (iterator, ...itemList) {
-    if(iterator){
-        yield* iterator;
-    }
-    yield* itemList;
+  if (iterator) {
+    yield* iterator;
+  }
+  yield* itemList;
 };
-
 
 /**
  * Concatinates sequence of asynchronous iterables
@@ -100,9 +109,9 @@ export const conjoinSync = function* (iterator, ...itemList) {
  * @returns iterator generating sequence of combined from given iterables; empty iterator if nothing is passed
  */
 export const concatAsync = async function* (...iterators) {
-    for (const iterator of iterators) {
-        yield* iterator;
-    }
+  for (const iterator of iterators) {
+    yield* iterator;
+  }
 };
 
 /**
@@ -114,10 +123,10 @@ export const concatAsync = async function* (...iterators) {
  * @returns copy of initial iterator with items appended
  */
 export const conjoinAsync = async function* (iterator, ...itemList) {
-    if (iterator) {
-        yield* iterator;
-    }
-    yield* itemList;
+  if (iterator) {
+    yield* iterator;
+  }
+  yield* itemList;
 };
 
 /**
@@ -128,22 +137,21 @@ export const conjoinAsync = async function* (iterator, ...itemList) {
  * @returns an iterator who's members are the members of the given iterators zipped sequencially
  */
 export const zipSync = function* (...iteratorList) {
-    const generators = iteratorList.map(iterator => iterator[Symbol.iterator]());
-    outer:
-    while (true) {
-        const result = [];
-        for (const generator of generators) {
-            const { value, done } = generator.next();
-            if (done) {
-                break outer;
-            }
-            result.push(value);
-
-        }
-        yield result;
+  const generators = iteratorList.map((iterator) =>
+    iterator[Symbol.iterator]()
+  );
+  outer: while (true) {
+    const result = [];
+    for (const generator of generators) {
+      const { value, done } = generator.next();
+      if (done) {
+        break outer;
+      }
+      result.push(value);
     }
+    yield result;
+  }
 };
-
 
 /**
  * "run" iterator as a program
@@ -153,7 +161,7 @@ export const zipSync = function* (...iteratorList) {
  * @param {render} render function to render output from iterator
  */
 export const run = async (program, render = console.log) => {
-    for await (const output of program) {
-        await render(output);
-    }
+  for await (const output of program) {
+    await render(output);
+  }
 };

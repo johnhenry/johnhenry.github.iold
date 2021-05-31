@@ -1,6 +1,8 @@
 <h1 id="negatablestrings">Negatable Strings</h1>
-<p>Ever wanted to literally subtract a string from anoter in your code?
-Eh,… didn't thinks so…</p>
+<p>
+  Ever wanted to literally subtract a string from anoter in your code? Eh,…
+  didn't thinks so…
+</p>
 <p>But here's library that let's do that and then some!</p>
 <h2 id="api">API</h2>
 <h3 id="stringprototype">String.prototype;</h3>
@@ -10,24 +12,38 @@ Eh,… didn't thinks so…</p>
 <h3 id="scale">scale;</h3>
 <pre><code class="javascript language-javascript">import { scale } from "./NegatableString.mjs"
 </code></pre>
-<p>The <em>scale</em> function transfroms a string into a negatable string object.</p>
+<p>
+  The <em>scale</em> function transfroms a string into a negatable string
+  object.
+</p>
 <p>By default, the string representations are the same.</p>
 <pre><code class="javascript language-javascript">"string" === scale("string").toString();
 </code></pre>
-<p>Negative one (-1) can be passed as a second parameter to get a negated version of the given string"</p>
+<p>
+  Negative one (-1) can be passed as a second parameter to get a negated version
+  of the given string"
+</p>
 <pre><code class="javascript language-javascript">"string" === scale("string", -1).toString().split("").reverse().join("");
 </code></pre>
-<h3 id="negatablestringprototypetostring">NegatableString.prototype.toString();</h3>
-<p>By default, the string representation is simply
-the representation of the given string backwards.</p>
+<h3 id="negatablestringprototypetostring">
+  NegatableString.prototype.toString();
+</h3>
+<p>
+  By default, the string representation is simply the representation of the
+  given string backwards.
+</p>
 <pre><code class="javascript language-javascript">console.log(scale("string", -1).toString());// logs "rts"
 </code></pre>
-<p>But this is not the full story.
-Negative characters chan be highlighted
-by passing a prefix parameter to <em>toString</em> method </p>
+<p>
+  But this is not the full story. Negative characters chan be highlighted by
+  passing a prefix parameter to <em>toString</em> method
+</p>
 <pre><code class="javascript language-javascript">console.log(scale("string", -1).toString("~"));// logs "~r~t~s"
 </code></pre>
-<p>Prefixes and suffixes can be added for both "negative" and "positive" characters</p>
+<p>
+  Prefixes and suffixes can be added for both "negative" and "positive"
+  characters
+</p>
 <pre><code class="javascript language-javascript">const nPrefix =  '&lt;span class="positive"&gt;':
 const pPrefix =  '&lt;span class="negative"&gt;':
 const suffix =  '&lt;/span&gt;':
@@ -35,13 +51,19 @@ const suffix =  '&lt;/span&gt;':
 console(scale("string", -1).toString(nPrefix, suffix, pPrefix, suffix));
 // logs "&lt;span class="negative"&gt;r&lt;/span&gt;&lt;span class="negative"&gt;t&lt;/span&gt;&lt;span class="negative"&gt;s&lt;/span&gt;"
 </code></pre>
-<h3 id="negatablestringprototypeconsoleiterator">NegatableString.prototype.consoleIterator();</h3>
-<p>Some consoles (Chrome, Deno, but not currently node)
-have log methods that allow styling accepting as their
-first argument a specifically formatted string;
-and as their subsequent arguements, style parameters.</p>
-<p>The "consoleIterator" method takes advantage of this. It produces an object that can be destructured into a call to console.log that will produced a result with characters 
-colored according to their parity.</p>
+<h3 id="negatablestringprototypeconsoleiterator">
+  NegatableString.prototype.consoleIterator();
+</h3>
+<p>
+  Some consoles (Chrome, Deno, but not currently node) have log methods that
+  allow styling accepting as their first argument a specifically formatted
+  string; and as their subsequent arguements, style parameters.
+</p>
+<p>
+  The "consoleIterator" method takes advantage of this. It produces an object
+  that can be destructured into a call to console.log that will produced a
+  result with characters colored according to their parity.
+</p>
 <pre><code class="javascript language-javascript">console.log(...scale("rts", -1).consoleIterator('red'));
 // logs red "rts" on chrome and deno
 // logs unformatted "rts" on  node
@@ -69,7 +91,10 @@ console.log(concat(scale("http://", -1), "https://iamjohnhenry.com" ).toString()
 //logs "https://iamjohnhenry.com"
 </code></pre>
 <h3 id="negater">negater</h3>
-<p>You may want to construct string where not all characters are negative or positive.</p>
+<p>
+  You may want to construct string where not all characters are negative or
+  positive.
+</p>
 <pre><code class="javascript language-javascript">import { negater } from "./NegatableString.mjs"
 </code></pre>
 <pre><code class="javascript language-javascript">console.log(negater("mi~ss~issippi").toString("~"));
@@ -79,9 +104,10 @@ console.log(concat(scale("http://", -1), "https://iamjohnhenry.com" ).toString()
 //logs "mssippi". Note the ~s cancelled out the s and then the i cancelled the ~i
 </code></pre>
 <h3 id="equals">equals</h3>
-<p>Test if two strings represent the exact same charcters,
-in the same order,
-with the same parity</p>
+<p>
+  Test if two strings represent the exact same charcters, in the same order,
+  with the same parity
+</p>
 <pre><code class="javascript language-javascript">import { equal } from "./NegatableString.mjs"
 </code></pre>
 <pre><code class="javascript language-javascript">console.log(equal("alpha", scale("alpha")));// true

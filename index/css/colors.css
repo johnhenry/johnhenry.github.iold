@@ -1,5 +1,5 @@
 :root {
-  --darkness: #221E1E;
+  --darkness: #221e1e;
   --light: #ffffff;
 
   --color-theme-light: var(--darkness);
@@ -10,4 +10,3 @@
   --bgcolor-theme-dark: var(--darkness);
   --bgcolor: var(--bgcolor-theme-light);
 }
-

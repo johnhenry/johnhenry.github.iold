@@ -1,38 +1,38 @@
 /*https://sobac.com/sobac/tangocolors.htm*/
 :root {
-  --color-tango-butter-highlight:#fce94f;
+  --color-tango-butter-highlight: #fce94f;
   --color-tango-butter: #edd400;
-  --color-tango-butter-shadow:: #c4a000;
+  --color-tango-butter-shadow: #c4a000;
 
-  --color-tango-orange-highlight:#fcaf3e;
+  --color-tango-orange-highlight: #fcaf3e;
   --color-tango-orange: #f57900;
-  --color-tango-orange-shadow::#ce5c00;
+  --color-tango-orange-shadow: #ce5c00;
 
   --color-tango-chocolate-highlight: #e9b96e;
   --color-tango-chocolate: #c17d11;
-  --color-tango-chocolate-shadow::	#8f5902;
+  --color-tango-chocolate-shadow: #8f5902;
 
-  --color-tango-chameleon-highlight:#8ae232;
-  --color-tango-chameleon:	#73d216;
-  --color-tango-chameleon-shadow::	#4e9a06;
+  --color-tango-chameleon-highlight: #8ae232;
+  --color-tango-chameleon: #73d216;
+  --color-tango-chameleon-shadow: #4e9a06;
 
   --color-tango-sky-highlight: #729fcf;
   --color-tango-sky: #3465a4;
-  --color-tango-sky-shadow:: #204a87;
+  --color-tango-sky-shadow: #204a87;
 
   --color-tango-plum-highlight: #ad7fa8;
   --color-tango-plum: #75507b;
-  --color-tango-plum-shadow:: #5c3566;
+  --color-tango-plum-shadow: #5c3566;
 
-  --color-tango-scarlet-highlight:#ef2920;
+  --color-tango-scarlet-highlight: #ef2920;
   --color-tango-scarlet: #cc0000;
-  --color-tango-scarlet-shadow::	#a40000;
+  --color-tango-scarlet-shadow: #a40000;
 
   --color-tango-aluminium-highlight: #eeeeec;
   --color-tango-aluminium: #d3d7cf;
   --color-tango-aluminium-shadow: #babdb6;
 
-  --color-tango-slate-highlight:  #888a85;
+  --color-tango-slate-highlight: #888a85;
   --color-tango-slate: #555753;
-  --color-tango-slate-shadow:#2e3436;
+  --color-tango-slate-shadow: #2e3436;
 }
