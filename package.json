@@ -18,7 +18,7 @@
     "build:readme-indexes": "node scripts/build-readme-indexes.mjs",
     "build:versions": "node scripts/build-versions.mjs",
     "build:notes": "node scripts/build-notes.mjs",
-    "build": "build:versions && npm run build-storybook",
+    "build": "npm run build:versions && npm run build-storybook",
     "serve": "live-server .",
     "github:actions": "act --secret-file .github/workflows/.secrets",
     "test:tester": "node scripts/run-tester-tests.mjs",
