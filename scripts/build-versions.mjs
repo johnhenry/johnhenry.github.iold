@@ -4,11 +4,7 @@ import fse from "fs-extra";
 import numlistCompare from "../std/js/numlist-compare@0.0.0/index.mjs";
 import recursiveFileMatch from "../std/js/recursive-file-match@0.0.0/index.mjs";
 
-const REMOVE_FILES = [
-  /(.+)\.tester\.test\.mjs/,
-  /(.+)\.test\.mjs/,
-  /(.+)\.stories\.mjs/,
-];
+const REMOVE_FILES = [/(.+)\.test\.(.+)/, /(.+)\.stories\.(.+)/];
 
 const startPath = "./std/js/";
 const reg = /(.*)@(\d+\.\d+\.\d+)$/;

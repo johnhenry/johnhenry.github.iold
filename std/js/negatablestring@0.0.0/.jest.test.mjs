@@ -1,4 +1,4 @@
-import "./string-prototype.mjs";
+import "./string-prototype-warn.mjs";
 import {
   negater,
   scale,

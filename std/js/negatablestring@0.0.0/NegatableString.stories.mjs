@@ -1,6 +1,6 @@
 import { html } from "lit-html";
 import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
-import "./string-prototype.mjs";
+import "./string-prototype-warn.mjs";
 import { negater, scale, concat } from "./NegatableString.mjs";
 
 export default {
