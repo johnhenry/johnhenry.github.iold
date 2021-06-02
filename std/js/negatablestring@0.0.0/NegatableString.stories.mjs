@@ -4,7 +4,7 @@ import "./string-prototype-warn.mjs";
 import { negater, scale, concat } from "./NegatableString.mjs";
 
 export default {
-  title: "Library/Negatable String/Demos",
+  title: "JS Library/Negatable String/Demos",
   argTypes: {
     first: { control: "text" },
     second: { control: "text" },
