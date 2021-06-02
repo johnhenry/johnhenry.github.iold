@@ -18,7 +18,9 @@ jobs:
           npm run build
 
       - name: Update Gitignore 🔧 # Updage .gitignore
-        run: echo "node_modules" > .gitignore
+        run: |
+          echo "node_modules" > .gitignore
+          echo "" >> .gitignore
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.3
