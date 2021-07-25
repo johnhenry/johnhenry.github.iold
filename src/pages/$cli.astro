@@ -1,0 +1,81 @@
+---
+import Main from "../components/Main.astro";
+
+const apps = [
+  {
+    name:"explode",
+    description:"Move the contents of a folder into its parent, and once empty, delete the folder.",
+    versions:{
+      "Mac/Linux":"/std/bash/explode@0.0.0/explode.sh",
+    }
+  },
+  {
+    name:"implode",
+    description:"Move a file into a folder of the same name -- minus the extension.",
+    versions:{
+      "Mac":"/std/bash/implode@0.0.0/implode.mac.sh",
+      "Linux":"/std/bash/implode@0.0.0/implode.linux.sh",
+    }
+  },
+  {
+    name:"whichdir",
+    description:"Display the containing directory location of a given executable",
+    versions:{
+      "Mac/Linux":"/std/bash/whichdir@0.0.0/whichdir.sh",
+    }
+  },
+  {
+    name:"codir",
+    description:"(Create and) open a directory in visual studio code",
+    versions:{
+      "Mac/Linux":"/std/bash/codir@0.0.0/codir.sh",
+    }
+  },
+  {
+    name:"data-url",
+    description:"Convert a file into a data url",
+    versions:{
+      "Mac/Linux":"/std/bash/data-url@0.0.0/data-url.sh",
+    }
+  }
+]
+
+---
+<Main >
+    <section>
+      <h2>Command Line Interface Programs</h2>
+      <h3>
+        This is a set of command line interfaces tools that i've built for
+        repetative tasks.
+      </h3>
+      <main class="">
+        {apps.map(({name, description, versions}) =><div class="">
+          <h3>{name}</h3>
+          {description} Download for:
+          <ul>
+            {Object.entries(versions).map(([version, href]) =><li><a href={href} download="{name}">{version}</a></li>)}
+          </ul>
+        </div>)}
+      </main>
+    </section>
+
+<!-- <div class="gallery">
+
+    </div>
+    <h2>Implode</h2>
+    Implode moves moves a file into a folder of the same name, minus the extension.
+    Note there are two versions: Max & Linux.
+    <div class="gallery">
+      <a class="card card-short" href="../std/bash/implode@0.0.0/implode.mac" download="implode">
+        <header>Implode</header>
+        <footer>Download for Mac</footer>
+      </a>
+      <a class="card card-short" href="../std/bash/implode@0.0.0/implode.linux" download="implode">
+        <header>Implode</header>
+        <footer>Download for Linux</footer>
+      </a>
+    </div>
+    </section> -->
+
+</Main>
+

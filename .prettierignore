@@ -1,5 +1,5 @@
-vendor/*
+src/vendor/*
 .devcontainer/*
 
 # Ignoring due to unconventional javascript-in-css syntax
-index/js/js-background/demo.css
+src/index/js/js-background/demo.css

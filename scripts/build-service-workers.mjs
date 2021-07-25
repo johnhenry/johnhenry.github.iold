@@ -1,5 +1,5 @@
 import esbuild from "esbuild";
-import recursiveFileMatch from "../std/js/recursive-file-match@0.0.0/index.mjs";
+import recursiveFileMatch from "../public/std/js/recursive-file-match@0.0.0/index.mjs";
 
 const reg = /(.*service-worker)\.es6\.mjs/;
 

@@ -1,0 +1,22 @@
+---
+import Main from "../components/Main.astro";
+
+// Data Fetching: List all Markdown posts in the repo.
+let allPosts = Astro.fetchContent('./blog/*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+
+// const allPosts = Astro
+//   .fetchContent('./blog/*.md')
+//   .sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+
+---
+<Main >
+  <section>
+    <ul>
+      {allPosts.map(({url, title, author, description}) => <>
+        <li><a href="{url}">{title} by {author}</a></li>
+      </>)}
+    </ul>
+  </section>
+</Main>
+

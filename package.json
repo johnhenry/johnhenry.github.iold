@@ -14,12 +14,14 @@
     "wbn": "0.0.5"
   },
   "scripts": {
+    "start": "astro dev",
+    "build": "astro build",
     "lint": "prettier --write . ",
     "build:service-workers": "node scripts/build-service-workers.mjs",
     "build:readme-indexes": "node scripts/build-readme-indexes.mjs",
     "build:versions": "node scripts/build-versions.mjs",
     "build:notes": "node scripts/build-notes.mjs",
-    "build": "npm run build:versions && npm run build-storybook",
+    "build:old": "npm run build:versions && npm run build-storybook",
     "serve": "live-server .",
     "github:actions": "act --secret-file .github/workflows/.secrets",
     "test:tester": "node scripts/run-tester-tests.mjs",
@@ -47,6 +49,7 @@
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
     "@storybook/web-components": "^6.2.9",
+    "astro": "^0.17.2",
     "babel-loader": "^8.2.2",
     "css-loader": "^3.6.0",
     "live-server": "^1.2.1",

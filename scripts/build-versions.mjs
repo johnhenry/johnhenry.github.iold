@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import fse from "fs-extra";
-import numlistCompare from "../std/js/numlist-compare@0.0.0/index.mjs";
-import recursiveFileMatch from "../std/js/recursive-file-match@0.0.0/index.mjs";
+import numlistCompare from "../public/std/js/numlist-compare@0.0.0/index.mjs";
+import recursiveFileMatch from "../public/std/js/recursive-file-match@0.0.0/index.mjs";
 
 const reg = /(.*)@(\d+\.\d+\.\d+)$/;
 
@@ -63,7 +63,7 @@ const go = (
   fs.writeFileSync(path.join(startPath, "index.html"), data);
 };
 
-go("./std/js/");
-go("./std/css/");
-go("./std/html/");
-go("./std/bash/");
+go("./public/std/js/");
+go("./public/std/css/");
+go("./public/std/html/");
+go("./public/std/bash/");

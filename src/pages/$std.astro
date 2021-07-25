@@ -1,0 +1,31 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import Main from "../components/Main.astro";
+
+const go =  (subFolder)=>{
+  const reg = /(.*)@(\d+\.\d+\.\d+)$/;
+  const dirs = [];
+  const p = path.join("./public/std", subFolder);
+  for (const directory of fs.readdirSync(p)) {
+    const filename = path.join(p, directory);
+    if (!reg.test(directory) || !fs.lstatSync(filename).isDirectory()) {
+      continue;
+    }
+    const [href, base] = reg.exec(directory);
+    dirs.push({href:path.join(subFolder, base), base});
+  }
+  return dirs;
+}
+const js = go("js");
+---
+<Main>
+  <section>
+    <h1>js</h1>
+    <ul>
+    {js.map(({href, base})=>
+      <li><a href={href}>{base}</a></li>
+    )}
+    </ul>
+  </section>
+</Main>

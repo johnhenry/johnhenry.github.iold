@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="module">
+      const remove = (target) => {
+        console.log("Request close for:");
+        console.log(target);
+        target.parentElement.removeChild(target);
+      };
+      globalThis.closeParent = (event) => {
+        const { parentElement } = event.target;
+        parentElement.dispatchEvent(new Event("request-close"));
+      };
+      globalThis.document.body.addEventListener("request-close", ({ target }) =>
+        remove(target)
+      );
+    </script>
+  </head>
+  <body>
+    <button onclick="closeParent(event)">Close</button>
+  </body>
+</html>

@@ -1,11 +1,11 @@
-import recursiveFileMatch from "../std/js/recursive-file-match@0.0.0/index.mjs";
+import recursiveFileMatch from "../public/std/js/recursive-file-match@0.0.0/index.mjs";
 import fs from "fs";
 import showdown from "showdown";
 const converter = new showdown.Converter();
 
 const reg = /(.*readme).md/;
 
-for (const infile of recursiveFileMatch("./std/", reg)) {
+for (const infile of recursiveFileMatch("./public/std/", reg)) {
   const outfile = `${reg.exec(infile)[1]}.html`;
   fs.writeFileSync(
     outfile,

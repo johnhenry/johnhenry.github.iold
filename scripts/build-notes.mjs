@@ -1,6 +1,6 @@
 // dev.to
 // https://docs.forem.com/api/
-import recursiveFileMatch from "../std/js/recursive-file-match@0.0.0/index.mjs";
+import recursiveFileMatch from "../public/std/js/recursive-file-match@0.0.0/index.mjs";
 import fs from "fs";
 import showdown from "showdown";
 const converter = new showdown.Converter();
