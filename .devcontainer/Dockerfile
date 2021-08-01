@@ -1,4 +1,4 @@
-FROM node:15.10.0
+FROM node:16.6.0
 RUN apt-get update
 ## Install zsh
 RUN apt-get install -y zsh

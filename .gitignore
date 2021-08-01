@@ -2,3 +2,4 @@ node_modules
 .github/workflows/.secrets
 .DS_Store
 storybook-static
+dist/
