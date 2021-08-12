@@ -1,21 +1,20 @@
 let timeout = 0;
 const timeouts = new Set();
-
-const DEFAULT_OPTIONS = {
-  WAIT: 0,
-  LIMIT: Infinity,
-};
-
+import { WAIT, LIMIT, MODE, BASE } from "./default-options.mjs";
 export default (func, options, ...args) => {
-  let [wait, limit] = [DEFAULT_OPTIONS.WAIT, DEFAULT_OPTIONS.LIMIT];
+  let [wait, limit, mode, base] = [WAIT, LIMIT, MODE, BASE];
   if (typeof options === "number") {
     wait = options;
   } else if (Array.isArray(options)) {
     wait = options[0] ?? wait;
     limit = options[1] ?? limit;
+    mode = options[2] ?? mode;
+    base = options[3] ?? base;
   } else if (options && typeof options === "object") {
     wait = options.wait ?? wait;
     limit = options.limit ?? limit;
+    mode = options.mode ?? mode;
+    base = options.base ?? base;
   }
   let iteration = 0;
   const localTimeout = timeout++;
@@ -27,12 +26,25 @@ export default (func, options, ...args) => {
       if (++iteration >= limit) {
         throw new Error(`Iteration limit of ${limit} exceeded. ${error}`);
       }
-      iteration;
+      let time;
+      switch (mode) {
+        case "linear":
+          time = wait * ++iteration;
+          break;
+        case "exponential":
+          time = wait * base ** iteration++;
+          break;
+        case "constant":
+        default:
+          iteration++;
+          time = wait;
+          break;
+      }
       setTimeout(async () => {
         if (timeouts.has(localTimeout)) {
           await go();
         }
-      }, wait);
+      }, time);
     }
   };
   setTimeout(go);

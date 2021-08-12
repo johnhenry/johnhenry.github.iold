@@ -2,7 +2,7 @@
 let timeout = 0;
 const timeouts = new Set();
 
-export const setIntervalWait = (func, time, ...args) => {
+export default (func, time, ...args) => {
   const localTimeout = timeout++;
   timeouts.add(localTimeout);
   const next = () => {
@@ -15,4 +15,4 @@ export const setIntervalWait = (func, time, ...args) => {
   setTimeout(next, time);
   return localTimeout;
 };
-export const clearIntervalWait = timeouts.delete.bind(timeouts);
+export const clear = timeouts.delete.bind(timeouts);
