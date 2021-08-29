@@ -9,6 +9,7 @@
     "fs-extra": "^9.1.0",
     "jest": "^27.0.3",
     "lit-html": "^1.4.1",
+    "perf_hooks": "^0.0.1",
     "prettier": "^2.3.0",
     "showdown": "^1.9.1",
     "wbn": "0.0.5"
@@ -21,7 +22,12 @@
     "build:readme-indexes": "node scripts/build-readme-indexes.mjs",
     "build:versions": "node scripts/build-versions.mjs",
     "build:notes": "node scripts/build-notes.mjs",
+<<<<<<< HEAD
     "build:old": "npm run build:versions && npm run build-storybook",
+=======
+    "build": "npm run build:versions && npm run build-storybook",
+    "demo": "func() { one=$1; node std/js/${one}/demo.mjs; }; func",
+>>>>>>> main
     "serve": "live-server .",
     "github:actions": "act --secret-file .github/workflows/.secrets",
     "test:tester": "node scripts/run-tester-tests.mjs",
