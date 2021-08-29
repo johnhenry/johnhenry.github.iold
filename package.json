@@ -20,7 +20,7 @@
     "build:readme-indexes": "node scripts/build-readme-indexes.mjs",
     "build:versions": "node scripts/build-versions.mjs",
     "build:notes": "node scripts/build-notes.mjs",
-    "build": "npm run build:versions && npm run build-storybook",
+    "build": "",
     "demo": "func() { one=$1; node std/js/${one}/demo.mjs; }; func",
     "serve": "live-server .",
     "github:actions": "act --secret-file .github/workflows/.secrets",
