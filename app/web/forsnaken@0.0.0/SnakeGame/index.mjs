@@ -18,7 +18,7 @@ export default function* (
       break;
     }
     // check for collision between each snake's head and each apple
-    const digesting = new Set([]);
+    const digesting = new Set([]); // digesting snakes will not move this round
     for (const [head, apple] of collideArray(
       snakes.map(({ head }) => head),
       apples
@@ -40,7 +40,7 @@ export default function* (
         const index = apples.indexOf(apple);
         apples.splice(index, 1);
       }
-      // shanke screen based on snake direction
+      // shake screen based on snake direction
       digesting.add(snake);
       yield [
         new CustomEvent("score", {
