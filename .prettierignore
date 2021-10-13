@@ -1,5 +1,0 @@
-src/vendor/*
-.devcontainer/*
-
-# Ignoring due to unconventional javascript-in-css syntax
-src/index/js/js-background/demo.css
