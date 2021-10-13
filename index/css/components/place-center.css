@@ -1,0 +1,7 @@
+.place-center {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  max-width: 100%;
+  justify-content: center;
+}
