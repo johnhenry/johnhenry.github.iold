@@ -1,13 +1,12 @@
 {
-  "name": "@example/starter",
+  "name": "johnhenry.github.io",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build || exit 0",
-    "preview": "astro preview",
-    "test": "echo \"no test specified\" && exit 0"
+    "preview": "astro preview"
   },
   "devDependencies": {
     "astro": "^0.20.0"
