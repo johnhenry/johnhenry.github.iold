@@ -1,9 +1,5 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "liveServer.settings.port": 5501,
-  "deno.suggest.imports.hosts": {
-    "https://johnhenry.github.io": false
-  }
+  "editor.formatOnPaste": true
 }

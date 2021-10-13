@@ -1,0 +1,26 @@
+---
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/png;base64, iVBORw0KGgo=" />
+    <title>John Henry</title>
+    <style>
+      @import "/index/css/index.css";
+    </style>
+    <script type="module">
+      import "/index/js/index.mjs";
+    </script>
+  </head>
+  <body class="fullscreen-sections-with-header-and-footer">
+    <Header />
+    <slot />
+    <Footer />
+    <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
+  </body>
+</html>

@@ -1,4 +1,0 @@
-FROM flocker
-COPY . .
-RUN flocker bundle --dump . > bundle.crob
-CMD flocker route --path 8080,80 --corb bundle.corb

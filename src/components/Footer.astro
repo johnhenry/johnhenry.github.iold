@@ -1,0 +1,18 @@
+---
+const links = [{
+  name:"twitter",
+  href:"https://twitter.com/iamjohnhenry"
+},
+{
+  name:"github",
+  href:"https://github.com/johnhenry"
+}]
+---
+<footer>
+  <ul class="horizontal-menu">
+    {links.map(({name, href}) => (<li>
+      <a href="{href}" target="_blank">{name}</a>
+    </li>))}
+    <li><a href="#" target="_blank">© {new Date().getFullYear()} John Henry</a></li>
+  </ul>
+</footer>
