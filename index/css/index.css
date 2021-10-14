@@ -1,6 +1,6 @@
 @import "https://johnhenry.github.io/vendor/css/normalize.css@8.0.1/index.css";
-@import "https://johnhenry.github.io/std/css/universal-unstyled-links@0.0.0/index.css";
-@import "https://johnhenry.github.io/std/css/universal-box-sizing@0.0.0/index.css";
+@import "https://johnhenry.github.io/lib/css/universal-unstyled-links@0.0.0/index.css";
+@import "https://johnhenry.github.io/lib/css/universal-box-sizing@0.0.0/index.css";
 @import "./colors.css";
 @import "./colors.dark.css" screen and (prefers-color-scheme: dark);
 @import "./sizes.css";
