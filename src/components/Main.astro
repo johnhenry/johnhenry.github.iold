@@ -1,32 +1,16 @@
 ---
-import { TAG_MANAGER_ID, SITE_TITLE } from '../SETTINGS.mjs';
+import HeadElement from "./Head.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
-import GDPRRequest from './GDPRRequest.astro';
-import TagManagerHead from './TagManagerHead.astro';
-import TagManagerBody from './TagManagerBody.astro';
+const {links = []} = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {TAG_MANAGER_ID ? <TagManagerHead tmid="{TAG_MANAGER_ID}" /> : ''}
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:image/png;base64, iVBORw0KGgo=" />
-    <title>{SITE_TITLE}</title>
-    <style>
-      @import "/index/css/index.css";
-    </style>
-    <script type="module">
-      import "/index/js/index.mjs";
-    </script>
-  </head>
+  <HeadElement />
   <body class="fullscreen-sections-with-header-and-footer">
-    <Header />
+    <Header links={links} />
     <slot />
     <Footer />
-    {TAG_MANAGER_ID ? <GDPRRequest /> : ''}
     <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
-    {TAG_MANAGER_ID ? <TagManagerBody tmid="{TAG_MANAGER_ID}" /> : ''}
   </body>
 </html>

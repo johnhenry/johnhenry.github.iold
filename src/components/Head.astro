@@ -1,0 +1,19 @@
+---
+import TagManagerHead from './TagManagerHead.astro';
+import { TAG_MANAGER_ID, SITE_TITLE } from '../SETTINGS.mjs';
+const { title = SITE_TITLE } = Astro.props;
+---
+<head>
+  {TAG_MANAGER_ID ? <TagManagerHead tmid="{TAG_MANAGER_ID}" /> : ''}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/png;base64, iVBORw0KGgo=" />
+  <title>{title}</title>
+  <style>
+    @import "/index/css/index.css";
+  </style>
+  <script type="module">
+    import "/index/js/index.mjs";
+  </script>
+  <slot />
+</head>

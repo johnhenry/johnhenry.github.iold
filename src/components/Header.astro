@@ -1,8 +1,26 @@
+---
+const {links = []} = Astro.props;
+const list = [];
+for(const item of links ){
+  let name, href, target;
+  if(typeof item === "string"){
+    name = item
+    target = ""
+  }else{
+    // {name, href, target} = item;
+    name = item.name;
+    href = item.href;
+    target = item.target;
+  }
+  if(href === undefined){
+    href = `#${name.toLocaleLowerCase()}`;
+  }
+  list.push(<li><a href={href} target={target}>{name}</a></li>)
+}
+---
+
 <header>
   <span class="mouse-follower"></span>
   <h1><a href="/#main">john henry</a></h1>
-  <ul class="horizontal-menu">
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#projects">Projects</a></li>
-  </ul>
+  <ul class="horizontal-menu">{list}</ul>
 </header>
