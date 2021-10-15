@@ -33,7 +33,6 @@ let about = [
   </div>
 ];
 
-// const about = [];
 
 const projects = [
   {
@@ -67,7 +66,7 @@ const projects = [
     description:"Thoughts and Musings",
   },
 ];
-const links = ['About', 'Projects'];
+const links = ['About', 'Projects', {name:"Blog", url:"/blog/"}];
 
 const allPosts = Astro
 .fetchContent<MarkdownFrontmatter>('./blog/posts/*.md')
