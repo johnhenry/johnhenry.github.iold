@@ -1,45 +1,99 @@
+---
+import Logo from "../components/svg/jh/jh.astro";
+---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <style>
-      :root{
-          --background-1: #584b4f;
-  --background-2: #343233;
-  --background-3: #2c2a2b;
-  --background-4: #efeae1;
-  --background-5: #3d3a3a;
-
-  --text-1: #efeae1;
-  --text-2: #efdab9;
-  --text-3: #8e8373;
-  --text-4: #78b0a0;
-  --text-5: #ffd152;
-  --text-6: #574c4f;
-
-  --button-1: #ffd152;
-  --button-2: #61efcd;
-
-  --highlight-1: #d36e2d;
-  --highlight-2: #d36e2d;
-  --highlight-3: #dda031;
-  --highlight-4: #78b09f;
-  --highlight-5: #649cc8;
-
-  --border-1: #1a191a;
-
-  --lowlight-1: #5c8875;
-  --lowlight-2: #a55523;
-
-  --box-shadow: 0 20px 30px #00000080;
-
-  --text-padding: .5em 1em;
-  --button-border-radius: 5px;
-
-  --b-5: #0b51b7;
-      }
+      @import "https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css";
+      @import "https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css";
+      @import "/style/new/global.css";
     </style>
   </head>
   <body>
+      <header class="header">
+        <a href="/#" class="">
+        John Henry</a>
+        <ul class="nav-list">
+          <li><a class="" href="#me">Me</a></li>
+          <li><a class="" href="#projects">Projects</a></li>
+          <li><a class="" href="/blog">Blog</a></li>
+        </ul>
+      </header>
+      <section id="hero">
+        <main>
+          <Logo class="animated-logo" animationDirection="reverse" animationDuration="30s" animate animationTimingFunction="ease-in-out"></Logo>
+          <ul class="widget">
+            <li >
+            <a class="link link-untracked" href="/blog">BLOG</a>
+            </li>
+            <li>
+              <span>Latest Post</span>
+              <span>Title</span>
+              <a class="link" href="#">read more</a>
+              </li>
+            <li>
+              Tags
+              <span class="tags">
+                <a class="link-button link-button-tiny" href="/tag/t1"  title="t1">t1</a>
+                <a  class="link-button link-button-inverted link-button-tiny" href="/tag/tag 2" title="tag 2">tag 2</a>
+                <a class="link-button link-button-tiny" href="/tag/science" title="science">science</a>
+              </span>
+            </li>
+            <li class="abouts">
+              <a class="link-button" href="#me">Me ↓</a>
+              <a class="link-button link-button-inverted" href="#projects">My Projects ↓</a>
+            </li>
+          </ul>
+        </main>
+      </section>
+      <section id="me">
+        <span>Me</span>
+        <main class="cards-alt">
+          <div class="card-alt">
+            <span>icon</span>
+            <main>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the <a href="/nowhere">1960s</a> with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</main>
+          </div>
+          <div class="card-alt">
+            <span>icon</span>
+            <main>card content</main>
+          </div>
+          <div class="card-alt">
+            <span>icon</span>
+            <main>card content</main>
+          </div>
+        </main>
+      </section>
 
+      <section id="projects">
+        <span>Projects</span>
+        <main class="cards">
+          <div class="card">
+            <header>Bash Command Line tools</header>
+            <footer>Use <a class="link link-untracked" href="https://johnhenry.github.io/lib/bash">here</a>.</footer>
+          </div>
+
+          <div class="card" style="background-image: url('https://johnhenry.github.io/vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg');">
+            <header>Standard Library -- set of components for building applications.</header>
+            <footer>Use <a class="link link-untracked" href="https://johnhenry.github.io/lib">here</a>.</footer>
+          </div>
+
+         <div class="card" >
+            <header>Forsnaken -- Multiplayer snake game</header>
+            <footer>Play <a class="link link-untracked" href="https://johnhenry.github.io/forsnaken">here</a>.</footer>
+          </div>
+
+          <div class="card" style="">
+            <header>HTML Builder -- Build HTML with components</header>
+            <footer>Use <a class="link link-untracked" href="https://johnhenry.github.io/htmlbuilder">here</a>.</footer>
+          </div>
+
+          <div class="card">
+            <header>Blog -- Thoughs and musings.</header>
+            <footer>Read <a class="link link-untracked" href="https://johnhenry.github.io/blog">here</a>.</footer>          </div>
+        </main>
+      </section>
+      <footer class="footer">footer</footer>
   </body>
 </html>

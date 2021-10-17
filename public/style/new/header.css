@@ -1,0 +1,31 @@
+.header {
+  height: var(--header-height);
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background-color: var(--background-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.header > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+}
+
+.header > a > .logo {
+  width: 24px;
+  height: 24px;
+}
+
+.header > a > .logo path {
+  stroke: var(--background-1);
+  stroke-width: 5px;
+  fill: var(--text-2);
+}

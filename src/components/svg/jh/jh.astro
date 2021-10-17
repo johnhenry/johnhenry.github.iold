@@ -1,0 +1,28 @@
+---
+const {class:className, start=1, stop=-1,animate=false,animationDuration='30s', animationTimingFunction='linear', animationDelay='alternate', animationIterationCount='infinite', animationDirection='normal', image='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'} = Astro.props;
+
+const length = 268.5;// document.querySelector("svg path").getTotalLength()
+
+const randomToken = Math.floor(Math.random()*2**16);
+
+const style = `<style>
+  @keyframes dash${randomToken} {
+    from {
+      stroke-dashoffset: ${start*length};
+    }
+    to {
+      stroke-dashoffset: ${(stop*length)};
+    }
+  }
+  .path${randomToken} path  {
+    stroke-dasharray: ${length};
+    stroke-dashoffset: ${animate ? length : 0};
+    ${animate && `animation-name: dash${randomToken}; animation-duration:${animationDuration}; animation-timing-function:${animationTimingFunction}; animation-delay:${animationDelay}; animation-iteration-count:${animationIterationCount}; animation-direction:${animationDirection}`}
+  }
+</style>`;
+---
+{style}
+<svg class={`path${randomToken} ${className}`} width="67.733" height="67.733" version="1.1" viewBox="0 0 67.733 67.733" xmlns="http://www.w3.org/2000/svg">
+ <path d="m27.252 12.435v23.019a6.6146 6.6146 0 0 1-6.6146 6.6146 6.6146 6.6146 0 0 1-6.6146-6.6146h-13.229a19.844 19.844 0 0 0 19.844 19.844 19.844 19.844 0 0 0 19.192-14.817h13.881v14.817h13.229v-42.862h-13.229v14.817h-13.229v-14.817z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.0583"/>
+ 
+</svg>

@@ -1,0 +1,20 @@
+#projects .card {
+  border: 1px inset whitesmoke;
+  background-color: var(--background-3);
+  background-size: cover;
+  width: 256px;
+  height: 192px;
+}
+
+#projects .card header,
+#projects .card footer {
+  padding: 4px;
+  backdrop-filter: blur(2px);
+}
+
+#projects .card header {
+  background-image: linear-gradient(to bottom, var(--background-5), #00000000);
+}
+#projects .card footer {
+  background-image: linear-gradient(to top, var(--background-5), #00000000);
+}
