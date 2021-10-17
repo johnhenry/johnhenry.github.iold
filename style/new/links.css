@@ -1,0 +1,59 @@
+.link {
+  color: var(--text-5);
+}
+
+.link:hover {
+  color: var(--text-5-h);
+}
+
+.link:active {
+  color: var(--text-5-h);
+}
+
+.link:visited {
+  color: var(--text-4);
+}
+
+.link.link-untracked:visited {
+  color: var(--text-5);
+}
+
+.link-button {
+  display: inline-block;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: var(--text-5);
+  color: var(--text-6);
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.link-button:hover {
+  background-color: var(--text-5-h);
+}
+
+.link-button:active {
+  background-color: var(--text-5-h);
+}
+
+.link-button:visited {
+  color: var(--text-6);
+}
+
+.link-button.link-button-inverted {
+  background-color: var(--button-2);
+}
+
+.link-button.link-button-inverted:hover {
+  background-color: var(--button-2-h);
+}
+
+.link-button.link-button-inverted:active {
+  background-color: var(--button-2-h);
+}
+.link-button-tiny {
+  font-size: 0.7rem;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
