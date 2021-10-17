@@ -1,35 +1,32 @@
 ---
+import genRandomToken from "../../../utils/gen-random-token.mjs";
+import fractionalStops from "../../../utils/fractional-stops.mjs";
+
 const {class:className, start=-1, stop=1, animate=false, image='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg', ...ani} = Astro.props;
 
-const length = 268.5;// document.querySelector("svg path").getTotalLength()
+const length = 268.4;// document.querySelector("svg path").getTotalLength()
 
-const randomToken = Math.floor(Math.random()*2**16);
+const randomToken = genRandomToken('-');
 const animationEntries = [`animation-name: dash${randomToken};`, '\n']
 
-const animationEntryDefaults = {
-  ["animation-duration"]:'30s',
-  ["animation-timingFunction"]:'linear',
-  ["animation-delay"]:'alternate',
-  ["animation-iterationCount"]:'infinite',
-  ["animation-direction"]:'normal',
-  ["animation-fill-mode"]:'none'
-}
-;
 for (const [key, value] of Object.entries(ani)) {
   if(!key.startsWith('animation-')){
     continue;
   }
-  animationEntries.push(key, ':', value ?? animationEntryDefaults[key], ';', '\n');
+  animationEntries.push(key, ':', value, ';', '\n');
 }
+
+const stops = [1, 20];
+const percentages = [...fractionalStops(...stops)].map(x=>`${(x*100).toFixed(0)}%`);
+const offsets = [start, start, stop];
+const a = percentages.map((percentage, index)=>`${percentage} {
+      stroke-dashoffset: ${offsets[index]*length};
+    }
+`).join('\n');
 
 const style = `<style>
   @keyframes dash${randomToken} {
-    from {
-      stroke-dashoffset: ${start*length};
-    }
-    to {
-      stroke-dashoffset: ${(stop*length)};
-    }
+${a}
   }
   .path${randomToken} path  {
     stroke-dasharray: ${length};
