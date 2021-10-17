@@ -35,6 +35,7 @@
   /* box-shadow: 5px 5px 5px #00000080; */
   transition: background-color 0.5s ease-in;
   gap: 4px;
+  cursor: pointer;
 }
 .widget li:hover {
   background-color: var(--background-1);

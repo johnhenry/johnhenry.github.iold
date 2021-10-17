@@ -1,9 +1,26 @@
 ---
-const {class:className, start=-1, stop=1,animate=false,animationDuration='30s', animationTimingFunction='linear', animationDelay='alternate', animationIterationCount='infinite', animationDirection='normal', image='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'} = Astro.props;
+const {class:className, start=-1, stop=1, animate=false, image='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg', ...ani} = Astro.props;
 
 const length = 268.5;// document.querySelector("svg path").getTotalLength()
 
 const randomToken = Math.floor(Math.random()*2**16);
+const animationEntries = [`animation-name: dash${randomToken};`, '\n']
+
+const animationEntryDefaults = {
+  ["animation-duration"]:'30s',
+  ["animation-timingFunction"]:'linear',
+  ["animation-delay"]:'alternate',
+  ["animation-iterationCount"]:'infinite',
+  ["animation-direction"]:'normal',
+  ["animation-fill-mode"]:'none'
+}
+;
+for (const [key, value] of Object.entries(ani)) {
+  if(!key.startsWith('animation-')){
+    continue;
+  }
+  animationEntries.push(key, ':', value ?? animationEntryDefaults[key], ';', '\n');
+}
 
 const style = `<style>
   @keyframes dash${randomToken} {
@@ -17,9 +34,10 @@ const style = `<style>
   .path${randomToken} path  {
     stroke-dasharray: ${length};
     stroke-dashoffset: ${animate ? length : 0};
-    ${animate && `animation-name: dash${randomToken}; animation-duration:${animationDuration}; animation-timing-function:${animationTimingFunction}; animation-delay:${animationDelay}; animation-iteration-count:${animationIterationCount}; animation-direction:${animationDirection}`}
+    ${animate && animationEntries.join('')}
   }
 </style>`;
+
 ---
 {style}
 <svg class={`path${randomToken} ${className}`} width="67.733" height="67.733" version="1.1" viewBox="0 0 67.733 67.733" xmlns="http://www.w3.org/2000/svg">
