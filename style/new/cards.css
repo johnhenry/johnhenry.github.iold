@@ -28,18 +28,26 @@
   gap: 16px;
 }
 
-@media (orientation: landscape) {
-  .cards-alt {
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: max-content;
-  }
-}
-
 .card-alt {
   display: flex;
   align-self: start;
   grid-template-columns: 64px auto;
 }
+
+.card-alt:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
 .card-alt > *:last-child {
   flex: 1 1 auto;
+}
+
+@media (orientation: landscape) {
+  .cards-alt {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: max-content;
+  }
+  .card-alt:nth-child(2n) {
+    flex-direction: row;
+  }
 }
