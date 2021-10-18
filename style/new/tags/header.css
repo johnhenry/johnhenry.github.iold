@@ -1,4 +1,4 @@
-.header {
+body > header {
   height: var(--header-height);
   width: 100vw;
   position: fixed;
@@ -11,21 +11,23 @@
   padding-right: 16px;
 }
 
-.header > a {
+body > header a {
+  color: var(--text-1);
+}
+
+body > header a:visited {
+  color: var(--text-1);
+}
+
+body > header a:hover,
+body > header a:visited:hover {
+  color: var(--text-5-h);
+}
+
+body > header > a {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   font-size: 1.2rem;
-}
-
-.header > a > .logo {
-  width: 24px;
-  height: 24px;
-}
-
-.header > a > .logo path {
-  stroke: var(--background-1);
-  stroke-width: 5px;
-  fill: var(--text-2);
 }

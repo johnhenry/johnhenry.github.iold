@@ -1,0 +1,48 @@
+#me > main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  gap: 16px;
+}
+
+@media (orientation: landscape) {
+  #me > main {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: max-content;
+  }
+}
+
+#me div {
+  flex-direction: column;
+  align-self: start;
+  min-height: unset;
+  width: unset;
+  grid-template-columns: 64px auto;
+}
+
+#me div > *:last-child {
+  flex: 1 1 auto;
+}
+
+@media (orientation: landscape) {
+  #me div {
+    flex-direction: row;
+  }
+  #me div:nth-child(2n) {
+    flex-direction: row-reverse;
+  }
+}
+
+#me div > span {
+  padding: 8px;
+}
+
+#me div > span > img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
