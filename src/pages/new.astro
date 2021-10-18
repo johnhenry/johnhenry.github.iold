@@ -3,7 +3,7 @@ import Logo from "../components/svg/jh/jh.astro";
 import SiteHead from "../components/new/SiteHead.astro";
 import sortPosts from "../utils/sort-posts.mjs";
 import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../SETTINGS.mjs";
-import projects from "./projects.mjs";
+import projects from "../projects.mjs";
 const { latest=undefined, tags=[] } = sortPosts(Astro
 .fetchContent('./blog/posts/*.md'));
 const tagArray = [...tags];
