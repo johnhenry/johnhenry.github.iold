@@ -24,6 +24,7 @@ jobs:
         run: npm run build
 
       - name: ID 🔍
+        run: touch dist/hash.txt
         run: echo $(git rev-parse HEAD) > dist/hash.txt
 
       - name: Deploy 🚀
