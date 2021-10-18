@@ -4,7 +4,12 @@
   flex-direction: column;
   gap: 2px;
   padding: 0;
-  width: 256px;
+  width: 75vw;
+}
+@media screen and (orientation: landscape) {
+  .widget {
+    width: 30vw;
+  }
 }
 
 .widget li:first-child {
