@@ -22,11 +22,11 @@ intervals:
           ≈80% between 1 and end
       */
 
-const {class:className, frac="1", stops="[0, 0]", intervals="[1]", animate=false, image='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg', ...animationProperties} = Astro.props;
+const {class:className, frac="1", stops="[0, 0]", intervals="[1]", animate=false, image='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg', ...properties} = Astro.props;
 const length = 268.402 * Number(frac);// document.querySelector("svg path").getTotalLength()
 const animationName = genRandomToken('dash-');
 const animationEntries = [`animation-name: ${animationName};`]
-for (const [key, value] of Object.entries(animationProperties)) {
+for (const [key, value] of Object.entries(properties)) {
   if(!key.startsWith('animation-')){
     continue;
   }
@@ -40,5 +40,5 @@ const style = `<style>@keyframes ${animationName} {${frames}}</style>`;
 ---
 {animate===true && style}
 <svg class={`${className}`} width="67.733" height="67.733" version="1.1" viewBox="0 0 67.733 67.733" xmlns="http://www.w3.org/2000/svg">
- <path d="m27.252 12.435v23.019a6.6146 6.6146 0 0 1-6.6146 6.6146 6.6146 6.6146 0 0 1-6.6146-6.6146h-13.229a19.844 19.844 0 0 0 19.844 19.844 19.844 19.844 0 0 0 19.192-14.817h13.881v14.817h13.229v-42.862h-13.229v14.817h-13.229v-14.817z" fill="none" stroke="#000" stroke-width="1" stroke-dasharray={length} style={animate===true && animationEntries.join('')} />
+ <path class={`${properties['path-class']}`}  d="m27.252 12.435v23.019a6.6146 6.6146 0 0 1-6.6146 6.6146 6.6146 6.6146 0 0 1-6.6146-6.6146h-13.229a19.844 19.844 0 0 0 19.844 19.844 19.844 19.844 0 0 0 19.192-14.817h13.881v14.817h13.229v-42.862h-13.229v14.817h-13.229v-14.817z" fill="none" stroke="#000" stroke-width="1" stroke-dasharray={length} style={animate===true && animationEntries.join('')} />
 </svg>

@@ -2,7 +2,8 @@ a {
   color: var(--text-5);
 }
 
-a:hover {
+a:hover,
+a:visited:hover {
   color: var(--text-5-h);
 }
 
