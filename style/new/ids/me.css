@@ -1,3 +1,7 @@
+#me main {
+  gap: 16px;
+}
+
 #me > main {
   display: grid;
   grid-template-columns: 1fr;
@@ -6,13 +10,12 @@
   justify-content: center;
   padding-left: 20%;
   padding-right: 20%;
-  gap: 16px;
 }
 
 @media (orientation: landscape) {
   #me > main {
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: max-content;
+    grid-auto-rows: initial;
   }
 }
 
@@ -22,6 +25,10 @@
   min-height: unset;
   width: unset;
   grid-template-columns: 64px auto;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  width: 75vw;
 }
 
 #me div > *:last-child {
@@ -31,10 +38,28 @@
 @media (orientation: landscape) {
   #me div {
     flex-direction: row;
+    width: unset;
   }
   #me div:nth-child(2n) {
     flex-direction: row-reverse;
   }
+}
+
+#me div span img {
+  transition: filter 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+#me div:nth-child(2n):hover span img {
+  filter: sepia(100);
+}
+
+#me div:nth-child(3n):hover span img {
+  filter: invert(100%);
+}
+
+#me div:nth-child(4n):hover span img {
+  filter: opacity(50%) blur(1px);
 }
 
 #me div > span {
@@ -44,5 +69,9 @@
 #me div > span > img {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+}
+
+#me div main {
+  padding: 16px;
+  border-radius: 8px;
 }

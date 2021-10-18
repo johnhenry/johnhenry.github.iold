@@ -7,17 +7,9 @@ div {
 }
 div main {
   flex: 1 1 auto;
-}
-
-/* div.alt {
   display: flex;
-  align-self: start;
-  min-height: unset;
-  width: unset;
-  grid-template-columns: 64px auto;
-}
-div.alt main {
-  /* flex: unset; */
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 div.alt:nth-child(2n) {
@@ -32,4 +24,4 @@ div.alt > *:last-child {
   div.alt:nth-child(2n) {
     flex-direction: row;
   }
-} */
+}

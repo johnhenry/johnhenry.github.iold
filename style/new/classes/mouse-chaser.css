@@ -1,10 +1,4 @@
-/*
-requires js imports:
-  - https://johnhenry.github.io/lib/js/css-variables-mouse/0.0.0/index.mjs
-  - https://johnhenry.github.io/lib/js/css-variables-scroll/0.0.0/index.mjs
-*/
 .mouse-chaser {
-  text-shadow: 0px 0px 2px #ce5937;
   --mouse-z: 0;
   --font-size: 12px;
   position: absolute;

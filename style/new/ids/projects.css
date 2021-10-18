@@ -9,7 +9,7 @@
 
 #projects div {
   border: 2px solid var(--text-1);
-  background-color: var(--background-3);
+  /* background-color: var(--background-3); */
   background-size: cover;
   width: 256px;
   height: 192px;

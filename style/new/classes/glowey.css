@@ -1,0 +1,23 @@
+.glowey-fill-container > *,
+.glowey-fill {
+  transition: fill 1.5s ease-in-out;
+  fill: var(--background-5);
+  cursor: pointer;
+}
+.glowey-fill-container > *:hover,
+.glowey-fill:hover {
+  transition: fill 1.5s ease-in-out;
+  fill: var(--background-1);
+}
+
+.glowey-background-container > *,
+.glowey-background {
+  transition: background-color 1s ease-in-out;
+  background-color: var(--background-5);
+  cursor: pointer;
+}
+.glowey-background-container > *:hover,
+.glowey-background:hover {
+  transition: background-color 1.5s ease-in-out;
+  background-color: var(--background-1);
+}
