@@ -1,5 +1,6 @@
 a {
   color: var(--text-5);
+  transition: color 1s ease-in-out;
 }
 
 a:hover,
@@ -14,8 +15,51 @@ a:active {
 a:visited {
   color: var(--text-4);
 }
+a.link-contents {
+  display: contents;
+}
 
 a.link-untracked:visited {
+  color: var(--text-5);
+}
+
+.link-hidden-container > a,
+a.link-hidden {
+  color: inherit;
+}
+
+.link-hidden-container > a,
+a.link-hidden:hover {
+  color: inherit;
+}
+
+.link-hidden-container > a,
+a.link-hidden:active {
+  color: inherit;
+}
+
+.link-hidden-container > a,
+a.link-hidden:visited {
+  color: inherit;
+}
+
+.link-surprise-container > a,
+a.link-surprise {
+  color: inherit;
+}
+
+.link-surprise-container > a:visited,
+a.link-surprise:visited {
+  color: inherit;
+}
+
+.link-surprise-container > a:hover,
+a.link-surprise:hover {
+  color: var(--text-5);
+}
+
+.link-surprise-container > a,
+a.link-surprise:active {
   color: var(--text-5);
 }
 
@@ -57,4 +101,8 @@ a.button-tiny {
   font-size: 0.6rem;
   padding: 4px;
   border-radius: 2px;
+}
+
+a {
+  transition: color 1s ease-in-out;
 }
