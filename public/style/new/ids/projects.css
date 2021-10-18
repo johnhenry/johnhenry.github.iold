@@ -1,4 +1,13 @@
-#projects .card {
+#projects > main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 16px;
+}
+
+#projects div {
   border: 2px solid var(--text-1);
   background-color: var(--background-3);
   background-size: cover;
@@ -6,15 +15,15 @@
   height: 192px;
 }
 
-#projects .card header,
-#projects .card footer {
+#projects div header,
+#projects div footer {
   padding: 4px;
   backdrop-filter: blur(2px);
 }
 
-#projects .card header {
+#projects div header {
   background-image: linear-gradient(to bottom, var(--background-5), #00000000);
 }
-#projects .card footer {
+#projects div footer {
   background-image: linear-gradient(to top, var(--background-5), #00000000);
 }

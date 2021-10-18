@@ -7,6 +7,7 @@ author: "John"
 heroImage: "/vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg"
 alt: "Astro"
 layout: "../../../components/BlogMain.astro"
+tags: ["programming"]
 ---
 
 _Originally Published: https://medium.com/@iamjohnhenry/browsers-servers-and-apis-2f7b10523f39_

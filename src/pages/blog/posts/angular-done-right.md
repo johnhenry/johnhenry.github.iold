@@ -6,6 +6,7 @@ author: "John"
 heroImage: "/vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg"
 alt: "Astro"
 layout: "../../../components/BlogMain.astro"
+tags: ["programming"]
 ---
 
 _Originally Published: https://medium.com/@iamjohnhenry/angular-done-right-part-1-binding-and-directives-6112a43aa1dc_

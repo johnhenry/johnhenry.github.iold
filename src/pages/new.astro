@@ -1,5 +1,15 @@
 ---
 import Logo from "../components/svg/jh/jh.astro";
+import sortPosts from "../utils/sort-posts.mjs";
+
+const {latest, tags} = sortPosts(Astro
+.fetchContent('./blog/posts/*.md'));
+
+const pageLinks = [
+  {url:'me', text:'Me'},
+  {url:'projects', text:'Projects'}
+]
+
 ---
 
 <!DOCTYPE html>
@@ -9,21 +19,29 @@ import Logo from "../components/svg/jh/jh.astro";
     <style>
       @import "https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css";
       @import "https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css";
-      @import "/style/new/global.css";
+      @import "/style/new/index.css";
     </style>
   </head>
   <body>
-      <header class="header">
-        <a href="/#" class="">John Henry</a>
+      <header>
+        <a href="/#" >John Henry</a>
         <ul class="nav-list">
-          <li><a class="" href="#me">Me</a></li>
-          <li><a class="" href="#projects">Projects</a></li>
-          <li><a class="" href="/blog">Blog</a></li>
+          {
+            pageLinks.map(({url, text}) => (
+              <li>
+                <a href={`#${url}`}>{text}</a>
+              </li>
+            ))
+          }
+          <li><a href="/blog">Blog</a></li>
         </ul>
       </header>
       <section id="hero">
         <main>
-          <Logo class="animated-logo" animate
+          <Logo class="animated-logo"
+            stops="[-1, -1, 0, 0, 1]"
+            intervals="[1, 2, 3, 2]"
+            animate
             animation-duration="30s"
             animation-iteration-count="infinite"
             animation-timing-function="linear" ></Logo>
@@ -32,71 +50,85 @@ import Logo from "../components/svg/jh/jh.astro";
             <a class="link link-untracked" href="/blog">BLOG</a>
             </li>
             <li>
-              <span>Latest Post</span>
-              <span>Title</span>
-              <a class="link" href="#">read more</a>
-              </li>
+                <main>
+                  <p>
+                    <a class="link link-untracked" href="{latest.url}">Latest: {latest.title}</a>
+                  </p>
+                  <p>{latest.description}</p>
+                </main>
+                <footer>
+                  <a class="link" href="{latest.url}">read more</a>
+                </footer>
+            </li>
             <li>
               Tags
-              <span class="tags">
-                <a class="link-button link-button-tiny" href="/tag/t1"  title="t1">t1</a>
-                <a  class="link-button link-button-inverted link-button-tiny" href="/tag/tag 2" title="tag 2">tag 2</a>
-                <a class="link-button link-button-tiny" href="/tag/science" title="science">science</a>
+              <span id="tags">
+              {[...tags].map((tag, index) =><a class={`button button-tiny ${index%2 && 'button-inverted '}`} href={`/tag/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
               </span>
             </li>
-            <li class="abouts">
-              <a class="link-button" href="#me">Me ↓</a>
-              <a class="link-button link-button-inverted" href="#projects">My Projects ↓</a>
+            <li>
+              {
+                pageLinks.map(({url, text}, index) => (
+                    <a class={`button ${index%2 && 'button-inverted '}`} href={`#${url}`}>{text} ↓</a>
+                ))
+              }
             </li>
           </ul>
         </main>
       </section>
       <section id="me">
         <span>Me</span>
-        <main class="cards-alt">
-          <div class="card-alt">
-            <span>icon</span>
-            <main>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the <a href="/nowhere">1960s</a> with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</main>
+        <main>
+          <div class="alt">
+            <span><img src="/image/iajh.png" /></span>
+            <main>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo aliquam congue. Proin et odio vel dui vestibulum sagittis. In hac habitasse platea dictumst. Morbi scelerisque ligula dui, a lobortis ipsum volutpat id. Aliquam euismod pulvinar dolor, ac pellentesque ligula molestie quis. Nullam aliquam est ac rhoncus mattis. Aenean in augue in tortor molestie gravida id vitae enim. Donec aliquam at mauris efficitur interdum.</main>
           </div>
-          <div class="card-alt">
-            <span>icon</span>
-            <main>card content</main>
+          <div class="alt">
+            <span><img src="/image/iajh.png" /></span>
+              <main>Morbi nisl est, interdum et magna quis, bibendum scelerisque neque. Sed ac consectetur lacus. Vestibulum sollicitudin quam ut augue efficitur porta. Aliquam convallis rutrum libero non hendrerit. Integer auctor odio nulla, eget maximus augue ornare non. Nulla urna est, vulputate a tempus scelerisque, facilisis ut enim. Curabitur convallis eros velit, vel dapibus massa sagittis finibus.</main>
           </div>
-          <div class="card-alt">
-            <span>icon</span>
-            <main>card content</main>
+          <div class="alt">
+            <span><img src="/image/iajh.png" /></span>
+            <main>Aliquam leo erat, hendrerit vel quam vel, faucibus gravida sem. Proin nec erat vitae urna consectetur volutpat. Vestibulum et est accumsan, ornare quam at, vestibulum neque. Donec enim diam, tristique vitae magna et, ultricies scelerisque libero. Pellentesque in iaculis tortor, in cursus urna. Donec vitae dolor faucibus, lobortis enim id, <a href="https://www.lipsum.com/feed/html" target="_blank">tristique sem</a>. Quisque sollicitudin purus enim, sed gravida odio dictum ac. Fusce gravida faucibus convallis. Curabitur imperdiet velit quis ante tincidunt mattis. Curabitur et mauris enim. Duis consequat magna lorem, commodo vulputate nibh tincidunt ut. Vestibulum dapibus interdum ligula, et sagittis sem rutrum quis. Duis metus purus, pharetra id diam vulputate, fringilla lobortis tellus. Praesent ultrices pulvinar velit sed hendrerit.</main>
+          </div>
+          <div class="alt">
+            <span><img src="/image/iajh.png" /></span>
+            <main>Sed vehicula ultricies lectus, vitae condimentum dolor gravida eu. Praesent in est sit amet tortor euismod molestie. Aliquam vel risus efficitur, vulputate urna id, ultricies ante. Sed a magna mauris. Nullam gravida neque quis nunc varius, vitae commodo odio aliquet. Suspendisse convallis velit nec tempor consectetur. Sed tempus efficitur lectus id sagittis. Quisque leo ligula, placerat vehicula arcu vel, pharetra porttitor nisi. Aliquam erat volutpat. Nullam volutpat mi et velit consectetur sodales.</main>
           </div>
         </main>
       </section>
 
       <section id="projects">
         <span>Projects</span>
-        <main class="cards">
-          <div class="card">
+        <main>
+
+          <div>
             <header>Bash Command Line tools</header>
             <footer>Use <a class="link link-untracked" href="https://johnhenry.github.io/lib/bash">here</a>.</footer>
           </div>
 
-          <div class="card" style="background-image: url('https://johnhenry.github.io/vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg');">
+          <div  style="background-image: url('https://johnhenry.github.io/vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg');">
             <header>Standard Library -- set of components for building applications.</header>
             <footer>Use <a class="link link-untracked" href="https://johnhenry.github.io/lib">here</a>.</footer>
           </div>
 
-         <div class="card" >
+          <div>
             <header>Forsnaken -- Multiplayer snake game</header>
             <footer>Play <a class="link link-untracked" href="https://johnhenry.github.io/forsnaken">here</a>.</footer>
           </div>
 
-          <div class="card" style="">
+          <div>
             <header>HTML Builder -- Build HTML with components</header>
             <footer>Use <a class="link link-untracked" href="https://johnhenry.github.io/htmlbuilder">here</a>.</footer>
           </div>
 
-          <div class="card">
+          <div>
             <header>Blog -- Thoughs and musings.</header>
-            <footer>Read <a class="link link-untracked" href="https://johnhenry.github.io/blog">here</a>.</footer>          </div>
+            <footer>Read <a class="link link-untracked" href="https://johnhenry.github.io/blog">here</a>.</footer>
+          </div>
         </main>
+
       </section>
-      <footer class="footer"></footer>
+      <footer></footer>
   </body>
 </html>

@@ -5,6 +5,7 @@ export default (posts) => {
         t.add(tag);
       }
     }
+    return t;
   }, new Set());
 
   const sorted = posts.sort(

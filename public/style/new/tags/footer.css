@@ -1,4 +1,4 @@
-.footer {
+body > footer {
   height: var(--footer-height);
   width: 100vw;
   position: fixed;
