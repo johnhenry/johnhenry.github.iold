@@ -1,13 +1,14 @@
 .glowey-fill-container > *,
 .glowey-fill {
-  transition: fill 1.5s ease-in-out;
-  fill: var(--background-5);
+  fill-opacity: 0.0625;
+  fill: var(--text-5);
+  transition: fill-opacity 0.5s ease-in-out;
   cursor: pointer;
 }
 .glowey-fill-container > *:hover,
 .glowey-fill:hover {
-  transition: fill 1.5s ease-in-out;
-  fill: var(--background-1);
+  transition: fill-opacity 2s ease-in-out;
+  fill-opacity: 0.5;
 }
 
 .glowey-background-container > *,
