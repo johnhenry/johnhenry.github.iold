@@ -1,0 +1,25 @@
+---
+import SEO from './SEO.astro';
+const {title, keywords, description, author, canonical} = Astro.props;
+---
+  <head>
+		<SEO
+			title={title}
+			description={description}
+      canonical={canonical}
+		/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content={keywords}>
+    <meta name="author" content={author}>
+    <style>
+      @import "https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css";
+      @import "https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css";
+      @import "/style/new/index.css";
+    </style>
+    <link rel="icon" href="/image/iajh.png" type="image/x-icon" />
+    <script type="module">
+      import "https://johnhenry.github.io/lib/js/css-variables-mouse/0.0.0/index.mjs";
+      import "https://johnhenry.github.io/lib/js/css-variables-scroll/0.0.0/index.mjs"
+    </script>
+  </head>

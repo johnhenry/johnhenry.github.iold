@@ -1,7 +1,8 @@
 ---
 import Logo from "../components/svg/jh/jh.astro";
+import SiteHead from "../components/new/SiteHead.astro";
 import sortPosts from "../utils/sort-posts.mjs";
-import {SITE_TITLE, SITE_KEYWORDS} from "../SETTINGS.mjs";
+import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../SETTINGS.mjs";
 import projects from "./projects.mjs";
 const { latest=undefined, tags=[] } = sortPosts(Astro
 .fetchContent('./blog/posts/*.md'));
@@ -11,29 +12,9 @@ const pageLinks = [
   {url:'projects', text:'Projects'}
 ];
 ---
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="description" content="John Henry'">
-    <meta name="keywords" content={SITE_KEYWORDS.concat(tagArray).join(',')}>
-    <meta name="author" content="John Henry">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      @import "https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css";
-      @import "https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css";
-      @import "/style/new/index.css";
-    </style>
-    <link rel="icon" href="/image/iajh.png" type="image/x-icon" />
-    <script type="module">
-      import "https://johnhenry.github.io/lib/js/css-variables-mouse/0.0.0/index.mjs";
-      import "https://johnhenry.github.io/lib/js/css-variables-scroll/0.0.0/index.mjs"
-    </script>
-    <title>{SITE_TITLE}</title>
-  </head>
+  <SiteHead title={SITE_TITLE} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS.concat(tagArray).join(',')} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL}></SiteHead>
   <body>
       <section id="hero">
         <main>
@@ -107,7 +88,7 @@ const pageLinks = [
 
       <section id="projects">
         <span>Projects</span>
-        <main class="glowey-background-container link-surprise-container">
+        <main class="glowey-background-container link-hidden-container">
           {projects.map(({title, description, href, image}) => (
             <a href={href} >
               <div style={image ? `background-image: url('${image}');`: ''}>
@@ -133,7 +114,8 @@ const pageLinks = [
         </ul>
       </header>
       <footer>
-        <a href="#">© {new Date().getFullYear()} John Henry</a>
+        <a href="#">© {new Date().getFullYear()}  {` ${SITE_AUTHOR}`}</a>
+        <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
       </footer>
       <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
   </body>

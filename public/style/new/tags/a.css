@@ -23,18 +23,22 @@ a.link-untracked:visited {
   color: var(--text-5);
 }
 
+.link-hidden-container > a,
 a.link-hidden {
   color: inherit;
 }
 
+.link-hidden-container > a,
 a.link-hidden:hover {
   color: inherit;
 }
 
+.link-hidden-container > a,
 a.link-hidden:active {
   color: inherit;
 }
 
+.link-hidden-container > a,
 a.link-hidden:visited {
   color: inherit;
 }
