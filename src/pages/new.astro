@@ -1,9 +1,12 @@
 ---
 import Logo from "../components/svg/jh/jh.astro";
 import sortPosts from "../utils/sort-posts.mjs";
+import {SITE_TITLE, SITE_KEYWORDS} from "../SETTINGS.mjs";
 
 const {latest, tags} = sortPosts(Astro
 .fetchContent('./blog/posts/*.md'));
+
+const tagArray = [...tags];
 
 const pageLinks = [
   {url:'me', text:'Me'},
@@ -14,16 +17,24 @@ const pageLinks = [
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module">
-      import "https://johnhenry.github.io/lib/js/css-variables-mouse/0.0.0/index.mjs";
-      import "https://johnhenry.github.io/lib/js/css-variables-scroll/0.0.0/index.mjs"
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="description" content="John Henry'">
+    <meta name="keywords" content={SITE_KEYWORDS.concat(tagArray).join(',')}>
+    <meta name="author" content="John Henry">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       @import "https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css";
       @import "https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css";
       @import "/style/new/index.css";
     </style>
+    <link rel="icon" href="/image/iajh.png" type="image/x-icon" />
+    <script type="module">
+      import "https://johnhenry.github.io/lib/js/css-variables-mouse/0.0.0/index.mjs";
+      import "https://johnhenry.github.io/lib/js/css-variables-scroll/0.0.0/index.mjs"
+    </script>
+    <title>{SITE_TITLE}</title>
   </head>
   <body>
       <section id="hero">
@@ -53,7 +64,7 @@ const pageLinks = [
             <li>
               Tags
               <span id="tags">
-              {[...tags].map((tag, index) =><a class={`button button-tiny ${index%2 && 'button-inverted '}`} href={`/tag/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
+              {tagArray.map((tag, index) =><a class={`button button-tiny ${index%2 && 'button-inverted '}`} href={`/tag/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
               </span>
             </li>
             <li>
@@ -70,7 +81,7 @@ const pageLinks = [
         <span>Me</span>
         <main>
           <div class="alt">
-            <span><img src="/image/iajh.png" /></span>
+            <span><img src="/image/iajh.png" alt="logo"/></span>
             <main class="glowey-background">
               <p>Hi! My name is John.</p>
               <p>I'm a mathmetician, a scientist, and an engineer (yes, those are different things!). </p>
@@ -78,23 +89,23 @@ const pageLinks = [
             </main>
           </div>
           <div class="alt">
-            <span><img src="/image/iajh.png" /></span>
+            <span><img src="/image/iajh.png"  alt="logo"/></span>
               <main class="glowey-background">Morbi nisl est, interdum et magna quis, bibendum scelerisque neque. Sed ac consectetur lacus. Vestibulum sollicitudin quam ut augue efficitur porta. Aliquam convallis rutrum libero non hendrerit. Integer auctor odio nulla, eget maximus augue ornare non. Nulla urna est, vulputate a tempus scelerisque, facilisis ut enim. Curabitur convallis eros velit, vel dapibus massa sagittis finibus.</main>
           </div>
           <div class="alt">
-            <span><img src="/image/iajh.png" /></span>
+            <span><img src="/image/iajh.png" alt="logo"/></span>
             <main class="glowey-background">
               <p>Email me at
                 <a href="mailto:john@iamjohnhenry.com"
-                target="_blank">here</a>.
+                target="_blank" rel="noreferrer">here</a>.
               </p>
               <p>
                 Follow me on twitter at
-                <a href="https://twitter.com/iamjohnhenry" target="_blank">here</a>.
+                <a href="https://twitter.com/iamjohnhenry" target="_blank" rel="noreferrer">here</a>.
               </p>
               <p>
                 Checkout my github account at
-                <a href="https://github.com/johnhenry" target="_blank">here</a>.
+                <a href="https://github.com/johnhenry" target="_blank" rel="noreferrer">here</a>.
               </p>
             </main>
           </div>
@@ -133,7 +144,7 @@ const pageLinks = [
 
       </section>
       <header>
-        <a href="/#" ><img src="/image/iajh.png" width="16" height="16" />John Henry</a>
+        <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />John Henry</a>
         <ul class="nav-list">
           {
             pageLinks.map(({url, text}) => (
@@ -145,7 +156,9 @@ const pageLinks = [
           <li><a href="/blog">Blog</a></li>
         </ul>
       </header>
-      <footer></footer>
+      <footer>
+        <a href="#">© {new Date().getFullYear()} John Henry</a>
+      </footer>
       <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
   </body>
 </html>
