@@ -28,17 +28,17 @@ a.link-hidden {
   color: inherit;
 }
 
-.link-hidden-container > a,
+.link-hidden-container > a:hover,
 a.link-hidden:hover {
   color: inherit;
 }
 
-.link-hidden-container > a,
+.link-hidden-container > a:active,
 a.link-hidden:active {
   color: inherit;
 }
 
-.link-hidden-container > a,
+.link-hidden-container > a:visited,
 a.link-hidden:visited {
   color: inherit;
 }
@@ -58,7 +58,7 @@ a.link-surprise:hover {
   color: var(--text-5);
 }
 
-.link-surprise-container > a,
+.link-surprise-container > a:active,
 a.link-surprise:active {
   color: var(--text-5);
 }

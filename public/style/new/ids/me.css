@@ -50,16 +50,8 @@
   cursor: pointer;
 }
 
-#me div:nth-child(2n):hover span img {
+#me div:hover span img {
   filter: sepia(100);
-}
-
-#me div:nth-child(3n):hover span img {
-  filter: invert(100%);
-}
-
-#me div:nth-child(4n):hover span img {
-  filter: opacity(50%) blur(1px);
 }
 
 #me div > span {

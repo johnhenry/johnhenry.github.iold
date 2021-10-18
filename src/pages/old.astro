@@ -1,0 +1,119 @@
+---
+import Main from "../components/Main.astro";
+import BlogPostPreview from "../components/BlogPostPreview.astro";
+let about = [
+  <div class="place-center">
+    <p title='"I&apos;m not an rapper."'>
+      "Be the be the <i>Supa Hot Fire</i> you wish to see in the world."
+      <br />
+      -- John Henry
+    </p>
+  </div>,
+  <div class="place-center">
+    <img
+      src="/vendor/img/www.pexels.com/roberto-shumski/scenic-photo-of-lake-surrounded-by-trees-300.jpg"
+    />
+  </div>,
+  <div class="place-center">
+    <img
+      src="/vendor/img/www.pexels.com/roberto-shumski/scenic-photo-of-lake-surrounded-by-trees-300.jpg"
+    />
+    <p title='"I&apos;m not an rapper."'>
+      "Be the be the <i>Supa Hot Fire</i> you wish to see in the world."
+      <br />
+      -- John Henry
+    </p>
+  </div>,
+  <div class="place-center">
+    <p title='"I&apos;m not an rapper."'>
+      "Be the be the <i>Supa Hot Fire</i> you wish to see in the world."
+      <br />
+      -- John Henry
+    </p>
+  </div>
+];
+
+const projects = [
+  {
+    url:"https://johnhenry.github.io/lib/bash",
+    title:"Command Line Tools",
+    img:"/vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg",
+    description:"Collection of cli tools",
+  },
+  {
+    url:"https://johnhenry.github.io/forsnaken/",
+    title:"Forsnaken",
+    img:"/vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg",
+    description:"A snake game built using web technologies.",
+  },
+  // {
+  //   url:"https://johnhenry.github.io/forsnakenbuilder/",
+  //   title:"Forsnaken Builder",
+  //   img:"https://johnhenry.github.io/forsnakenbuilder/screenshot.png",
+  //   description:"Build a snake game or other application using web technologies.",
+  // },
+  {
+    url:"https://johnhenry.github.io/lib/",
+    title:"Standard Library",
+    img:"https://johnhenry.github.io/forsnakenbuilder/screenshot.png",
+    description:"Libraries and components",
+  },
+  {
+    url:"/blog/",
+    title:"Blog",
+    img:"https://johnhenry.github.io/forsnakenbuilder/screenshot.png",
+    description:"Thoughts and Musings",
+  },
+];
+const links = ['About', 'Projects', {name:"Blog", url:"/blog/"}];
+
+const allPosts = Astro
+.fetchContent<MarkdownFrontmatter>('./blog/posts/*.md')
+.sort((a, b) =>
+  new Date(b.lastUpdate || b.publishDate).valueOf()
+  - new Date(a.lastUpdate || a.publishDate).valueOf()
+);
+
+const latestPost = allPosts[0];
+
+---
+<Main links={links}>
+  <section id="main" class="place-center">
+    <main class="place-center">
+      <div class="side-by-side side-by-side-shrink">
+        <div class="place-center">
+          <a href="#about" class="button">About</a>
+        </div>
+        <div class="place-center">
+          <a href="#projects" class="button button-inverted">Projects</a>
+        </div>
+      </div>
+    </main>
+  </section>
+  <section id="about">
+    <h2>About</h2>
+    <main class="place-center">
+      <div class="side-by-side side-by-side-shrink">
+      {about.map((c) => c)}
+      </div>
+    </main>
+  </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <main class="gallery">
+      {projects.map(({url, img, title, description}) => <a class="card" href="{url}">
+        <header>{title}</header>
+        <img
+          src="{img}"
+        />
+        <footer>{description}</footer>
+      </a>)}
+    </main>
+  </section>
+  {latestPost &&
+  <section id="blog">
+    <h2>Latest Post</h2>
+    <BlogPostPreview post={latestPost} />
+  </section>
+  }
+</Main>

@@ -1,119 +1,118 @@
 ---
-import Main from "../components/Main.astro";
-import BlogPostPreview from "../components/BlogPostPreview.astro";
-let about = [
-  <div class="place-center">
-    <p title='"I&apos;m not an rapper."'>
-      "Be the be the <i>Supa Hot Fire</i> you wish to see in the world."
-      <br />
-      -- John Henry
-    </p>
-  </div>,
-  <div class="place-center">
-    <img
-      src="/vendor/img/www.pexels.com/roberto-shumski/scenic-photo-of-lake-surrounded-by-trees-300.jpg"
-    />
-  </div>,
-  <div class="place-center">
-    <img
-      src="/vendor/img/www.pexels.com/roberto-shumski/scenic-photo-of-lake-surrounded-by-trees-300.jpg"
-    />
-    <p title='"I&apos;m not an rapper."'>
-      "Be the be the <i>Supa Hot Fire</i> you wish to see in the world."
-      <br />
-      -- John Henry
-    </p>
-  </div>,
-  <div class="place-center">
-    <p title='"I&apos;m not an rapper."'>
-      "Be the be the <i>Supa Hot Fire</i> you wish to see in the world."
-      <br />
-      -- John Henry
-    </p>
-  </div>
+import Logo from "../components/svg/jh/jh.astro";
+import SiteHead from "../components/new/SiteHead.astro";
+import sortPosts from "../utils/sort-posts.mjs";
+import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../SETTINGS.mjs";
+import projects from "../projects.mjs";
+const { latest=undefined, tags=[] } = sortPosts(Astro
+.fetchContent('./blog/posts/*.md'));
+const tagArray = [...tags];
+const pageLinks = [
+  {url:'me', text:'Me'},
+  {url:'projects', text:'Projects'}
 ];
-
-const projects = [
-  {
-    url:"https://johnhenry.github.io/lib/bash",
-    title:"Command Line Tools",
-    img:"/vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg",
-    description:"Collection of cli tools",
-  },
-  {
-    url:"https://johnhenry.github.io/forsnaken/",
-    title:"Forsnaken",
-    img:"/vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg",
-    description:"A snake game built using web technologies.",
-  },
-  // {
-  //   url:"https://johnhenry.github.io/forsnakenbuilder/",
-  //   title:"Forsnaken Builder",
-  //   img:"https://johnhenry.github.io/forsnakenbuilder/screenshot.png",
-  //   description:"Build a snake game or other application using web technologies.",
-  // },
-  {
-    url:"https://johnhenry.github.io/lib/",
-    title:"Standard Library",
-    img:"https://johnhenry.github.io/forsnakenbuilder/screenshot.png",
-    description:"Libraries and components",
-  },
-  {
-    url:"/blog/",
-    title:"Blog",
-    img:"https://johnhenry.github.io/forsnakenbuilder/screenshot.png",
-    description:"Thoughts and Musings",
-  },
-];
-const links = ['About', 'Projects', {name:"Blog", url:"/blog/"}];
-
-const allPosts = Astro
-.fetchContent<MarkdownFrontmatter>('./blog/posts/*.md')
-.sort((a, b) =>
-  new Date(b.lastUpdate || b.publishDate).valueOf()
-  - new Date(a.lastUpdate || a.publishDate).valueOf()
-);
-
-const latestPost = allPosts[0];
-
 ---
-<Main links={links}>
-  <section id="main" class="place-center">
-    <main class="place-center">
-      <div class="side-by-side side-by-side-shrink">
-        <div class="place-center">
-          <a href="#about" class="button">About</a>
-        </div>
-        <div class="place-center">
-          <a href="#projects" class="button button-inverted">Projects</a>
-        </div>
-      </div>
-    </main>
-  </section>
-  <section id="about">
-    <h2>About</h2>
-    <main class="place-center">
-      <div class="side-by-side side-by-side-shrink">
-      {about.map((c) => c)}
-      </div>
-    </main>
-  </section>
-  <section id="projects">
-    <h2>Projects</h2>
-    <main class="gallery">
-      {projects.map(({url, img, title, description}) => <a class="card" href="{url}">
-        <header>{title}</header>
-        <img
-          src="{img}"
-        />
-        <footer>{description}</footer>
-      </a>)}
-    </main>
-  </section>
-  {latestPost &&
-  <section id="blog">
-    <h2>Latest Post</h2>
-    <BlogPostPreview post={latestPost} />
-  </section>
-  }
-</Main>
+<!DOCTYPE html>
+<html lang="en">
+  <SiteHead title={SITE_TITLE} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS.concat(tagArray).join(',')} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL}></SiteHead>
+  <body>
+      <section id="hero">
+        <main>
+          <Logo class="animated-logo" path-class="glowey-fill"
+            stops="[-1, -1, 0, 0, 1]"
+            intervals="[1, 2, 3, 2]"
+            animate
+            animation-duration="30s"
+            animation-iteration-count="infinite"
+            animation-timing-function="linear" ></Logo>
+          <ul class="widget glowey-background-container">
+            {(latest || null) && <li class="blog-link">
+            <a class="link link-untracked" href="/blog">BLOG</a>
+            </li>}
+            {(latest || null) && <li class="blog">
+              <a class="mini-preview link-hidden" href="{latest.url}">
+                  <header>
+                    {latest.title}
+                  </header>
+                  <p>{latest.description}</p>
+              </a>
+            </li>}
+            {(tagArray.length || null) && <li>
+              Tags
+              <span id="tags">
+              {tagArray.map((tag, index) =><a class={`button button-tiny ${index%2 && 'button-inverted '}`} href={`/tag/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
+              </span>
+            </li>}
+            <li>
+              {
+                pageLinks.map(({url, text}, index) => (
+                    <a class={`button ${index%2 && 'button-inverted '}`} href={`#${url}`}>{text} ↓</a>
+                ))
+              }
+            </li>
+          </ul>
+        </main>
+      </section>
+      <section id="me">
+        <span>Me</span>
+        <main>
+          <div class="alt">
+            <span><img src="/image/iajh.png" alt="logo"/></span>
+            <main class="glowey-background">
+              <p>Hi! My name is John.</p>
+              <p>I'm a mathmetician, a scientist, and an engineer (yes, those are different things!). </p>
+              <p>I develop websites professionally. In my spare time, I like to work on interesting mathematical and computer science-related experiments.</p>
+            </main>
+          </div>
+          <div class="alt">
+            <span><img src="/image/iajh.png" alt="logo"/></span>
+            <main class="glowey-background">
+              <p>
+                <a class="link-surprise" href="mailto:john@iamjohnhenry.com"
+                target="_blank" rel="noreferrer">Send me an email.</a>
+              </p>
+              <p>
+                <a class="link-surprise" href="https://twitter.com/iamjohnhenry" target="_blank" rel="noreferrer">Follow me on twitter.</a>
+              </p>
+              <p>
+                <a class="link-surprise" href="https://github.com/johnhenry" target="_blank" rel="noreferrer">Checkout my github account.</a>
+              </p>
+            </main>
+          </div>
+        </main>
+      </section>
+
+      <section id="projects">
+        <span>Projects</span>
+        <main class="glowey-background-container link-surprise-container">
+          {projects.map(({title, description, href, image}) => (
+            <a href={href} >
+              <div style={image ? `background-image: url('${image}');`: ''}>
+                <header>{title}</header>
+                <footer>{description}</footer>
+              </div>
+            </a>
+          ))}
+        </main>
+
+      </section>
+      <header>
+        <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />John Henry</a>
+        <ul class="nav-list">
+          {
+            pageLinks.map(({url, text}) => (
+              <li>
+                <a href={`#${url}`}>{text}</a>
+              </li>
+            ))
+          }
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </header>
+      <footer>
+        <a href="#">© {new Date().getFullYear()}  {` ${SITE_AUTHOR}`}</a>
+        <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
+      </footer>
+      <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
+  </body>
+</html>
