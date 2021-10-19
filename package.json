@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build || exit 0",
+    "build:wbn": "sh scripts/gen-bundle.sh",
     "preview": "astro preview"
   },
   "devDependencies": {

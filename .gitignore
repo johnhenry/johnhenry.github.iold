@@ -1,5 +1,6 @@
 # build output
 dist
+dist.wbn
 
 # dependencies
 node_modules/
@@ -16,3 +17,4 @@ yarn-error.log*
 
 # macOS-specific files
 .DS_Store
+
