@@ -8,8 +8,9 @@ const { latest=undefined, tags=[] } = sortPosts(Astro
 .fetchContent('./blog/posts/*.md'));
 const tagArray = [...tags];
 const pageLinks = [
-  {url:'me', text:'Me'},
-  {url:'projects', text:'Projects'}
+  {url:'/blog', text:'Blog', subs:tagArray},
+  {url:'#me', text:'Me'},
+  {url:'#projects', text:'Projects'}
 ];
 ---
 <!DOCTYPE html>
@@ -26,30 +27,30 @@ const pageLinks = [
             animation-iteration-count="infinite"
             animation-timing-function="linear" ></Logo>
           <ul class="widget glowey-background-container">
-            {(latest || null) && <li class="blog-link">
-            <a class="link link-untracked" href="/blog">BLOG</a>
-            </li>}
-            {(latest || null) && <li class="blog">
+              {
+                pageLinks.map(({url, text, subs=[]}, index) => (
+            <>
+            <li class="blog-link">
+                <a class={`link-untracked${!(index%2)?'':' link-inverted'}`} href={`${url}`}>
+                {text.toUpperCase().split("").map((letter) => <span>{letter}</span>)}
+                </a>
+              {(subs.length) ? <span class="tags">
+                {subs.map((tag, index) =><a class={index%2? 'link' : 'link-inverted'} href={`/tag/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
+              </span> : null}
+            </li>
+            {(latest && text.toLowerCase() === "blog") ? <li class="blog">
               <a class="mini-preview link-hidden" href="{latest.url}">
                   <header>
                     {latest.title}
                   </header>
                   <p>{latest.description}</p>
               </a>
-            </li>}
-            {(tagArray.length || null) && <li>
-              Tags
-              <span id="tags">
-              {tagArray.map((tag, index) =><a class={`button button-tiny ${index%2 && 'button-inverted '}`} href={`/tag/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
-              </span>
-            </li>}
-            <li>
-              {
-                pageLinks.map(({url, text}, index) => (
-                    <a class={`button ${index%2 && 'button-inverted '}`} href={`#${url}`}>{text} ↓</a>
+            </li>:null}
+            </>
+
                 ))
               }
-            </li>
+
           </ul>
         </main>
       </section>
@@ -102,16 +103,19 @@ const pageLinks = [
           {
             pageLinks.map(({url, text}) => (
               <li>
-                <a href={`#${url}`}>{text}</a>
+                <a href={`${url}`}>{text}</a>
               </li>
             ))
           }
-          <li><a href="/blog">Blog</a></li>
         </ul>
       </header>
       <footer>
-        <a href="#">© {new Date().getFullYear()}  {` ${SITE_AUTHOR}`}</a>
-        <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
+        <ul>
+          <li class="nav-list">
+              <a href="#">© {new Date().getFullYear()}  {` ${SITE_AUTHOR}`}</a>
+            <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
+          </li>
+        </ul>
       </footer>
       <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
   </body>

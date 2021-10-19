@@ -1,3 +1,4 @@
+/* normal a ("link") tag */
 a {
   color: var(--text-5);
   transition: color 1s ease-in-out;
@@ -15,12 +16,35 @@ a:active {
 a:visited {
   color: var(--text-4);
 }
+
+/* inverted link tag */
+a.link-inverted {
+  color: var(--text-4);
+}
+
+a.link-inverted:hover,
+a.link-inverted:visited:hover {
+  color: var(--text-4-h);
+}
+
+a:active {
+  color: var(--text-4-h);
+}
+
+a:visited {
+  color: var(--text-5);
+}
+
 a.link-contents {
   display: contents;
 }
 
 a.link-untracked:visited {
   color: var(--text-5);
+}
+
+a.link-inverted.link-untracked:visited {
+  color: var(--text-4);
 }
 
 .link-hidden-container > a,
@@ -61,48 +85,4 @@ a.link-surprise:hover {
 .link-surprise-container > a:active,
 a.link-surprise:active {
   color: var(--text-5);
-}
-
-a.button {
-  display: inline-block;
-  padding: 8px;
-  border-radius: 5px;
-  background-color: var(--text-5);
-  color: var(--text-6);
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.2s ease-in-out;
-}
-
-a.button:hover {
-  background-color: var(--text-5-h);
-}
-
-a.button:active {
-  background-color: var(--text-5-h);
-}
-
-a.button:visited {
-  color: var(--text-6);
-}
-
-a.button.button-inverted {
-  background-color: var(--button-2);
-}
-
-a.button.button-inverted:hover {
-  background-color: var(--button-2-h);
-}
-
-a.button.button-inverted:active {
-  background-color: var(--button-2-h);
-}
-a.button-tiny {
-  font-size: 0.6rem;
-  padding: 4px;
-  border-radius: 2px;
-}
-
-a {
-  transition: color 1s ease-in-out;
 }

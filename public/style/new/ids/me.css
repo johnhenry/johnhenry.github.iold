@@ -8,8 +8,8 @@
   grid-auto-rows: min-content;
   align-items: center;
   justify-content: center;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 6.25%;
+  padding-right: 6.25%;
 }
 
 @media (orientation: landscape) {
