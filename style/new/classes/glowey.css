@@ -15,7 +15,6 @@
 .glowey-background {
   transition: background-color 1s ease-in-out;
   background-color: var(--background-5);
-  cursor: pointer;
 }
 .glowey-background-container > *:hover,
 .glowey-background:hover {
