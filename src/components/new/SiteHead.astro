@@ -1,8 +1,11 @@
 ---
 import SEO from './SEO.astro';
+import TagManagerHead from '../TagManagerHead.astro';
+import { TAG_MANAGER_ID } from '../../SETTINGS.mjs';
 const {title, keywords, description, author, canonical} = Astro.props;
 ---
   <head>
+    {TAG_MANAGER_ID ? <TagManagerHead tmid="{TAG_MANAGER_ID}" /> : ''}
 		<SEO
 			title={title}
 			description={description}

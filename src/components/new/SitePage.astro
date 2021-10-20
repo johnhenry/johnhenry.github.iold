@@ -1,7 +1,9 @@
 ---
 import SiteHead from "./SiteHead.astro";
-const {title, description, keywords, author, canonical, pageLinks } = Astro.props
-
+const {title, description, keywords, author, canonical, pageLinks, tagManagerId } = Astro.props
+import { TAG_MANAGER_ID } from '../../SETTINGS.mjs';
+import GDPRRequest from '../GDPRRequest.astro';
+import TagManagerBody from '../TagManagerBody.astro';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -29,5 +31,7 @@ const {title, description, keywords, author, canonical, pageLinks } = Astro.prop
         </ul>
       </footer>
       <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
+      {TAG_MANAGER_ID ? <GDPRRequest /> : null}
+      {TAG_MANAGER_ID ? <TagManagerBody tmid={`${TAG_MANAGER_ID}`} /> : null}
   </body>
 </html>
