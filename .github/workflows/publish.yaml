@@ -22,12 +22,12 @@ jobs:
 
       - name: Build 🏭
         env:
-          SITE_AUTHOR: ${{ secrets.SITE_AUTHOR }}
-          SITE_TITLE: ${{ secrets.SITE_TITLE }}
-          SITE_CANONICAL_URL: ${{ secrets.SITE_CANONICAL_URL }}
-          SITE_DESCRIPTION: ${{ secrets.SITE_DESCRIPTION }}
-          SITE_KEYWORDS: ${{ secrets.SITE_KEYWORDS }}
-          TAG_MANAGER_ID: ${{ secrets.TAG_MANAGER_ID }}
+          SITE_AUTHOR: $( secrets.SITE_AUTHOR )
+          SITE_TITLE: $( secrets.SITE_TITLE )
+          SITE_CANONICAL_URL: $( secrets.SITE_CANONICAL_URL )
+          SITE_DESCRIPTION: $( secrets.SITE_DESCRIPTION )
+          SITE_KEYWORDS: $( secrets.SITE_KEYWORDS )
+          TAG_MANAGER_ID: $( secrets.TAG_MANAGER_ID )
         run: npm run build
 
       - name: ID 🔍
@@ -38,3 +38,30 @@ jobs:
         with:
           branch: dist # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
+  one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJSON(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJSON(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJSON(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
