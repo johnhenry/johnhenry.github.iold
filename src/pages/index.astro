@@ -1,6 +1,6 @@
 ---
 import Logo from "../components/svg/jh/jh.astro";
-import SiteHead from "../components/new/SiteHead.astro";
+import SitePage from "../components/new/SitePage.astro";
 import sortPosts from "../utils/sort-posts.mjs";
 import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../SETTINGS.mjs";
 import projects from "../projects.mjs";
@@ -13,110 +13,82 @@ const pageLinks = [
   {url:'#projects', text:'Projects'}
 ];
 ---
-<!DOCTYPE html>
-<html lang="en">
-  <SiteHead title={SITE_TITLE} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS.concat(tagArray).join(',')} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL}></SiteHead>
-  <body>
-      <section id="hero">
-        <main>
-          <Logo class="animated-logo" path-class="glowey-fill"
-            stops="[-1, -1, 0, 0, 1]"
-            intervals="[1, 2, 3, 2]"
-            animate
-            animation-duration="30s"
-            animation-iteration-count="infinite"
-            animation-timing-function="linear" ></Logo>
-          <ul class="widget glowey-background-container">
-              {
-                pageLinks.map(({url, text, subs=[]}, index) => (
-            <>
-            <li class="blog-link">
-                <a class={`link-untracked${!(index%2)?'':' link-inverted'}`} href={`${url}`}>
-                {text.toUpperCase().split("").map((letter) => <span>{letter}</span>)}
-                </a>
-              {(subs.length) ? <span class="tags">
-                {subs.map((tag, index) =><a class={index%2? 'link' : 'link-inverted'} href={`/tag/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
-              </span> : null}
-            </li>
-            {(latest && text.toLowerCase() === "blog") ? <li class="blog">
-              <a class="mini-preview link-hidden" href="{latest.url}">
-                  <header>
-                    {latest.title}
-                  </header>
-                  <p>{latest.description}</p>
+<SitePage title={SITE_TITLE} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
+    <section id="hero">
+      <main>
+        <Logo class="animated-logo" path-class="glowey-fill"
+          stops="[-1, -1, 0, 0, 1]"
+          intervals="[1, 2, 3, 2]"
+          animate
+          animation-duration="30s"
+          animation-iteration-count="infinite"
+          animation-timing-function="linear" ></Logo>
+        <ul class="widget glowey-background-container">
+            {
+              pageLinks.map(({url, text, subs=[]}, index) => (
+          <>
+          <li class="blog-link">
+              <a class={`link-untracked${!(index%2)?'':' link-inverted'}`} href={`${url}`}>
+              {text.toUpperCase().split("").map((letter) => <span>{letter}</span>)}
               </a>
-            </li>:null}
-            </>
-
-                ))
-              }
-
-          </ul>
-        </main>
-      </section>
-      <section id="me">
-        <span>Me</span>
-        <main>
-          <div class="alt">
-            <span><img src="/image/iajh.png" alt="logo"/></span>
-            <main class="glowey-background">
-              <p>Hi! My name is John.</p>
-              <p>I'm a mathmetician, a scientist, and an engineer (yes, those are different things!). </p>
-              <p>I develop websites professionally. In my spare time, I like to work on interesting mathematical and computer science-related experiments.</p>
-            </main>
-          </div>
-          <div class="alt">
-            <span><img src="/image/iajh.png" alt="logo"/></span>
-            <main class="glowey-background">
-              <p>
-                <a class="link-surprise" href="mailto:john@iamjohnhenry.com"
-                target="_blank" rel="noreferrer">Send me an email.</a>
-              </p>
-              <p>
-                <a class="link-surprise" href="https://twitter.com/iamjohnhenry" target="_blank" rel="noreferrer">Follow me on twitter.</a>
-              </p>
-              <p>
-                <a class="link-surprise" href="https://github.com/johnhenry" target="_blank" rel="noreferrer">Checkout my github account.</a>
-              </p>
-            </main>
-          </div>
-        </main>
-      </section>
-
-      <section id="projects">
-        <span>Projects</span>
-        <main class="glowey-background-container link-surprise-container">
-          {projects.map(({title, description, href, image}) => (
-            <a href={href} >
-              <div style={image ? `background-image: url('${image}');`: ''}>
-                <header>{title}</header>
-                <footer>{description}</footer>
-              </div>
-            </a>
-          ))}
-        </main>
-
-      </section>
-      <header>
-        <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />John Henry</a>
-        <ul class="nav-list">
-          {
-            pageLinks.map(({url, text}) => (
-              <li>
-                <a href={`${url}`}>{text}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </header>
-      <footer>
-        <ul>
-          <li class="nav-list">
-              <a href="#">© {new Date().getFullYear()}  {` ${SITE_AUTHOR}`}</a>
-            <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
+            {(subs.length) ? <span class="tags">
+              {subs.map((tag, index) =><a class={index%2? 'link' : 'link-inverted'} href={`/tag/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
+            </span> : null}
           </li>
+          {(latest && text.toLowerCase() === "blog") ? <li class="blog">
+            <a class="mini-preview link-hidden" href="{latest.url}">
+                <header>
+                  {latest.title}
+                </header>
+                <p>{latest.description}</p>
+            </a>
+          </li>:null}
+          </>
+              ))
+            }
         </ul>
-      </footer>
-      <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
-  </body>
-</html>
+      </main>
+    </section>
+    <section id="me">
+      <h1>Me</h1>
+      <main>
+        <div class="alt">
+          <span><img src="/image/iajh.png" alt="logo"/></span>
+          <main class="glowey-background">
+            <p>Hi! My name is John.</p>
+            <p>I'm a mathmetician, a scientist, and an engineer (yes, those are different things!). </p>
+            <p>I develop websites professionally. In my spare time, I like to work on interesting mathematical and computer science-related experiments.</p>
+          </main>
+        </div>
+        <div class="alt">
+          <span><img src="/image/iajh.png" alt="logo"/></span>
+          <main class="glowey-background">
+            <p>
+              <a class="link-surprise" href="mailto:john@iamjohnhenry.com"
+              target="_blank" rel="noreferrer">Send me an email.</a>
+            </p>
+            <p>
+              <a class="link-surprise" href="https://twitter.com/iamjohnhenry" target="_blank" rel="noreferrer">Follow me on twitter.</a>
+            </p>
+            <p>
+              <a class="link-surprise" href="https://github.com/johnhenry" target="_blank" rel="noreferrer">Checkout my github account.</a>
+            </p>
+          </main>
+        </div>
+      </main>
+    </section>
+
+    <section id="projects">
+      <h1>Projects</h1>
+      <main class="glowey-background-container link-surprise-container">
+        {projects.map(({title, description, href, image}) => (
+          <a href={href} >
+            <div style={image ? `background-image: url('${image}');`: ''}>
+              <header>{title}</header>
+              <footer>{description}</footer>
+            </div>
+          </a>
+        ))}
+      </main>
+    </section>
+ </SitePage>

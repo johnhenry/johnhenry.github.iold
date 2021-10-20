@@ -1,101 +1,37 @@
 ---
 // Component Imports
-import BaseHead from '../../components/BaseHead.astro';
-import BlogHeader from '../../components/BlogHeader.astro';
-import BlogPostPreview from '../../components/BlogPostPreview.astro';
-import HeadElement from '../../components/Head.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-
-import { SITE_TITLE } from '../../SETTINGS.mjs';
-
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
+import SitePage from "../../components/new/SitePage.astro";
+import sortPosts from "../../utils/sort-posts.mjs";
+import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../../SETTINGS.mjs";
+const { sorted } = sortPosts(Astro
+.fetchContent('./posts/*.md'));
+const pageLinks = [
+  {url:'/blog', text:'Blog'},
+  {url:'#me', text:'Me'},
+  {url:'#projects', text:'Projects'}
+];
 const title = `${SITE_TITLE} -- Weblog`;
-let description = 'The perfect starter for your perfect blog.';
-let permalink = 'https://example.com/';
-
-// Data Fetching: List all Markdown posts in the repo.
-
-interface MarkdownFrontmatter {
-  publishDate: number;
-  lastUpdate?: number;
-}
-const allPosts = Astro
-.fetchContent<MarkdownFrontmatter>('./posts/*.md')
-.sort((a, b) =>
-  new Date(b.lastUpdate || b.publishDate).valueOf()
-  - new Date(a.lastUpdate || a.publishDate).valueOf()
-);
 ---
 
-
-<!DOCTYPE html>
-<html lang='en'>
-  <HeadElement title={title}>
-    <BaseHead title={title} description={description} permalink={permalink} />
-    <!-- <link rel="stylesheet" href="/blog.css" /> -->
-    <style>
-      body {
-        width: 100%;
-        display: grid;
-        grid-template-rows: 3.5rem 1fr;
-        --gutter: 0.5rem;
-        --doc-padding: 2rem;
-      }
-
-      header {
-        width: 100%;
-        height: 100%;
-        background-color: var(--theme-bg-offset);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .content {
-        margin-top: 4rem;
-        margin-bottom: 8rem;
-      }
-
-      .content :global(main > * + *) {
-        margin-top: 1rem;
-      }
-
-      .intro {
-        padding-bottom: 4rem;
-        margin-bottom: 2rem;
-        border-bottom: 4px solid var(--theme-divider);
-      }
-
-      .intro > * {
-        margin: 0;
-      }
-
-      .latest {
-        font-size: 2.5rem;
-        font-weight: 700;
-      }
+<SitePage title={title} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
+  <style>
     </style>
-  </HeadElement>
-  <body class="fullscreen-sections-with-header-and-footer">
-    <Header />
-      <!-- <BlogHeader /> -->
-      <div class="layout">
-        <article class="content">
-          <section class="intro">
-            <h1 class="latest">{title}</h1>
+    <section>
+      <h1 class="latest">{title}</h1>
+      <main>
+          {sorted.map(({publishDate, url, title, description}) =>
+          <article class="post-preview">
+          <header>
+            <p class="publish-date">{publishDate}</p>
+            <a href={url}><h1 class="title">{title}</h1></a>
+          </header>
+          <main>
             <p>{description}</p>
-          </section>
-          <section>
-            {allPosts.map(p => <BlogPostPreview post={p} />)}
-          </section>
-        </article>
-      </div>
-    <Footer />
-    <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
-  </body>
-</html>
+            <a href={url}>Read more</a>
+          </main>
+        </article>)}
+
+      </main>
+    </section>
+</SitePage>
 

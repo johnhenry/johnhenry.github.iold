@@ -1,25 +1,28 @@
 ---
 title: "Manage Websites Like Docker"
-description: "Manage static websites like you manage machines with Docker"
+description: Manage static websites like you manage Docker images
 publishDate: "19 October 2021"
 author: "John"
 heroImage: "/vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg"
 alt: "Astro"
-layout: "../../../components/BlogMain.astro"
+layout: "../../../components/new/BlogPage.astro"
 tags: ["programming"]
 ---
 
 _Author’s Note: This is based on **Experimental** technologies that aren't quite ready for production. Nonetheless, the ideas presented in this article may turn out useful._
 
-Did you know that you can manage static websites like you manage machines with [Docker](https://docker.com)? Well, you can! but I'm sure you have a few more questions...
+Did you know that you can manage static websites
+like you manage [Docker](https://docker.com) images? Well, you can! but I'm sure you have a few more questions...
 
-What _exactly_ do I mean by this?
-Why would you want to?
-How can you do it your self?
+- What _exactly_ do I mean by this?
+- Why would you want to?
+- How can you do it your self?
 
 To find answers,
-we will first take a simplified look at how management works with Docker.
-Then, we will see if we can create a similar process for websites.
+we will first take a simplified look
+at how management works with Docker.
+We will then learn how to create
+a similar process for static websites.
 
 ## Process
 
@@ -62,7 +65,7 @@ Install go according to [instructions here](https://golang.org/doc/install).
 
 Install gen-bundle according to [instructions here](https://github.com/WICG/webpackage/tree/main/go/bundle).
 
-```sh
+```bash
 # Install wasm-to-oci https://github.com/engineerd/wasm-to-oci
 go get -u github.com/WICG/webpackage/go/bundle/cmd/...
 ```
@@ -73,7 +76,7 @@ Install wasm-to-oci according to [instructions here](https://github.com/engineer
 
 or run
 
-```sh
+```bash
 # Install wasm-to-oci https://github.com/engineerd/wasm-to-oci
 go get -u github.com/WICG/webpackage/go/bundle/cmd/...
 ```
@@ -155,7 +158,7 @@ with the following contents:
 
 Outside of the hello-world folder, run the following command:
 
-```sh
+```bash
 gen-bundle -dir ./hello-world -baseURL http://localhost/ -o hello-world.wbn -primaryURL http://localhost/
 ```
 
@@ -230,7 +233,7 @@ with, permissions to read and write to the registry.
 
 User `docker login` to login to the github container registry at `ghcr.io`,
 
-```sh
+```bash
 echo $GITHUB_ACCESS_TOKEN | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin
 ```
 
@@ -238,7 +241,7 @@ echo $GITHUB_ACCESS_TOKEN | docker login ghcr.io -u $GITHUB_USERNAME --password-
 
 Push the web bundle to the registry with:
 
-```sh
+```bash
 wasm-to-oci push ./hello-world.wbn ghcr.io/$GITHUB_USERNAME/hello-world:0.0.0
 ```
 
@@ -246,7 +249,7 @@ If the registry at `https://github.com/users/$GITHUB_USERNAME/packages/container
 
 You can view and manage artifacts in your repository at `https://github.com/$GITHUB_USERNAME?tab=packages`.
 
-```sh
+```bash
 wasm-to-oci pull ghcr.io/$GITHUB_USERNAME/hello-world:0.0.0 --out hello-world.test.wbn
 ```
 

@@ -6,7 +6,7 @@ lastUpdate: "1 May 2019"
 author: "John"
 heroImage: "/vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg"
 alt: "Astro"
-layout: "../../../components/BlogMain.astro"
+layout: "../../../components/new/BlogPage.astro"
 tags: ["programming"]
 ---
 

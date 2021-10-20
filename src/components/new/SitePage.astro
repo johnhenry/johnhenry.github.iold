@@ -1,0 +1,33 @@
+---
+import SiteHead from "./SiteHead.astro";
+const {title, description, keywords, author, canonical, pageLinks } = Astro.props
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <SiteHead title={title} description={description} keywords={keywords} author={author} canonical={canonical}></SiteHead>
+  <body>
+      <slot />
+      <header>
+        <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />John Henry</a>
+        <ul class="nav-list">
+          {
+            pageLinks.map(({url, text}) => (
+              <li>
+                <a href={`${url}`}>{text}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </header>
+      <footer>
+        <ul>
+          <li class="nav-list">
+              <a href="#">© {new Date().getFullYear()}  {` ${author}`}</a>
+            <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
+          </li>
+        </ul>
+      </footer>
+      <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
+  </body>
+</html>

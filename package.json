@@ -7,6 +7,7 @@
     "start": "astro dev",
     "build": "astro build || exit 0",
     "build:wbn": "sh scripts/gen-bundle.sh",
+    "build:all": "npm run build && sh scripts/gen-bundle.sh -- http://localhost/",
     "preview": "astro preview"
   },
   "devDependencies": {
