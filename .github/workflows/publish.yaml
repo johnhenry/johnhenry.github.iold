@@ -30,9 +30,6 @@ jobs:
           TAG_MANAGER_ID: ${{ secrets.TAG_MANAGER_ID }}
         run: npm run build
 
-      - name: ID 🔍
-        run: echo $(git rev-parse HEAD) > dist/hash.txt
-
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.3
         with:

@@ -11,11 +11,17 @@ const {title, keywords, description, author, canonical} = Astro.props;
 			description={description}
       canonical={canonical}
 		/>
-    <meta name="theme-color" content="343233">
+    <meta name="theme-color" content="#343233">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content={keywords}>
     <meta name="author" content={author}>
+    <link rel="manifest" href="/manifest.json" />
+    <script>
+      globalThis.addEventListener('load', () => {
+        globalThis.navigator.serviceWorker.register('./service-worker.js');
+      });
+    </script>
     <style>
       @import "https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css";
       @import "https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css";
