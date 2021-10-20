@@ -10,11 +10,6 @@
 */
 @import "./classes/index.css";
 
-/*
-  - style components primarily by **id** if it is to be used onces throught the application
-*/
-@import "./ids/index.css";
-
 @import "./constants/index.css";
 
 /* *{ border: 1px dashed #0b51b7 !important; } */

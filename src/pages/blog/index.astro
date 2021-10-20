@@ -14,9 +14,10 @@ const title = `${SITE_TITLE} -- Weblog`;
 ---
 
 <SitePage title={title} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
-  <style>
+    <style>
+      @import '/style/new/classes/blog/blog.css';
     </style>
-    <section>
+    <section class="blog">
       <h1 class="latest">{title}</h1>
       <main>
           {sorted.map(({publishDate, url, title, description}) =>
@@ -30,7 +31,6 @@ const title = `${SITE_TITLE} -- Weblog`;
             <a href={url}>Read more</a>
           </main>
         </article>)}
-
       </main>
     </section>
 </SitePage>

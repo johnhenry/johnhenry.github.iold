@@ -1,8 +1,8 @@
-#me main {
+.me main {
   gap: 16px;
 }
 
-#me > main {
+.me > main {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -13,13 +13,13 @@
 }
 
 @media (orientation: landscape) {
-  #me > main {
+  .me > main {
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: initial;
   }
 }
 
-#me div {
+.me div {
   flex-direction: column;
   align-self: start;
   min-height: unset;
@@ -31,39 +31,39 @@
   width: 75vw;
 }
 
-#me div > *:last-child {
+.me div > *:last-child {
   flex: 1 1 auto;
 }
 
 @media (orientation: landscape) {
-  #me div {
+  .me div {
     flex-direction: row;
     width: unset;
   }
-  #me div:nth-child(2n) {
+  .me div:nth-child(2n) {
     flex-direction: row-reverse;
   }
 }
 
-#me div span img {
+.me div span img {
   transition: filter 0.5s ease-in-out;
   cursor: pointer;
 }
 
-#me div:hover span img {
+.me div:hover span img {
   filter: sepia(100);
 }
 
-#me div > span {
+.me div > span {
   padding: 8px;
 }
 
-#me div > span > img {
+.me div > span > img {
   width: 32px;
   height: 32px;
 }
 
-#me div main {
+.me div main {
   padding: 16px;
   border-radius: 8px;
 }

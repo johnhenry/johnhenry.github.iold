@@ -14,7 +14,7 @@ const pageLinks = [
 ];
 ---
 <SitePage title={SITE_TITLE} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
-    <section id="hero">
+    <section class="hero">
       <main>
         <Logo class="animated-logo" path-class="glowey-fill"
           stops="[-1, -1, 0, 0, 1]"
@@ -49,7 +49,7 @@ const pageLinks = [
         </ul>
       </main>
     </section>
-    <section id="me">
+    <section class="me">
       <h1>Me</h1>
       <main>
         <div class="alt">
@@ -78,7 +78,7 @@ const pageLinks = [
       </main>
     </section>
 
-    <section id="projects">
+    <section class="projects">
       <h1>Projects</h1>
       <main class="glowey-background-container link-surprise-container">
         {projects.map(({title, description, href, image}) => (

@@ -13,10 +13,13 @@ const {title, description, publishDate, author, heroImage, permalink, alt, tags}
 const pageTitle = `${SITE_TITLE} -- Weblog: ${title}`;
 ---
 <SitePage title={pageTitle} description={description} keywords={tags} author={author} canonical={SITE_CANONICAL_URL + permalink} pageLinks ={pageLinks}>
-    <section class="blog-post">
+    <style>
+      @import '/style/new/classes/blog/index.css';
+    </style>
+    <section class="blog blog-post">
       <h1 class="latest">{title}</h1>
       <main>
-        {heroImage && <img width="720" height="420" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
+        {heroImage && <img width="360" height="210" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
         <p class="publish-date">{publishDate}</p>
         <h1 class="title">{title}</h1>
         <div class="author">
