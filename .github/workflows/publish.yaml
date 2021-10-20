@@ -12,22 +12,18 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Setup node
+      - name: Setup node 🔧
         uses: actions/setup-node@v2
         with:
           node-version: 16
 
-      - name: Install 🔧
+      - name: Install 🪛
         run: npm install
 
+      - name: create env file 🥬
+        run: echo SITE_CANONICAL_URL=${{ secrets.SITE_CANONICAL_URL }} >> .env
+
       - name: Build 🏭
-        env:
-          SITE_AUTHOR: $( secrets.SITE_AUTHOR )
-          SITE_TITLE: $( secrets.SITE_TITLE )
-          SITE_CANONICAL_URL: $( secrets.SITE_CANONICAL_URL )
-          SITE_DESCRIPTION: $( secrets.SITE_DESCRIPTION )
-          SITE_KEYWORDS: $( secrets.SITE_KEYWORDS )
-          TAG_MANAGER_ID: $( secrets.TAG_MANAGER_ID )
         run: npm run build
 
       - name: ID 🔍
@@ -38,13 +34,3 @@ jobs:
         with:
           branch: dist # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
-  one:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump SITE_CANONICAL_URL
-        env:
-          SITE_CANONICAL_URL_1: ${{ secrets.SITE_CANONICAL_URL }}
-          SITE_CANONICAL_URL_2: $( secrets.SITE_CANONICAL_URL )
-        run: |
-          echo $SITE_CANONICAL_URL_1
-          echo $SITE_CANONICAL_URL_2
