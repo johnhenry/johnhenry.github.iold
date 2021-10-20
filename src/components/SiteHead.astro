@@ -11,6 +11,7 @@ const {title, keywords, description, author, canonical} = Astro.props;
 			description={description}
       canonical={canonical}
 		/>
+    <meta name="theme-color" content="343233">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content={keywords}>
@@ -25,4 +26,9 @@ const {title, keywords, description, author, canonical} = Astro.props;
       import "https://johnhenry.github.io/lib/js/css-variables-mouse/0.0.0/index.mjs";
       import "https://johnhenry.github.io/lib/js/css-variables-scroll/0.0.0/index.mjs"
     </script>
+    <link rel="apple-touch-icon" sizes="512x512" href="/images/iajh.512.png" />
+    <link rel="apple-touch-icon" sizes="384x384" href="/images/iajh.384.png" />
+    <link rel="apple-touch-icon" sizes="256x256" href="/images/iajh.256.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/iajh.192.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="/images/iajh.128.png" />
   </head>
