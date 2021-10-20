@@ -1,20 +1,21 @@
 ---
 // // Component Imports
 import SitePage from "./SitePage.astro";
-import {SITE_TITLE, SITE_KEYWORDS, SITE_AUTHOR, SITE_CANONICAL_URL} from "../../SETTINGS.mjs";
+import {SITE_TITLE, SITE_KEYWORDS, SITE_AUTHOR, SITE_CANONICAL_URL} from "../SETTINGS.mjs";
 const pageLinks = [
   {url:'/blog', text:'Blog'},
-  {url:'#me', text:'Me'},
-  {url:'#projects', text:'Projects'}
+  {url:'/#me', text:'Me'},
+  {url:'/#projects', text:'Projects'}
 ];
 
 const {content} = Astro.props;
 const {title, description, publishDate, author, heroImage, permalink, alt, tags} = content;
+const keywords = SITE_KEYWORDS.concat(tags);
 const pageTitle = `${SITE_TITLE} -- Weblog: ${title}`;
 ---
-<SitePage title={pageTitle} description={description} keywords={tags} author={author} canonical={SITE_CANONICAL_URL + permalink} pageLinks ={pageLinks}>
+<SitePage title={pageTitle} description={description} keywords={keywords} author={author} canonical={SITE_CANONICAL_URL + permalink} pageLinks ={pageLinks}>
     <style>
-      @import '/style/new/classes/blog/index.css';
+      @import '/style/classes/blog/index.css';
     </style>
     <section class="blog blog-post">
       <h1 class="latest">{title}</h1>
@@ -23,7 +24,7 @@ const pageTitle = `${SITE_TITLE} -- Weblog: ${title}`;
         <p class="publish-date">{publishDate}</p>
         <h1 class="title">{title}</h1>
         <div class="author">
-          <p><a href="https://twitter.com/iamjohnhenry">@iamjohnhenry</a></p>
+          <p><a href="https://iamjohnhenry.com">{SITE_AUTHOR}</a></p>
         </div>
         <slot />
       </main>

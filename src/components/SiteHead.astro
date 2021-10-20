@@ -1,7 +1,7 @@
 ---
 import SEO from './SEO.astro';
-import TagManagerHead from '../TagManagerHead.astro';
-import { TAG_MANAGER_ID } from '../../SETTINGS.mjs';
+import TagManagerHead from './TagManagerHead.astro';
+import { TAG_MANAGER_ID } from '../SETTINGS.mjs';
 const {title, keywords, description, author, canonical} = Astro.props;
 ---
   <head>
@@ -18,7 +18,7 @@ const {title, keywords, description, author, canonical} = Astro.props;
     <style>
       @import "https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css";
       @import "https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css";
-      @import "/style/new/index.css";
+      @import "/style/index.css";
     </style>
     <link rel="icon" href="/image/iajh.png" type="image/x-icon" />
     <script type="module">

@@ -1,6 +1,6 @@
 ---
-import Logo from "../components/svg/jh/jh.astro";
-import SitePage from "../components/new/SitePage.astro";
+import JH from "../components/jh/index.astro";
+import SitePage from "../components/SitePage.astro";
 import sortPosts from "../utils/sort-posts.mjs";
 import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../SETTINGS.mjs";
 import projects from "../projects.mjs";
@@ -16,13 +16,13 @@ const pageLinks = [
 <SitePage title={SITE_TITLE} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
     <section class="hero">
       <main>
-        <Logo class="animated-logo" path-class="glowey-fill"
+        <JH class="animated-logo" path-class="glowey-fill"
           stops="[-1, -1, 0, 0, 1]"
           intervals="[1, 2, 3, 2]"
           animate
           animation-duration="30s"
           animation-iteration-count="infinite"
-          animation-timing-function="linear" ></Logo>
+          animation-timing-function="linear" />
         <ul class="widget glowey-background-container">
             {
               pageLinks.map(({url, text, subs=[]}, index) => (
@@ -49,7 +49,7 @@ const pageLinks = [
         </ul>
       </main>
     </section>
-    <section class="me">
+    <section id="me" class="me">
       <h1>Me</h1>
       <main>
         <div class="alt">
@@ -78,7 +78,7 @@ const pageLinks = [
       </main>
     </section>
 
-    <section class="projects">
+    <section id="projects" class="projects">
       <h1>Projects</h1>
       <main class="glowey-background-container link-surprise-container">
         {projects.map(({title, description, href, image}) => (

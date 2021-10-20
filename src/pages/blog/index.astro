@@ -1,21 +1,21 @@
 ---
 // Component Imports
-import SitePage from "../../components/new/SitePage.astro";
+import SitePage from "../../components/SitePage.astro";
 import sortPosts from "../../utils/sort-posts.mjs";
 import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../../SETTINGS.mjs";
 const { sorted } = sortPosts(Astro
 .fetchContent('./posts/*.md'));
 const pageLinks = [
   {url:'/blog', text:'Blog'},
-  {url:'#me', text:'Me'},
-  {url:'#projects', text:'Projects'}
+  {url:'/#me', text:'Me'},
+  {url:'/#projects', text:'Projects'}
 ];
 const title = `${SITE_TITLE} -- Weblog`;
 ---
 
 <SitePage title={title} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
     <style>
-      @import '/style/new/classes/blog/blog.css';
+      @import '/style/classes/blog/blog.css';
     </style>
     <section class="blog">
       <h1 class="latest">{title}</h1>
