@@ -1,7 +1,9 @@
 {
   "name": "John Henry",
-  "background-color": "#343233",
-  "theme-color": "#343233",
+  "start_url": "index.html",
+  "background_color": "#343233",
+  "theme_color": "#343233",
+  "display": "standalone",
   "icons": [
     {
       "src": "./image/iajh.512.png",
@@ -27,7 +29,7 @@
       "src": "./image/iajh.128.png",
       "sizes": "128x128",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
       "src": "./image/iajh.80.png",
