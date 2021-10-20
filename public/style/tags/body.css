@@ -5,3 +5,102 @@ body {
   color: var(--text-2);
   font-family: var(--font-family);
 }
+
+body > header {
+  height: var(--header-height);
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background-color: var(--background-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+body > header a {
+  color: var(--text-1);
+}
+
+body > header a:visited {
+  color: var(--text-1);
+}
+
+body > header a:hover,
+body > header a:visited:hover {
+  color: var(--text-5-h);
+}
+
+body > header > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+}
+
+body > header > a > img {
+  width: 16px;
+}
+
+body > footer {
+  height: var(--footer-height);
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--background-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+body > footer a {
+  color: var(--text-1);
+}
+
+body > footer a:visited {
+  color: var(--text-1);
+}
+
+body > footer a:hover,
+body > footer a:visited:hover {
+  color: var(--text-5-h);
+}
+
+body > footer > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+}
+
+body > footer > a > img {
+  width: 16px;
+}
+
+body > header,
+body > footer {
+}
+
+body > header .nav-list,
+body > footer .nav-list {
+  display: inline-flex;
+  align-items: center;
+  justify-content: end;
+  flex: 1 0 auto;
+  padding: 0;
+}
+
+body > header .nav-list > li,
+body > footer .nav-list > li {
+  display: inline-block;
+  padding: 8px;
+}
+
+/* body > :is (header, footer) {
+
+} */

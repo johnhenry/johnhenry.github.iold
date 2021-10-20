@@ -17,20 +17,21 @@ const title = `${SITE_TITLE} -- Weblog`;
     <style>
       @import '/style/classes/blog/blog.css';
     </style>
-    <section class="blog">
+    <section class="me">
       <h1 class="latest">{title}</h1>
       <main>
-          {sorted.map(({publishDate, url, title, description}) =>
-          <article class="post-preview">
+          {sorted.map(({publishDate, url, title, description, heroImage}) =>
+          <div class="alt">
           <header>
             <p class="publish-date">{publishDate}</p>
             <a href={url}><h1 class="title">{title}</h1></a>
+            <img width="180"src={heroImage}>
           </header>
           <main>
             <p>{description}</p>
             <a href={url}>Read more</a>
           </main>
-        </article>)}
+        </div>)}
       </main>
     </section>
 </SitePage>
