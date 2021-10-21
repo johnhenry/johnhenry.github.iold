@@ -15,22 +15,22 @@ const title = `${SITE_TITLE} -- Weblog`;
 ---
 
 <SitePage title={title} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
-          <section class="blog-preview glowey-background">
+          <main class="blog-preview glowey-background">
             <header>John Henry's Web Log</header>
-          </section>
+          </main>
           {sorted.map(({publishDate, url, title, description, heroImage}) =>
-          <section class="blog-preview glowey-background">
+          <main class="blog-preview glowey-background">
             <header>
               <p>{publishDate}</p>
               <a href={url}>{title}</a>
             </header>
-            <main>
+            <section>
               <img src={heroImage}>
               <p>{description}</p>
-            </main>
+            </section>
             <footer>
               <a href={url}>Read more</a>
             </footer>
-          </section>)}
+          </main>)}
 </SitePage>
 

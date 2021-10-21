@@ -1,7 +1,6 @@
 ---
 title: "Manage Websites Like Docker"
 description: Manage static websites like you manage Docker images
-publishDate: "19 October 2021"
 author: "John"
 heroImage: "/vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg"
 alt: "Astro"

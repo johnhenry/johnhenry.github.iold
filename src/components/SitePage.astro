@@ -1,6 +1,6 @@
 ---
 import SiteHead from "./SiteHead.astro";
-const {title, description, keywords, author, canonical, pageLinks, tagManagerId } = Astro.props
+const {title, headerTitle = title, description, keywords, author, canonical, pageLinks, tagManagerId } = Astro.props
 import { TAG_MANAGER_ID } from '../SETTINGS.mjs';
 import GDPRRequest from './GDPRRequest.astro';
 import TagManagerBody from './TagManagerBody.astro';
@@ -11,7 +11,7 @@ import TagManagerBody from './TagManagerBody.astro';
   <body>
       <slot />
       <header>
-        <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />John Henry</a>
+        <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />{headerTitle}</a>
         <ul class="nav-list">
           {
             pageLinks.map(({url, text}) => (

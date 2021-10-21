@@ -14,16 +14,20 @@ const keywords = SITE_KEYWORDS.concat(tags);
 const pageTitle = `${SITE_TITLE} -- Weblog: ${title}`;
 ---
 <SitePage title={pageTitle} description={description} keywords={keywords} author={author} canonical={SITE_CANONICAL_URL + permalink} pageLinks ={pageLinks}>
-    <section class="blog">
-      <h1 class="latest">{title}</h1>
-      <main>
+    <main class="blog">
+      <header class="latest">{title}</header>
+      <section>
         {heroImage && <img width="360" height="210" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
         <p class="publish-date">{publishDate}</p>
-        <h1 class="title">{title}</h1>
+        <header>{title}</header>
         <div class="author">
-          <p><a href="https://iamjohnhenry.com">{SITE_AUTHOR}</a></p>
+          <p>
+            <a href="https://iamjohnhenry.com">
+            {SITE_AUTHOR}
+            </a>
+            </p>
         </div>
         <slot />
-      </main>
-    </section>
+      </section>
+    </main>
 </SitePage>

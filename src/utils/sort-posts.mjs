@@ -8,9 +8,9 @@ export default (posts) => {
     return t;
   }, new Set());
 
-  const sorted = posts.sort(
-    (a, b) => new Date(b.publishDate) - new Date(a.publishDate)
-  );
+  const sorted = posts
+    .filter((b) => b.publishDate)
+    .sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
   const latest = sorted[0];
   return {
     sorted,
