@@ -15,9 +15,9 @@ const pageTitle = `${SITE_TITLE} -- Weblog: ${title}`;
 ---
 <SitePage title={pageTitle} description={description} keywords={keywords} author={author} canonical={SITE_CANONICAL_URL + permalink} pageLinks ={pageLinks}>
     <section class="blog">
-      <header class="latest">{title}</header>
+      <header>{title}</header>
       <article>
-        {heroImage && <img width="360" height="210" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
+        {heroImage && <img width="360" height="210" loading="lazy" src={heroImage} alt={alt} />}
         <p class="publish-date">{publishDate}</p>
         <header>{title}</header>
         <div class="author">

@@ -1,12 +1,16 @@
 ---
-import { TAG_MANAGER_ID, SITE_BASE_PATH } from '../SETTINGS.mjs';
+import {
+        TAG_MANAGER_ID,
+        SITE_BASE_PATH,
+        SITE_FAVICON,
+        SITE_FAVICON_TYPE} from '../SETTINGS.mjs';
 import externalStyles from '../EXTERNAL_STYLES.mjs';
 import externalScripts from '../EXTERNAL_SCRIPTS.mjs';
 import SEO from './SEO.astro';
 import TagManagerHead from './TagManagerHead.astro';
 import SiteStyles from "./SiteStyles.astro";
 import SiteScripts from "./SiteScripts.astro";
-;
+
 const {title, keywords, description, author, canonical, base=""} = Astro.props;
 const criticalStyles = ``;
 const criticalScripts = ``;
@@ -30,7 +34,7 @@ const criticalScripts = ``;
     });
   </script>
   <link rel="manifest" href="/manifest.json" />
-  <link rel="icon" href="/image/iajh.png" type="image/x-icon" />
+  <link rel="icon" href={SITE_FAVICON} type={SITE_FAVICON_TYPE} />
   <SiteStyles critical={criticalStyles} hrefs={externalStyles} />
   <link rel="stylesheet" href="/style/index.css"/>
   <SiteScripts critical={criticalScripts} srcs={externalScripts} />

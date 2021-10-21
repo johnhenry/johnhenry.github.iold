@@ -1,7 +1,7 @@
 ---
 title: "Browses, Servers, and APIs"
 description: "Using servers in the browsers"
-publishDate: "1 May 2019"
+date: "1 May 2019"
 lastUpdate: "1 May 2019"
 author: "John"
 heroImage: "/vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg"

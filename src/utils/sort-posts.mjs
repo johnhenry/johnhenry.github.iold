@@ -1,20 +1,18 @@
 export default (posts) => {
-  const tags = posts.reduce((t, post) => {
-    if (post.tags) {
-      for (const tag of post.tags) {
-        t.add(tag);
-      }
-    }
-    return t;
-  }, new Set());
-
   const sorted = posts
-    .filter((b) => b.publishDate)
-    .sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+    .filter((b) => b.date)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  const tagSet = new Set();
+  for (const { tags } of sorted) {
+    for (const tag of tags) {
+      tagSet.add(tag);
+    }
+  }
   const latest = sorted[0];
   return {
+    posts,
     sorted,
     latest,
-    tags,
+    tags: [...tagSet],
   };
 };

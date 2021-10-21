@@ -2,6 +2,11 @@ export const SITE_AUTHOR = "John Henry";
 
 export const SITE_TITLE = process.env.SITE_TITLE || "John Henry";
 
+export const SITE_FAVICON = process.env.SITE_FAVICON || "/image/iajh.png";
+
+export const SITE_FAVICON_TYPE =
+  process.env.SITE_FAVICON_TYPE || "image/x-icon";
+
 export const SITE_BASE_PATH = process.env.SITE_BASE_PATH || "";
 
 export const SITE_LIB_PATH =

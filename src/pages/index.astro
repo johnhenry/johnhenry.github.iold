@@ -1,14 +1,19 @@
 ---
-import JH from "../components/jh/index.astro";
+import {
+SITE_TITLE,
+SITE_KEYWORDS,
+SITE_DESCRIPTION,
+SITE_AUTHOR,
+SITE_CANONICAL_URL } from "../SETTINGS.mjs";
 import SitePage from "../components/SitePage.astro";
+import JH from "../components/jh/index.astro";
 import sortPosts from "../utils/sort-posts.mjs";
-import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../SETTINGS.mjs";
 import projects from "../projects.mjs";
-const { latest=undefined, tags=[] } = sortPosts(Astro
-.fetchContent('./blog/posts/*.md'));
-const tagArray = [...tags];
+
+const { latest=undefined, tags=[] } = sortPosts(
+  Astro.fetchContent('./blog/posts/*.md'));
 const pageLinks = [
-  {url:'/blog', text:'Blog', subs:tagArray},
+  {url:'/blog', text:'Blog', subs:tags},
   {url:'#me', text:'Me'},
   {url:'#projects', text:'Projects'}
 ];
