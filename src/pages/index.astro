@@ -50,18 +50,18 @@ const pageLinks = [
       </main>
     </section>
     <section id="me" class="me">
-      <h1>Me</h1>
+      <header>Me</header>
       <main>
-        <div class="alt">
-          <span><img src="/image/iajh.png" alt="logo"/></span>
+        <div>
+          <header><img src="/image/iajh.png" alt="logo"/></header>
           <main class="glowey-background">
             <p>Hi! My name is John.</p>
             <p>I'm a mathmetician, a scientist, and an engineer (yes, those are different things!). </p>
             <p>I develop websites professionally. In my spare time, I like to work on interesting mathematical and computer science-related experiments.</p>
           </main>
         </div>
-        <div class="alt">
-          <span><img src="/image/iajh.png" alt="logo"/></span>
+        <div>
+          <header><img src="/image/iajh.png" alt="logo"/></header>
           <main class="glowey-background">
             <p>
               <a class="link-surprise" href="mailto:john@iamjohnhenry.com"
@@ -79,7 +79,7 @@ const pageLinks = [
     </section>
 
     <section id="projects" class="projects">
-      <h1>Projects</h1>
+      <header>Projects</header>
       <main class="glowey-background-container link-surprise-container">
         {projects.map(({title, description, href, image}) => (
           <a href={href} >

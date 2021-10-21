@@ -44,6 +44,7 @@ body > header > a > img {
   width: 16px;
 }
 
+/* footer */
 body > footer {
   height: var(--footer-height);
   width: 100vw;
@@ -82,12 +83,7 @@ body > footer > a > img {
   width: 16px;
 }
 
-body > header,
-body > footer {
-}
-
-body > header .nav-list,
-body > footer .nav-list {
+body > :is(header, footer) .nav-list {
   display: inline-flex;
   align-items: center;
   justify-content: end;
@@ -95,12 +91,7 @@ body > footer .nav-list {
   padding: 0;
 }
 
-body > header .nav-list > li,
-body > footer .nav-list > li {
+body > :is(header, footer) .nav-list li {
   display: inline-block;
   padding: 8px;
 }
-
-/* body > :is (header, footer) {
-
-} */

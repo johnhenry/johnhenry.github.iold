@@ -1,3 +1,6 @@
+/*
+  A section can appear anywhere on the page.
+*/
 section {
   --header-padding: 32px;
   padding: var(--header-padding);
@@ -7,12 +10,38 @@ section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
+
+/*
+  Direct children will expand to fit
+*/
 section > * {
   flex: 0 1 auto;
 }
+/*
+  ...but a "main" direct child will take precientence
+*/
+section > header {
+  font-size: 3rem;
+  color: var(--text-5);
+}
+
 section > main {
   flex: 1 1 auto;
+}
+
+section div {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+section div main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 /* section.hero variation */
@@ -77,22 +106,19 @@ section.me div > *:last-child {
   }
 }
 
-section.me div span img {
-  transition: filter 0.5s ease-in-out;
-  cursor: pointer;
-}
-
-section.me div:hover span img {
-  filter: sepia(100);
-}
-
 section.me div > span {
   padding: 8px;
 }
 
-section.me div > span > img {
+section.me div header img {
   width: 32px;
   height: 32px;
+  transition: filter 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+section.me div:hover header img {
+  filter: sepia(100);
 }
 
 section.me div main {
@@ -101,7 +127,6 @@ section.me div main {
 }
 
 /* section.projects */
-
 section.projects > main {
   display: flex;
   flex-wrap: wrap;
@@ -110,24 +135,33 @@ section.projects > main {
   align-content: center;
   gap: 16px;
 }
-
 section.projects div {
   border: 2px solid var(--text-1);
-  /* background-color: var(--background-3); */
   background-size: cover;
   width: 256px;
   height: 192px;
 }
-
-section.projects div header,
-section.projects div footer {
+section.projects div :is(header, footer) {
   padding: 4px;
   backdrop-filter: blur(2px);
 }
-
 section.projects div header {
   background-image: linear-gradient(to bottom, var(--background-5), #00000000);
 }
 section.projects div footer {
   background-image: linear-gradient(to top, var(--background-5), #00000000);
+}
+
+section.blog-preview {
+  min-height: initial;
+}
+
+section.blog-preview img {
+  width: 192px;
+}
+
+@media (orientation: landscape) {
+  section.blog-preview {
+    min-height: 0;
+  }
 }

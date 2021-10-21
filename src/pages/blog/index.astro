@@ -3,6 +3,7 @@
 import SitePage from "../../components/SitePage.astro";
 import sortPosts from "../../utils/sort-posts.mjs";
 import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../../SETTINGS.mjs";
+import JH from "../../components/jh/index.astro";
 const { sorted } = sortPosts(Astro
 .fetchContent('./posts/*.md'));
 const pageLinks = [
@@ -14,25 +15,22 @@ const title = `${SITE_TITLE} -- Weblog`;
 ---
 
 <SitePage title={title} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
-    <style>
-      @import '/style/classes/blog/blog.css';
-    </style>
-    <section class="me">
-      <h1 class="latest">{title}</h1>
-      <main>
+          <section class="blog-preview glowey-background">
+            <header>John Henry's Web Log</header>
+          </section>
           {sorted.map(({publishDate, url, title, description, heroImage}) =>
-          <div class="alt">
-          <header>
-            <p class="publish-date">{publishDate}</p>
-            <a href={url}><h1 class="title">{title}</h1></a>
-            <img width="180"src={heroImage}>
-          </header>
-          <main>
-            <p>{description}</p>
-            <a href={url}>Read more</a>
-          </main>
-        </div>)}
-      </main>
-    </section>
+          <section class="blog-preview glowey-background">
+            <header>
+              <p>{publishDate}</p>
+              <a href={url}>{title}</a>
+            </header>
+            <main>
+              <img src={heroImage}>
+              <p>{description}</p>
+            </main>
+            <footer>
+              <a href={url}>Read more</a>
+            </footer>
+          </section>)}
 </SitePage>
 

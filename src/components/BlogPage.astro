@@ -14,10 +14,7 @@ const keywords = SITE_KEYWORDS.concat(tags);
 const pageTitle = `${SITE_TITLE} -- Weblog: ${title}`;
 ---
 <SitePage title={pageTitle} description={description} keywords={keywords} author={author} canonical={SITE_CANONICAL_URL + permalink} pageLinks ={pageLinks}>
-    <style>
-      @import '/style/classes/blog/index.css';
-    </style>
-    <section class="blog blog-post">
+    <section class="blog">
       <h1 class="latest">{title}</h1>
       <main>
         {heroImage && <img width="360" height="210" class="hero-image" loading="lazy" src={heroImage} alt={alt} />}
