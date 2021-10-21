@@ -1,15 +1,8 @@
-<!DOCTYPE html><html lang="en"><head><title>johnhenry.github.io -- Weblog: Manage Websites Like Docker</title><link rel="canonical" href="https://johnhenry.github.io/undefined"><meta name="description" content="Manage static websites like you manage Docker images"><meta name="robots" content="index,follow"><meta name="theme-color" content="#343233"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"><meta name="keywords" content="John Henry,John Henry's personal website,personal website personal,website,github,github.io, johnhenry, johnhenry.github.io,science, math,programming,engineering,experiments,programming"><meta name="author" content="John"><link rel="manifest" href="/manifest.json"><script>
-      globalThis.addEventListener('load', () => {
-        globalThis.navigator.serviceWorker.register('./service-worker.js');
-      });
-    </script><style type="text/css">
-      @import "https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css";
-      @import "https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css";
-      @import "/style/index.css";
-    </style><link rel="icon" href="/image/iajh.png" type="image/x-icon"><script type="module">
-      import "https://johnhenry.github.io/lib/js/css-variables-mouse/0.0.0/index.mjs";
-      import "https://johnhenry.github.io/lib/js/css-variables-scroll/0.0.0/index.mjs"
-    </script><link rel="apple-touch-icon" sizes="512x512" href="/images/iajh.512.png"><link rel="apple-touch-icon" sizes="384x384" href="/images/iajh.384.png"><link rel="apple-touch-icon" sizes="256x256" href="/images/iajh.256.png"><link rel="apple-touch-icon" sizes="192x192" href="/images/iajh.192.png"><link rel="apple-touch-icon" sizes="128x128" href="/images/iajh.128.png"></head><body><section class="blog"><h1 class="latest">Manage Websites Like Docker</h1><main><img width="360" height="210" class="hero-image" loading="lazy" src="/vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg" alt="Astro"><p class="publish-date">19 October 2021</p><h1 class="title">Manage Websites Like Docker</h1><div class="author"><p><a href="https://iamjohnhenry.com">John Henry</a></p></div><p><em>Author’s Note: This is based on <strong>Experimental</strong> technologies that aren’t quite ready for production. Nonetheless, the ideas presented in this article may turn out useful.</em></p><p>Did you know that you can manage static websites
+<!DOCTYPE html><html lang="en"><head><title>johnhenry.github.io -- Weblog: Manage Websites Like Docker</title><link rel="canonical" href="https://johnhenry.github.io/undefined"><meta name="description" content="Manage static websites like you manage Docker images"><meta name="robots" content="index,follow"><meta name="theme-color" content="#343233"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"><meta name="keywords" content="John Henry,John Henry's personal website,personal website personal,website,github,github.io, johnhenry, johnhenry.github.io,science, math,programming,engineering,experiments,programming"><meta name="author" content="John"><base href=""><script>
+    globalThis.addEventListener('load', () => {
+      globalThis.navigator.serviceWorker.register('./service-worker.js');
+    });
+  </script><link rel="manifest" href="/manifest.json"><link rel="icon" href="/image/iajh.png" type="image/x-icon"><link rel="stylesheet" href="https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css"><link rel="stylesheet" href="https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css"><link rel="stylesheet" href="/style/index.css"><script type="module" src="https://johnhenry.github.io/lib/js/css-variables-mouse/0.0.0/index.mjs"></script><script type="module" src="https://johnhenry.github.io/lib/js/css-variables-scroll/0.0.0/index.mjs"></script><link rel="apple-touch-icon" sizes="512x512" href="/images/iajh.512.png"><link rel="apple-touch-icon" sizes="384x384" href="/images/iajh.384.png"><link rel="apple-touch-icon" sizes="256x256" href="/images/iajh.256.png"><link rel="apple-touch-icon" sizes="192x192" href="/images/iajh.192.png"><link rel="apple-touch-icon" sizes="128x128" href="/images/iajh.128.png"></head><body><section class="blog"><header class="latest">Manage Websites Like Docker</header><article><img width="360" height="210" class="hero-image" loading="lazy" src="/vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg" alt="Astro"><p class="publish-date"></p><header>Manage Websites Like Docker</header><div class="author"><p><a href="https://iamjohnhenry.com">John Henry</a></p></div><p><em>Author’s Note: This is based on <strong>Experimental</strong> technologies that aren’t quite ready for production. Nonetheless, the ideas presented in this article may turn out useful.</em></p><p>Did you know that you can manage static websites
 like you manage <a href="https://docker.com">Docker</a> images? Well, you can! but I’m sure you have a few more questions…</p><ul><li>What <em>exactly</em> do I mean by this?</li><li>Why would you want to?</li><li>How can you do it your self?</li></ul><p>To find answers,
 we will first take a simplified look
 at how management works with Docker.
@@ -50,7 +43,7 @@ with the following contents:</p><pre class=" language-html"><code class="languag
 with the following contents:</p><pre class=" language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>My first web bundle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>My first bundle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
     Hello again, World! This is the second page!
@@ -58,15 +51,15 @@ with the following contents:</p><pre class=" language-html"><code class="languag
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
 </code></pre><p>Outside of the hello-world folder, run the following command:</p><pre class=" language-bash"><code class="language-bash">gen-bundle -dir ./hello-world -baseURL http://localhost/ -o hello-world.wbn -primaryURL http://localhost/
-</code></pre><p>This creates a web bundle file
+</code></pre><p>This creates a bundle file
 named “hello-world.wbn”.
 This is equivalent to a Docker image.
 (Note that when you interact with docker
 using commands like <code>build</code>, <code>push</code>, and <code>pull</code>,
 you do not interact with the image itself.)</p><h4 id="view-artifact">View Artifact</h4><p>To view the artifact,
-we’ll need to enable
-an experimental browser feature.</p><p>Visit <code>chrome:flags</code> in Chrome
-and search for <code>web bundles</code>.
+we need to enable
+the experimental
+“bundles” browser feature.</p><p>Using chorme, visit <code>chrome://flags/#web-bundles</code>.
 Enable the feature and restart your browser.</p><p>Open the <code>hello-world.wbn</code> file
 that you previoiusly created using Chrome.
 The url will look something like
@@ -75,16 +68,15 @@ between pages of the site —
 even though it’s just singe file!</p><p>You can probably imagine
 a few uses for this;
 and here are a few:</p><ol><li><p>Entire websites can be easily snapped-shotted
-and archived into a single file.</p></li><li><p>Creating a test deployment for a site
+and archived into a single file.</p></li><li><p>In the past, creating a test deployment for a site
 used to require spinning up a new server.
-Now you can do it by pushing a single file
-to an existing server.</p></li></ol><h3 id="registry">Registry</h3><p>In place of a registry,
-how do we manage our web bundles?
+Now you can do it by sharing a single file.</p></li></ol><h3 id="registry">Registry</h3><p>In place of a registry,
+how do we manage our bundles?
 The beautiful thing is that
 we can actually use an OCI registry!</p><p>OCI has a <a href="https://github.com/opencontainers/artifacts">goal</a>
 to enable the distribution
 of more cloud native artifacts.</p><p>There are no existing tools
-to push web bundles (specificaly)
+to push bundles (specificaly)
 to OCI registries.
 Fortunately, we can <del>abuse</del> use WASM to OCI
 — a tool for doing something
@@ -94,16 +86,17 @@ as it supports unknown images.
 Notably, Docker Hub does not support this.</p><h4 id="login-to-github-with-docker">Login to Github with Docker</h4><p>We will be docker to authenticate</p><p>First obtain a
 <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">github access token</a>
 with, permissions to read and write to the registry.</p><p>User <code>docker login</code> to login to the github container registry at <code>ghcr.io</code>,</p><pre class=" language-bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token variable">$GITHUB_ACCESS_TOKEN</span> <span class="token operator">|</span> docker login ghcr.io -u <span class="token variable">$GITHUB_USERNAME</span> --password-stdin
-</code></pre><h4 id="pushing-and-pulling">Pushing and Pulling</h4><p>Push the web bundle to the registry with:</p><pre class=" language-bash"><code class="language-bash">wasm-to-oci push ./hello-world.wbn ghcr.io/<span class="token variable">$GITHUB_USERNAME</span>/hello-world:0.0.0
+</code></pre><h4 id="pushing-and-pulling">Pushing and Pulling</h4><p>Push the bundle to the registry with:</p><pre class=" language-bash"><code class="language-bash">wasm-to-oci push ./hello-world.wbn ghcr.io/<span class="token variable">$GITHUB_USERNAME</span>/hello-world:0.0.0
 </code></pre><p>If the registry at <code>https://github.com/users/$GITHUB_USERNAME/packages/container/package/hello-world</code> doest not exist, it will be created automatically.</p><p>You can view and manage artifacts in your repository at <code>https://github.com/$GITHUB_USERNAME?tab=packages</code>.</p><pre class=" language-bash"><code class="language-bash">wasm-to-oci pull ghcr.io/<span class="token variable">$GITHUB_USERNAME</span>/hello-world:0.0.0 --out hello-world.test.wbn
 </code></pre><h3 id="whats-next">What’s next?</h3><p>There are still a few main things missing from this work flow:</p><ol><li><p>The <code>docker images</code> command provides a way to
 manage docker images locally.</p><p>I don’t currently have an equivalent
-for managing web bundles
+for managing bundles
 or generic OCI images.</p></li><li><p>The <code>docker run</code> command provides way to
 to create a “running” container
-by combining an image with a linux kernel.</p><p>The equivalent of this would be a way to
-create a “running” web site
-by combining a web bundle with a static server.</p><p>I don’t currently have a way to do this,
-but the <code>dump-bundle</code> command
-— installed alongside with <code>gen-buldle</code> —
-looks promising.</p></li></ol></main></section><header><a href="/#"><img src="/image/iajh.png" width="16" height="16" alt="logo">John Henry</a><ul class="nav-list"><li><a href="/blog">Blog</a></li><li><a href="/#me">Me</a></li><li><a href="/#projects">Projects</a></li></ul></header><footer><ul><li class="nav-list"><a href="#">© 2021 John</a></li></ul></footer><span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span></body></html>
+by combining an image with a linux kernel.</p><p>The equivalent would be
+hosting a bundle as a static asset
+such that a user can interact with it.</p></li><li><p>The <code>docker run</code> command provides way to
+to create a “running” container
+by combining an image with a linux kernel.</p><p>The equivalent would be
+hosting a bundle as a static asset
+such that a user can interact with it.</p></li></ol></article></section><header><a href="/#"><img src="/image/iajh.png" width="16" height="16" alt="logo">johnhenry.github.io -- Weblog: Manage Websites Like Docker</a><nav><a href="/blog">Blog</a><a href="/#me">Me</a><a href="/#projects">Projects</a></nav></header><footer><nav><a href="#">© 2021 John</a></nav></footer><span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span></body></html>
