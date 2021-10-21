@@ -1,7 +1,7 @@
 /*
-  A main can appear anywhere on the page.
+  A section can appear anywhere on the page.
 */
-main {
+section {
   --header-padding: 32px;
   padding: var(--header-padding);
   padding-top: calc(var(--header-height) + var(--header-padding));
@@ -16,54 +16,55 @@ main {
 /*
   Direct children will expand to fit
 */
-main > * {
+section > * {
   flex: 0 1 auto;
 }
 /*
-  ...but a "section" direct child will take precientence
+  ...but a "article" direct child will take precientence
 */
-main > header {
+section > header {
   font-size: 3rem;
   color: var(--text-5);
 }
 
-main > section {
+section > article {
   flex: 1 1 auto;
 }
 
-main div {
+section div {
   display: flex;
   flex-direction: column;
 
   justify-content: space-between;
 }
-main div section {
+section div article {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-/* main.hero variation */
-main.hero > section {
+/* section.hero variation */
+section.hero > article {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
+
 @media (orientation: landscape) {
-  main.hero > section {
+  section.hero > article {
     flex-direction: row-reverse;
   }
 }
-main.hero > section > * {
+section.hero > article > * {
   align-self: center;
   justify-self: center;
 }
 
-/* main.me variation */
+/* section.me variation */
 
-main.me > section {
+section.me > article {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
@@ -74,13 +75,13 @@ main.me > section {
 }
 
 @media (orientation: landscape) {
-  main.me > section {
+  section.me > article {
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: initial;
   }
 }
 
-main.me div {
+section.me div {
   flex-direction: column;
   align-self: start;
   min-height: unset;
@@ -92,42 +93,42 @@ main.me div {
   width: 75vw;
 }
 
-main.me div > *:last-child {
+section.me div > *:last-child {
   flex: 1 1 auto;
 }
 
 @media (orientation: landscape) {
-  main.me div {
+  section.me div {
     flex-direction: row;
     width: unset;
   }
-  main.me div:nth-child(2n) {
+  section.me div:nth-child(2n) {
     flex-direction: row-reverse;
   }
 }
 
-main.me div > span {
+section.me div > span {
   padding: 8px;
 }
 
-main.me div header img {
+section.me div header img {
   width: 32px;
   height: 32px;
   transition: filter 0.5s ease-in-out;
   cursor: pointer;
 }
 
-main.me div:hover header img {
+section.me div:hover header img {
   filter: sepia(100);
 }
 
-main.me div section {
+section.me div article {
   padding: 16px;
   border-radius: 8px;
 }
 
-/* main.projects */
-main.projects > section {
+/* section.projects */
+section.projects > article {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -135,40 +136,53 @@ main.projects > section {
   align-content: center;
   gap: 16px;
 }
-main.projects div {
+section.projects div {
   border: 2px solid var(--text-1);
   background-size: cover;
   width: 256px;
   height: 192px;
 }
-main.projects div :is(header, footer) {
+section.projects div :is(header, footer) {
   padding: 4px;
   backdrop-filter: blur(2px);
 }
-main.projects div header {
+section.projects div header {
   background-image: linear-gradient(to bottom, var(--background-5), #00000000);
 }
-main.projects div footer {
+section.projects div footer {
   background-image: linear-gradient(to top, var(--background-5), #00000000);
 }
 
-main.blog-preview {
+section.blog-preview {
   min-height: initial;
 }
 
-main.blog-preview img {
+section.blog-preview header {
+  font-size: 2rem;
+}
+
+section.blog-preview img {
   width: 192px;
 }
 
 @media (orientation: landscape) {
-  main.blog-preview {
+  section.blog-preview {
     min-height: 0;
   }
 }
 
-main.blog > section {
+section.blog > article {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 64px;
+}
+
+/* section.hero variation */
+section.blog-top {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }

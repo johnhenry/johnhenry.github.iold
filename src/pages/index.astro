@@ -14,8 +14,8 @@ const pageLinks = [
 ];
 ---
 <SitePage title={SITE_TITLE} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
-    <main class="hero">
-      <section>
+    <section class="hero">
+      <article>
         <JH class="animated-logo" path-class="glowey-fill"
           stops="[-1, -1, 0, 0, 1]"
           intervals="[1, 2, 3, 2]"
@@ -47,22 +47,22 @@ const pageLinks = [
               ))
             }
         </ul>
-      </section>
-    </main>
-    <main id="me" class="me">
+      </article>
+    </section>
+    <section id="me" class="me">
       <header>Me</header>
-      <section>
+      <article>
         <div>
           <header><img src="/image/iajh.png" alt="logo"/></header>
-          <section class="glowey-background">
+          <article class="glowey-background">
             <p>Hi! My name is John.</p>
             <p>I'm a mathmetician, a scientist, and an engineer (yes, those are different things!). </p>
             <p>I develop websites professionally. In my spare time, I like to work on interesting mathematical and computer science-related experiments.</p>
-          </section>
+          </article>
         </div>
         <div>
           <header><img src="/image/iajh.png" alt="logo"/></header>
-          <section class="glowey-background">
+          <article class="glowey-background">
             <p>
               <a class="link-surprise" href="mailto:john@iamjohnhenry.com"
               target="_blank" rel="noreferrer">Send me an email.</a>
@@ -73,14 +73,14 @@ const pageLinks = [
             <p>
               <a class="link-surprise" href="https://github.com/johnhenry" target="_blank" rel="noreferrer">Checkout my github account.</a>
             </p>
-          </section>
+          </article>
         </div>
-      </section>
-    </main>
+      </article>
+    </section>
 
-    <main id="projects" class="projects">
+    <section id="projects" class="projects">
       <header>Projects</header>
-      <section class="glowey-background-container link-surprise-container">
+      <article class="glowey-background-container link-surprise-container">
         {projects.map(({title, description, href, image}) => (
           <a href={href} >
             <div style={image ? `background-image: url('${image}');`: ''}>
@@ -89,6 +89,6 @@ const pageLinks = [
             </div>
           </a>
         ))}
-      </section>
-    </main>
+      </article>
+    </section>
  </SitePage>
