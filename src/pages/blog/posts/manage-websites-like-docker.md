@@ -146,7 +146,7 @@ with the following contents:
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My first web bundle</title>
+    <title>My first bundle</title>
   </head>
   <body>
     Hello again, World! This is the second page!
@@ -161,7 +161,7 @@ Outside of the hello-world folder, run the following command:
 gen-bundle -dir ./hello-world -baseURL http://localhost/ -o hello-world.wbn -primaryURL http://localhost/
 ```
 
-This creates a web bundle file
+This creates a bundle file
 named "hello-world.wbn".
 This is equivalent to a Docker image.
 (Note that when you interact with docker
@@ -171,11 +171,11 @@ you do not interact with the image itself.)
 #### View Artifact
 
 To view the artifact,
-we'll need to enable
-an experimental browser feature.
+we need to enable
+the experimental
+"bundles" browser feature.
 
-Visit `chrome:flags` in Chrome
-and search for `web bundles`.
+Using chorme, visit `chrome://flags/#web-bundles`.
 Enable the feature and restart your browser.
 
 Open the `hello-world.wbn` file
@@ -194,15 +194,14 @@ and here are a few:
 1. Entire websites can be easily snapped-shotted
    and archived into a single file.
 
-2. Creating a test deployment for a site
+2. In the past, creating a test deployment for a site
    used to require spinning up a new server.
-   Now you can do it by pushing a single file
-   to an existing server.
+   Now you can do it by sharing a single file.
 
 ### Registry
 
 In place of a registry,
-how do we manage our web bundles?
+how do we manage our bundles?
 The beautiful thing is that
 we can actually use an OCI registry!
 
@@ -211,7 +210,7 @@ to enable the distribution
 of more cloud native artifacts.
 
 There are no existing tools
-to push web bundles (specificaly)
+to push bundles (specificaly)
 to OCI registries.
 Fortunately, we can ~abuse~ use WASM to OCI
 -- a tool for doing something
@@ -238,7 +237,7 @@ echo $GITHUB_ACCESS_TOKEN | docker login ghcr.io -u $GITHUB_USERNAME --password-
 
 #### Pushing and Pulling
 
-Push the web bundle to the registry with:
+Push the bundle to the registry with:
 
 ```bash
 wasm-to-oci push ./hello-world.wbn ghcr.io/$GITHUB_USERNAME/hello-world:0.0.0
@@ -260,18 +259,21 @@ There are still a few main things missing from this work flow:
    manage docker images locally.
 
    I don't currently have an equivalent
-   for managing web bundles
+   for managing bundles
    or generic OCI images.
 
 2. The `docker run` command provides way to
    to create a "running" container
    by combining an image with a linux kernel.
 
-   The equivalent of this would be a way to
-   create a "running" web site
-   by combining a web bundle with a static server.
+   The equivalent would be
+   hosting a bundle as a static asset
+   such that a user can interact with it.
 
-   I don't currently have a way to do this,
-   but the `dump-bundle` command
-   -- installed alongside with `gen-buldle` --
-   looks promising.
+3. The `docker run` command provides way to
+   to create a "running" container
+   by combining an image with a linux kernel.
+
+   The equivalent would be
+   hosting a bundle as a static asset
+   such that a user can interact with it.

@@ -22,15 +22,13 @@ const title = `${SITE_TITLE} -- Weblog`;
           {sorted.map(({publishDate, url, title, description, heroImage}) =>
           <section class="blog-preview">
             <header>
-              <p>{publishDate}</p>
-              <a href={url}>{title}</a>
+              <a href={url}><p>{publishDate}</p>{title}</a>
             </header>
             <article>
               <img src={heroImage}>
               <p>{description}</p>
             </article>
             <footer>
-              <section></section>
               <a href={url}>Read more</a>
             </footer>
           </section>)}

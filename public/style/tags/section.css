@@ -1,6 +1,4 @@
-/*
-  A section can appear anywhere on the page.
-*/
+/* base */
 section {
   --header-padding: 32px;
   padding: var(--header-padding);
@@ -13,19 +11,14 @@ section {
   gap: 32px;
 }
 
-/*
-  Direct children will expand to fit
-*/
 section > * {
   flex: 0 1 auto;
 }
-/*
-  ...but a "article" direct child will take precientence
-*/
-section > header {
+
+/* section > header {
   font-size: 3rem;
   color: var(--text-5);
-}
+} */
 
 section > article {
   flex: 1 1 auto;
@@ -34,17 +27,10 @@ section > article {
 section div {
   display: flex;
   flex-direction: column;
-
   justify-content: space-between;
 }
-section div article {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
 
-/* section.hero variation */
+/* hero variant */
 section.hero > article {
   display: flex;
   flex-direction: column;
@@ -61,9 +47,7 @@ section.hero > article > * {
   align-self: center;
   justify-self: center;
 }
-
-/* section.me variation */
-
+/* me variant */
 section.me > article {
   display: grid;
   grid-template-columns: 1fr;
@@ -72,13 +56,6 @@ section.me > article {
   justify-content: center;
   padding-left: 6.25%;
   padding-right: 6.25%;
-}
-
-@media (orientation: landscape) {
-  section.me > article {
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: initial;
-  }
 }
 
 section.me div {
@@ -93,11 +70,27 @@ section.me div {
   width: 75vw;
 }
 
-section.me div > *:last-child {
+section.me div > *:not(header) {
   flex: 1 1 auto;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+section.me div > header img {
+  width: 32px;
+  height: 32px;
+  transition: filter 0.5s ease-in-out;
+  cursor: pointer;
+}
+section.me div:hover > header img {
+  filter: sepia(100);
 }
 
 @media (orientation: landscape) {
+  section.me > article {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: initial;
+  }
   section.me div {
     flex-direction: row;
     width: unset;
@@ -106,28 +99,7 @@ section.me div > *:last-child {
     flex-direction: row-reverse;
   }
 }
-
-section.me div > span {
-  padding: 8px;
-}
-
-section.me div header img {
-  width: 32px;
-  height: 32px;
-  transition: filter 0.5s ease-in-out;
-  cursor: pointer;
-}
-
-section.me div:hover header img {
-  filter: sepia(100);
-}
-
-section.me div article {
-  padding: 16px;
-  border-radius: 8px;
-}
-
-/* section.projects */
+/* projects variant */
 section.projects > article {
   display: flex;
   flex-wrap: wrap;
@@ -152,33 +124,22 @@ section.projects div header {
 section.projects div footer {
   background-image: linear-gradient(to top, var(--background-5), #00000000);
 }
-
+/* blog variatns */
 section.blog-preview {
-  min-height: initial;
+  min-height: 0;
 }
-
 section.blog-preview header {
   font-size: 2rem;
 }
-
 section.blog-preview img {
   width: 192px;
 }
-
-@media (orientation: landscape) {
-  section.blog-preview {
-    min-height: 0;
-  }
-}
-
 section.blog > article {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 64px;
 }
-
-/* section.hero variation */
 section.blog-top {
   min-height: 0;
   display: flex;

@@ -1,16 +1,14 @@
 body {
-  font-size: 14px;
+  font-size: 16px;
   width: 100vw;
   background-color: var(--background-2);
   color: var(--text-2);
   font-family: var(--font-family);
 }
 
-body > header {
-  height: var(--header-height);
+body > :is(header, footer) {
   width: 100vw;
   position: fixed;
-  top: 0;
   background-color: var(--background-1);
   display: flex;
   align-items: center;
@@ -19,71 +17,7 @@ body > header {
   padding-right: 16px;
 }
 
-body > header a {
-  color: var(--text-1);
-}
-
-body > header a:visited {
-  color: var(--text-1);
-}
-
-body > header a:hover,
-body > header a:visited:hover {
-  color: var(--text-5-h);
-}
-
-body > header > a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.2rem;
-}
-
-body > header > a > img {
-  width: 16px;
-}
-
-/* footer */
-body > footer {
-  height: var(--footer-height);
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
-  background-color: var(--background-1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-body > footer a {
-  color: var(--text-1);
-}
-
-body > footer a:visited {
-  color: var(--text-1);
-}
-
-body > footer a:hover,
-body > footer a:visited:hover {
-  color: var(--text-5-h);
-}
-
-body > footer > a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.2rem;
-}
-
-body > footer > a > img {
-  width: 16px;
-}
-
-body > :is(header, footer) .nav-list {
+body > :is(header, footer) nav {
   display: inline-flex;
   align-items: center;
   justify-content: end;
@@ -91,7 +25,37 @@ body > :is(header, footer) .nav-list {
   padding: 0;
 }
 
-body > :is(header, footer) .nav-list li {
+body > :is(header, footer) nav a {
   display: inline-block;
   padding: 8px;
+}
+
+body > :is(header, footer) > a {
+  color: var(--text-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+body > :is(header, footer) a:visited {
+  color: var(--text-1);
+}
+
+body > :is(header, footer) a :is(:visited, :hover) {
+  color: var(--text-5-h);
+}
+
+body > :is(header, footer) > a > img {
+  width: 16px;
+}
+
+body > header {
+  height: var(--header-height);
+  top: 0;
+}
+body > footer {
+  height: var(--footer-height);
+  bottom: 0;
 }

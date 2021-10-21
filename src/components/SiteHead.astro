@@ -1,40 +1,42 @@
 ---
+import { TAG_MANAGER_ID, SITE_BASE_PATH } from '../SETTINGS.mjs';
+import externalStyles from '../EXTERNAL_STYLES.mjs';
+import externalScripts from '../EXTERNAL_SCRIPTS.mjs';
 import SEO from './SEO.astro';
 import TagManagerHead from './TagManagerHead.astro';
-import { TAG_MANAGER_ID } from '../SETTINGS.mjs';
-const {title, keywords, description, author, canonical} = Astro.props;
+import SiteStyles from "./SiteStyles.astro";
+import SiteScripts from "./SiteScripts.astro";
+;
+const {title, keywords, description, author, canonical, base=""} = Astro.props;
+const criticalStyles = ``;
+const criticalScripts = ``;
 ---
-  <head>
-    {TAG_MANAGER_ID ? <TagManagerHead tmid="{TAG_MANAGER_ID}" /> : ''}
-		<SEO
-			title={title}
-			description={description}
-      canonical={canonical}
-		/>
-    <meta name="theme-color" content="#343233">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content={keywords}>
-    <meta name="author" content={author}>
-    <link rel="manifest" href="/manifest.json" />
-    <script>
-      globalThis.addEventListener('load', () => {
-        globalThis.navigator.serviceWorker.register('./service-worker.js');
-      });
-    </script>
-    <style>
-      @import "https://johnhenry.github.io/lib/css/universal-unstyled-links/0.0.0/index.css";
-      @import "https://johnhenry.github.io/lib/css/universal-box-sizing/0.0.0/index.css";
-      @import "/style/index.css";
-    </style>
-    <link rel="icon" href="/image/iajh.png" type="image/x-icon" />
-    <script type="module">
-      import "https://johnhenry.github.io/lib/js/css-variables-mouse/0.0.0/index.mjs";
-      import "https://johnhenry.github.io/lib/js/css-variables-scroll/0.0.0/index.mjs"
-    </script>
-    <link rel="apple-touch-icon" sizes="512x512" href="/images/iajh.512.png" />
-    <link rel="apple-touch-icon" sizes="384x384" href="/images/iajh.384.png" />
-    <link rel="apple-touch-icon" sizes="256x256" href="/images/iajh.256.png" />
-    <link rel="apple-touch-icon" sizes="192x192" href="/images/iajh.192.png" />
-    <link rel="apple-touch-icon" sizes="128x128" href="/images/iajh.128.png" />
-  </head>
+<head>
+  {TAG_MANAGER_ID ? <TagManagerHead tmid="{TAG_MANAGER_ID}" /> : ''}
+  <SEO
+    title={title}
+    description={description}
+    canonical={canonical}
+  />
+  <meta name="theme-color" content="#343233">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content={keywords}>
+  <meta name="author" content={author}>
+  <base href={`${SITE_BASE_PATH}${base}`} />
+  <script>
+    globalThis.addEventListener('load', () => {
+      globalThis.navigator.serviceWorker.register('./service-worker.js');
+    });
+  </script>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/image/iajh.png" type="image/x-icon" />
+  <SiteStyles critical={criticalStyles} hrefs={externalStyles} />
+  <link rel="stylesheet" href="/style/index.css"/>
+  <SiteScripts critical={criticalScripts} srcs={externalScripts} />
+  <link rel="apple-touch-icon" sizes="512x512" href="/images/iajh.512.png" />
+  <link rel="apple-touch-icon" sizes="384x384" href="/images/iajh.384.png" />
+  <link rel="apple-touch-icon" sizes="256x256" href="/images/iajh.256.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/images/iajh.192.png" />
+  <link rel="apple-touch-icon" sizes="128x128" href="/images/iajh.128.png" />
+</head>
