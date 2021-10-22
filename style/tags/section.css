@@ -15,10 +15,9 @@ section > * {
   flex: 0 1 auto;
 }
 
-/* section > header {
-  font-size: 3rem;
-  color: var(--text-5);
-} */
+section > header {
+  font-size: 2rem;
+}
 
 section > article {
   flex: 1 1 auto;
@@ -146,4 +145,34 @@ section.blog-top {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+
+section.blog-top header {
+  min-height: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 12px;
+}
+
+section.blog-top header svg {
+  width: 64px;
+  height: 64px;
+}
+
+section.blog-top header svg path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--text-5);
+  stroke-width: 0.5;
+}
+
+section.blog-nav {
+  min-height: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 16px;
 }

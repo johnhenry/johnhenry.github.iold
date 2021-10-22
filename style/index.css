@@ -1,17 +1,6 @@
-/*
-  - style a component primarily by **tag** if it is reusable throughtout
-    the application
-  - add a **class** for slight variations
-*/
 @import "./tags/index.css";
-
-/*
-  - style components primarily by **class** if its semantic interpretation goes beyond the set of built-in HTML tags
-*/
 @import "./classes/index.css";
-
 @import "./constants/index.css";
-
 /* *{ border: 1px dashed #0b51b7 !important; } */
 * {
   margin: 0;

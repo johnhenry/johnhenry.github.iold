@@ -25,19 +25,15 @@
 }
 
 .widget li.blog-link > a {
-  /* display: inline-block; */
-  width: 100%;
+  max-width: 80%;
   height: 100%;
   display: flex;
-  font-size: 2rem;
   justify-content: center;
-  gap: 12px;
+  font-size: 1.5rem;
+  gap: 8px;
   flex: 1;
   align-items: center;
   padding: 8px;
-}
-.widget li.blog-link > a > * {
-  /* flex: 1 1 auto; */
 }
 
 .widget li {
@@ -74,4 +70,10 @@
 
 .mini-preview header {
   color: var(--text-5);
+}
+
+@media screen and (orientation: landscape) {
+  .widget li.blog-link > a {
+    font-size: 2rem;
+  }
 }
