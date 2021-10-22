@@ -9,7 +9,6 @@ import TagManagerBody from './TagManagerBody.astro';
 <html lang="en" class={htmlClass}>
   <SiteHead title={title} description={description} keywords={keywords} author={author} canonical={canonical} ></SiteHead>
   <body class={bodyClass}>
-      <slot />
       <header class={headerClass}>
         <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />{headerTitle}</a>
         <nav>
@@ -20,6 +19,8 @@ import TagManagerBody from './TagManagerBody.astro';
           }
         </nav>
       </header>
+      <slot />
+
       <footer class={footerClass}>
           <nav>
               <a href="#">© {new Date().getFullYear()}  {` ${author}`}</a>
