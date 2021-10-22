@@ -30,7 +30,7 @@ const criticalScripts = ``;
   <base href={`${SITE_BASE_PATH}${base}`} />
   <script>
     globalThis.addEventListener('load', () => {
-      globalThis.navigator.serviceWorker.register('./service-worker.js');
+      globalThis.navigator.serviceWorker.register('/service-worker.js');
     });
   </script>
   <link rel="manifest" href="/manifest.json" />

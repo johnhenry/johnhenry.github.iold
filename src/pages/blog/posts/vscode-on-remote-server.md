@@ -7,7 +7,7 @@ author: "John"
 heroImage: "/vendor/img/www.pexels.com/pixabay/view-of-street-from-a-glass-window.jpg"
 alt: "Astro"
 layout: "../../../components/BlogPage.astro"
-tags: ["programming"]
+tags: ["programming", "experimenting"]
 ---
 
 These days, it is easy to set up a web server where you can program remotely using virtually any client device.

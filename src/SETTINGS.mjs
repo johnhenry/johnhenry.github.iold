@@ -9,6 +9,8 @@ export const SITE_FAVICON_TYPE =
 
 export const SITE_BASE_PATH = process.env.SITE_BASE_PATH || "";
 
+export const SITE_BLOG_PAGE_SIZE = Number(process.env.SITE_BLOG_PAGE_SIZE) || 8;
+
 export const SITE_LIB_PATH =
   process.env.SITE_LIB_PATH || "https://johnhenry.github.io/lib/";
 

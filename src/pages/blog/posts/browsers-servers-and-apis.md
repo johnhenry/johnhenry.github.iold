@@ -28,6 +28,7 @@ Traditionally you wouldn’t set up a server within a browser, but considering w
 
 For instance, a server within a service worker would be able to intercept and respond to requests within the browser, without ever having to make a call across a network.
 
+```javascript
     //example -- service worker
     const server = …;//define later
 
@@ -39,6 +40,7 @@ For instance, a server within a service worker would be able to intercept and re
        });
      }));
     });
+```
 
 We’ll come back to this idea...
 
@@ -52,6 +54,7 @@ Every other server that I’ve seen follows a particular pattern…
 
 Node already has a built in simple API for creating servers via [http](https://nodejs.org/api/http.html).
 
+```javascript
     //example -- http
     //create server and define action
     const server = require(“http”)
@@ -62,6 +65,7 @@ Node already has a built in simple API for creating servers via [http](https://n
 
     //start server
     server.listen(/*listening address*/);
+```
 
 This might be considered a standard, but many modern server applications are built to handle complex workflows.
 
@@ -69,6 +73,7 @@ This might be considered a standard, but many modern server applications are bui
 
 As the http module is quite simplistic, the [express](https://github.com/expressjs/express) module is the de-facto standard for creating servers within node. It separates creating the server from assigning it actions. It also makes handling complex workflows easier. Express servers have a “use” method. It allows the user to chain together multiple functions to act upon a request before a response is sent. These functions are called “middleware”.
 
+```javascript
     //example -- express
 
     //create server
@@ -97,6 +102,7 @@ As the http module is quite simplistic, the [express](https://github.com/express
 
     //start server
     server.listen(/*listening address*/);
+```
 
 In addition, express adds additional features such as templating or routing which you may or may not need.
 
@@ -106,6 +112,7 @@ In addition, express adds additional features such as templating or routing whic
 
 Koa makes use of [asynchronous functions](https://github.com/tc39/ecmascript-asyncawait) and adding middleware works similarly.
 
+```javascript
     //example -- koa
 
     const server = require(“koa”)();
@@ -121,6 +128,7 @@ Koa makes use of [asynchronous functions](https://github.com/tc39/ecmascript-asy
 
     //start server
     server.listen(/*listening address*/);
+```
 
 Koa also eschews built in routing and templating in favor of including them externally as middleware.
 
@@ -130,6 +138,7 @@ Please be aware that Koa 2 is still in alpha, but since its API is so much clean
 
 [Rill](https://github.com/rill-js/rill) is a [new server](https://medium.com/@pierceydylan/isomorphic-javascript-it-just-has-to-work-b9da5b0c8035#.l79bgqqwx) that has basically the same API as KOA 2, but works in the browser as well as in node right out of the box.
 
+```javascript
     //example -- rill
 
     const server = require(“rill”)();
@@ -139,6 +148,7 @@ Please be aware that Koa 2 is still in alpha, but since its API is so much clean
     });
 
     server.listen(/*listening address*/);
+```
 
 Rill may be overkill for my purposes, as it includes routing features that manipulate the web page, in addition to simply processing requests into responses.
 
@@ -154,6 +164,7 @@ There’s a basic pattern of that all of the other servers follow.
 
 While rill or koa would have been a great starting point for a server in the browser, mozilla has taken a different route with their new FlyWeb servers.
 
+```javascript
     //example -- flyweb
 
     //create and start server
@@ -164,6 +175,7 @@ While rill or koa would have been a great starting point for a server in the bro
       ...//process request
       request.end();//end response
     };
+```
 
 This breaks the pattern of everything we’ve seen so far! Here the server is created and started first. Only afterwards are actions actions added.
 
@@ -179,6 +191,7 @@ And that’s exactly what I’ve done with [koa-2-browser](https://github.com/jo
 
 Revisiting the service worker example above, we have:
 
+```javascript
     //example -- koa-2-browser
     const server = require(‘koa-2-browser’)();
     server.use(/*middleware*/);
@@ -195,7 +208,17 @@ Revisiting the service worker example above, we have:
 
     });
 
-    //Note:server.RespondTo returns a response, (here identified as "response") object that is not a suitable resolution for the promise passed to event.respond with. Passing the "browserResponse:true" option will cause the "finish" event to be resolved with a suitable instance of window.Response (identified as "res").
+    /*
+    Note: server.RespondTo returns a response object
+    (here identified as "response")
+    that is not a suitable resolution
+    for the promise passed to event.respond with.
+    Passing the "browserResponse:true" option
+    will cause the "finish" event to be resolved
+    with a suitable instance of window.Response
+    (identified as "res").
+    */
+```
 
 It’s important to realize that if we ever want to move towards isomorphic JavaScript, we should really shy away from competing standards within the language itself.
 
@@ -215,6 +238,7 @@ There are some other similar topics like **importing modules**, but that situati
 
 But trying new things is fun! I actually prefer the [way that FlyWeb creates servers](https://github.com/flyweb/spec). Since it [it appears that I’m not the only one](https://github.com/koajs/koa/issues/482), I’ve created another library, [flyweb-koa](https://github.com/johnhenry/flyweb-koa). It allows you to use koa in a manner similar to the FlyWeb, while maintaining everything that koa has to offer.
 
+```javascript
     const koa = require(“koa-2-browser”);
     //This also works with koa;
 
@@ -226,3 +250,4 @@ But trying new things is fun! I actually prefer the [way that FlyWeb creates ser
     ...
     };
     server.respondTo(/*request*/);
+```

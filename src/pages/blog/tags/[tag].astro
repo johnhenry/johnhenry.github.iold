@@ -1,0 +1,49 @@
+---
+import SitePage from "../../../components/SitePage.astro";
+import sortPosts from "../../../utils/sort-posts.mjs";
+import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../../../SETTINGS.mjs";
+import JH from "../../../components/jh/index.astro";
+const pageLinks = [
+  {url:'/blog', text:'Blog'},
+  {url:'/#me', text:'Me'},
+  {url:'/#projects', text:'Projects'}
+];
+export function getStaticPaths() {
+const { byTag } =
+    sortPosts(
+      Astro
+      .fetchContent('../posts/*.md'));
+    return byTag.map(([tag, posts]) => ({
+      params: { tag },
+      props: {
+        posts,
+        tag
+      }
+    }));
+}
+const { tag } = Astro.request.params;
+const { posts } = Astro.props;
+const title = `${SITE_TITLE} -- Weblog: ${tag}`;
+---
+<SitePage title={title} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
+          <section class="blog-top">
+            <header>
+              <JH path-class="glowey-fill"/>
+              <p>John Henry's Blog: Tagged {tag}</p>
+            </header>
+            <p>This is the place where I muse about technology.</p>
+          </section>
+          {posts.map(({publishDate, url, title, description, heroImage}) =>
+          <section class="blog-preview">
+            <header>
+              <a href={url}><p>{publishDate}</p>{title}</a>
+            </header>
+            <article>
+              <img src={heroImage}>
+              <p>{description}</p>
+            </article>
+            <footer>
+              <a href={url}>Read more</a>
+            </footer>
+          </section>)}
+</SitePage>
