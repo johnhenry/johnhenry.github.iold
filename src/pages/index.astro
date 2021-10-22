@@ -37,7 +37,7 @@ const pageLinks = [
               {text.toUpperCase().split("").map((letter) => <span>{letter}</span>)}
               </a>
             {(subs.length) ? <span class="tags">
-              {subs.map((tag, index) =><a class={index%2? 'link' : 'link-inverted'} href={`/tag/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
+              {subs.map((tag, index) =><a class={index%2? 'link' : 'link-inverted'} href={`/blog/tags/${tag}`} title={`tag: ${tag}`}>{tag}</a>)}
             </span> : null}
           </li>
           {(latest && text.toLowerCase() === "blog") ? <li class="blog">
