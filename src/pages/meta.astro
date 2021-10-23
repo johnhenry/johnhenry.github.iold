@@ -3,13 +3,31 @@ import * as SETTINGS from '../SETTINGS.mjs';
 import DEFAULTS from '../SETTINGS.mjs';
 // Todo: "import DEFAULTS, * as SETTINGS from '../SETTINGS.mjs'";
 // causes SETTINGS to reset w/o awarness of the process.env variables.
+const extract = (value)=>
+  Array.isArray(value)
+    ? `[${value.join(', ')}]`
+    : typeof value === "string" ?
+      `"${value}"`
+      : value;
 ---
 <!DOCTYPE html>
 <html>
   <body>
-    <table border="1">
+    <style>
+      table {
+        display: table;
+        width: 100%;
+        height: 75vh;
+        border-collapse:collapse
+      }
+      td {
+        padding:4px;
+        border: 1px dashed black;
+      }
+    </style>
+    <table >
       <tr>
-        <th></th>
+        <th>KEY</th>
         <th>DEFAULT</th>
         <th>ENV</th>
         <th>FINAL</th>
@@ -17,9 +35,9 @@ import DEFAULTS from '../SETTINGS.mjs';
       {Object.keys(DEFAULTS).map((key) => (
         <tr>
           <td>{key}</td>
-          <td>{DEFAULTS[key]}</td>
-          <td>{process.env[key]}</td>
-          <td>{SETTINGS[key]}</td>
+          <td>{extract(DEFAULTS[key])}</td>
+          <td>{extract(process.env[key])}</td>
+          <td>{extract(SETTINGS[key])}</td>
         </tr>
       ))}
     </table>
