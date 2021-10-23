@@ -27,6 +27,9 @@ jobs:
           SITE_CANONICAL_URL: ${{ secrets.SITE_CANONICAL_URL }}
           SITE_DESCRIPTION: ${{ secrets.SITE_DESCRIPTION }}
           SITE_KEYWORDS: ${{ secrets.SITE_KEYWORDS }}
+          SITE_LIB_URL: ${{ secrets.SITE_LIB_URL }}
+          BUILD_META: ${{ secrets.BUILD_META }}
+          BUILD_HASH: ${{ secrets.BUILD_HASH }}
           TAG_MANAGER_ID: ${{ secrets.TAG_MANAGER_ID }}
         run: npm run build
 

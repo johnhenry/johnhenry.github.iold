@@ -7,13 +7,14 @@ const defaults = {
   SITE_FAVICON_TYPE: "image/png",
   SITE_BASE_PATH: "",
   SITE_BLOG_PAGE_SIZE: 8,
-  SITE_LIB_PATH: "https://johnhenry.github.io/lib/",
+  SITE_LIB_URL: "http://localhost:3001/",
   SITE_CANONICAL_URL: "http://localhost:3000/",
   SITE_DESCRIPTION: "John Henry's Person Portfolio and Blog",
   SITE_KEYWORDS: [],
   TAG_MANAGER_ID: "",
   BUILD_DATE: new Date().toISOString(),
   BUILD_HASH: HASH,
+  BUILD_META: "",
 };
 export default defaults;
 
@@ -32,8 +33,7 @@ export const SITE_BASE_PATH =
 export const SITE_BLOG_PAGE_SIZE =
   Number(process.env.SITE_BLOG_PAGE_SIZE) || defaults.SITE_BLOG_PAGE_SIZE;
 
-export const SITE_LIB_PATH =
-  process.env.SITE_LIB_PATH || defaults.SITE_LIB_PATH;
+export const SITE_LIB_URL = process.env.SITE_LIB_URL || defaults.SITE_LIB_URL;
 
 export const SITE_CANONICAL_URL =
   process.env.SITE_CANONICAL_URL || defaults.SITE_CANONICAL_URL;
@@ -49,5 +49,5 @@ export const TAG_MANAGER_ID =
   process.env.TAG_MANAGER_ID || defaults.TAG_MANAGER_ID;
 
 export const BUILD_DATE = process.env.BUILD_DATE || defaults.BUILD_DATE;
-
 export const BUILD_HASH = process.env.BUILD_HASH || defaults.BUILD_HASH;
+export const BUILD_META = process.env.BUILD_META || defaults.BUILD_META;

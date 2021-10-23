@@ -1,4 +1,4 @@
-import { SITE_LIB_PATH } from "./SETTINGS.mjs";
+import { SITE_LIB_URL } from "./SETTINGS.mjs";
 
 export default [
   {
@@ -9,7 +9,7 @@ export default [
   {
     title: "Standard Library -- set of components for building applications.",
     description: "Click here",
-    href: SITE_LIB_PATH,
+    href: SITE_LIB_URL,
     image:
       "https://johnhenry.github.io/vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg",
   },
