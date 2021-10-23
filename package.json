@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "set:hash": "echo \"export default \\\"$(git rev-parse HEAD)\\\";\" > src/HASH.mjs",
-    "build:html": "astro build || exit 0",
+    "build:html": "astro build",
     "build:sw": "mkdir -p dist/ && workbox generateSW config/workbox.config.js",
     "build:wbn": "mkdir -p dist/ sh scripts/gen-bundle.sh http://localhost/",
     "build:-sw": "npm run set:hash && npm run build:html && npm run build:sw",
