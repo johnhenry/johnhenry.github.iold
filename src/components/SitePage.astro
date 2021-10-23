@@ -4,11 +4,18 @@ const {title, headerTitle = title, description, keywords, author, canonical, hea
 import { TAG_MANAGER_ID } from '../SETTINGS.mjs';
 import GDPRRequest from './GDPRRequest.astro';
 import TagManagerBody from './TagManagerBody.astro';
+import LocalStorageThemeCycler from './LocalStorageThemeCycler.astro';
 ---
 <!DOCTYPE html>
 <html lang="en" class={htmlClass}>
   <SiteHead title={title} description={description} keywords={keywords} author={author} canonical={canonical} ></SiteHead>
   <body class={bodyClass}>
+    <LocalStorageThemeCycler
+      storage-key="color-theme-preference"
+      schemes={[
+      "",
+      "color-theme-light",
+      "color-theme-dark"]} />
     <header class={headerClass}>
       <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />{headerTitle}</a>
       <nav>
@@ -19,9 +26,10 @@ import TagManagerBody from './TagManagerBody.astro';
     </header>
     <slot />
     <footer class={footerClass}>
+    <a href="#">© {new Date().getFullYear()}  {` ${author}`}</a>
+      <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
       <nav>
-          <a href="#">© {new Date().getFullYear()}  {` ${author}`}</a>
-        <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
+        <a>1</a>
       </nav>
     </footer>
     <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>

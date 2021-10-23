@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "ensure-lib": "git clone git@github.com:johnhenry/lib.git src/lib",
     "dev": "astro dev",
     "start": "astro dev",
     "set:hash": "echo \"export default \\\"$(git rev-parse HEAD)\\\";\" > src/HASH.mjs",

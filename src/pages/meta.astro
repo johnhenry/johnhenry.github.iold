@@ -1,45 +1,14 @@
 ---
-import * as SETTINGS from '../SETTINGS.mjs';
-import DEFAULTS from '../SETTINGS.mjs';
-// Todo: "import DEFAULTS, * as SETTINGS from '../SETTINGS.mjs'";
-// causes SETTINGS to reset w/o awarness of the process.env variables.
-const extract = (value)=>
-  Array.isArray(value)
-    ? <ul>{value.map(v=><li>{v}</li>)}</ul>
-    : typeof value === "string" ?
-      `"${value}"`
-      : value;
+import SettingsMeta from "../components/SettingsMeta.astro";
 ---
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="/style/classes/settings-meta.css" />
+  </head>
   <body>
-    <style>
-      table {
-        display: table;
-        width: 100%;
-        min-height: 75vh;
-        border-collapse:collapse
-      }
-      td {
-        padding:4px;
-        border: 1px dashed black;
-      }
-    </style>
-    <table >
-      <tr>
-        <th>KEY</th>
-        <th>DEFAULT</th>
-        <th>ENV</th>
-        <th>FINAL</th>
-      </tr>
-      {Object.keys(DEFAULTS).map((key) => (
-        <tr>
-          <td>{key}</td>
-          <td>{extract(DEFAULTS[key])}</td>
-          <td>{extract(process.env[key])}</td>
-          <td>{extract(SETTINGS[key])}</td>
-        </tr>
-      ))}
-    </table>
+    <h1>Settings Meta</h1>
+    <p>Metadata passed to the build process.</p>
+    <SettingsMeta class="settings-meta"/>
   </body>
 </html>
