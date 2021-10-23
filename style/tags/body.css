@@ -59,7 +59,9 @@ body > header {
   Fixing the positon of the header and footer
   gives them a stacking context (z-index: auto).
   Giving somthing else a stacking context --
-    for example, by appling a filter --
+  for example, by appling a filter
+  (see here for more: https://stackoverflow.com/questions/16148007/which-css-properties-create-a-stacking-context/16148341#16148341)
+    --
   would cause it to appear above the header.
   To solve this, we explicitly set the z-index
   of the header to 1. This is not necessary for
