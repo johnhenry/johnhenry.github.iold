@@ -9,26 +9,23 @@ import TagManagerBody from './TagManagerBody.astro';
 <html lang="en" class={htmlClass}>
   <SiteHead title={title} description={description} keywords={keywords} author={author} canonical={canonical} ></SiteHead>
   <body class={bodyClass}>
-      <header class={headerClass}>
-        <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />{headerTitle}</a>
-        <nav>
-          {
-            pageLinks.map(({url, text}) => (
-              <a href={`${url}`}>{text}</a>
-            ))
-          }
-        </nav>
-      </header>
-      <slot />
-
-      <footer class={footerClass}>
-          <nav>
-              <a href="#">© {new Date().getFullYear()}  {` ${author}`}</a>
-            <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
-          </nav>
-      </footer>
-      <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
-      {TAG_MANAGER_ID ? <GDPRRequest /> : null}
-      {TAG_MANAGER_ID ? <TagManagerBody tmid={`${TAG_MANAGER_ID}`} /> : null}
+    <header class={headerClass}>
+      <a href="/#" ><img src="/image/iajh.png" width="16" height="16"  alt="logo" />{headerTitle}</a>
+      <nav>
+        {pageLinks.map(({url, text}) => (
+            <a href={`${url}`}>{text}</a>
+          ))}
+      </nav>
+    </header>
+    <slot />
+    <footer class={footerClass}>
+      <nav>
+          <a href="#">© {new Date().getFullYear()}  {` ${author}`}</a>
+        <!-- Todo: Astro whitespace may be fixed in Astro 0.21? -->
+      </nav>
+    </footer>
+    <span class="mouse-chaser" style="--mouse-z: var(--header-z)"></span>
+    {TAG_MANAGER_ID ? <GDPRRequest /> : null}
+    {TAG_MANAGER_ID ? <TagManagerBody tmid={`${TAG_MANAGER_ID}`} /> : null}
   </body>
 </html>

@@ -1,3 +1,5 @@
+import { SITE_LIB_PATH } from "./SETTINGS.mjs";
+
 export default [
   {
     title: "Bash Command Line tools",
@@ -7,7 +9,7 @@ export default [
   {
     title: "Standard Library -- set of components for building applications.",
     description: "Click here",
-    href: "https://johnhenry.github.io/lib",
+    href: SITE_LIB_PATH,
     image:
       "https://johnhenry.github.io/vendor/img/www.pexels.com/pixabay/turned-on-computer-monitor-displaying-text-300.jpg",
   },
