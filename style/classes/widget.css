@@ -43,7 +43,10 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* box-shadow: 5px 5px 5px #00000080; */
+}
+.widget li:hover {
+  /* box-shadow: var(--box-shadow); */
+  text-shadow: var(--drop-shadow);
 }
 
 .widget li:first-child {
