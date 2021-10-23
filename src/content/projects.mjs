@@ -1,4 +1,4 @@
-import { SITE_LIB_URL } from "./SETTINGS.mjs";
+import { SITE_LIB_URL } from "../SETTINGS.mjs";
 
 export default [
   {

@@ -31,6 +31,7 @@ jobs:
           BUILD_META: ${{ secrets.BUILD_META }}
           BUILD_HASH: ${{ secrets.BUILD_HASH }}
           TAG_MANAGER_ID: ${{ secrets.TAG_MANAGER_ID }}
+          SITE_SERVICE_WORKER: ${{ secrets.SITE_SERVICE_WORKER }}
         run: npm run build
 
       - name: Deploy 🚀

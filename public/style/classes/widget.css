@@ -24,6 +24,14 @@
   padding: 16px;
 }
 
+.widget li.blog-link .tags a::before {
+  content: "[";
+}
+
+.widget li.blog-link .tags a::after {
+  content: "]";
+}
+
 .widget li.blog-link > a {
   max-width: 80%;
   height: 100%;

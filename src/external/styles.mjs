@@ -1,4 +1,4 @@
-import { SITE_LIB_URL } from "./SETTINGS.mjs";
+import { SITE_LIB_URL } from "../SETTINGS.mjs";
 
 export default [
   `${SITE_LIB_URL}vendor/css/reset/2.0.0/index.css`,
