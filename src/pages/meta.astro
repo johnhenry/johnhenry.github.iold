@@ -1,8 +1,9 @@
 ---
-import DEFAULTS, * as SETTINGS from '../SETTINGS.mjs';
-const {env} = process;
+import * as SETTINGS from '../SETTINGS.mjs';
+import DEFAULTS from '../SETTINGS.mjs';
+// Todo: "import DEFAULTS, * as SETTINGS from '../SETTINGS.mjs'";
+// causes SETTINGS to reset w/o awarness of the process.env variables.
 ---
-
 <!DOCTYPE html>
 <html>
   <body>
@@ -17,7 +18,7 @@ const {env} = process;
         <tr>
           <td>{key}</td>
           <td>{DEFAULTS[key]}</td>
-          <td>{env[key]}</td>
+          <td>{process.env[key]}</td>
           <td>{SETTINGS[key]}</td>
         </tr>
       ))}

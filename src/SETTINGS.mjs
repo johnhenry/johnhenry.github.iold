@@ -1,3 +1,5 @@
+import HASH from "./HASH.mjs";
+
 const defaults = {
   SITE_AUTHOR: "John Henry",
   SITE_TITLE: "John Henry",
@@ -10,10 +12,12 @@ const defaults = {
   SITE_DESCRIPTION: "John Henry's Person Portfolio and Blog",
   SITE_KEYWORDS: [],
   TAG_MANAGER_ID: "",
+  BUILD_DATE: new Date().toISOString(),
+  BUILD_HASH: HASH,
 };
 export default defaults;
 
-export const SITE_AUTHOR = defaults.SITE_AUTHOR;
+export const SITE_AUTHOR = process.env.SITE_AUTHOR || defaults.SITE_AUTHOR;
 
 export const SITE_TITLE = process.env.SITE_TITLE || defaults.SITE_TITLE;
 
@@ -43,3 +47,7 @@ export const SITE_KEYWORDS = process.env.SITE_KEYWORDS
 
 export const TAG_MANAGER_ID =
   process.env.TAG_MANAGER_ID || defaults.TAG_MANAGER_ID;
+
+export const BUILD_DATE = process.env.BUILD_DATE || defaults.BUILD_DATE;
+
+export const BUILD_HASH = process.env.BUILD_HASH || defaults.BUILD_HASH;

@@ -5,13 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "set:hash": "echo \"export default \\\"$(git rev-parse HEAD)\\\";\" > src/HASH.mjs",
     "build:html": "astro build || exit 0",
     "build:sw": "mkdir -p dist/ && workbox generateSW config/workbox.config.js",
-    "build:ver": "mkdir -p dist/ && echo $(git rev-parse HEAD) > dist/hash.txt",
     "build:wbn": "mkdir -p dist/ sh scripts/gen-bundle.sh http://localhost/",
-    "build:-ver": "npm run build:html && npm run build:ver",
-    "build:-sw": "npm run build:html && npm run build:ver && npm run build:sw",
-    "build:-wbn": "npm run build:html && npm run build:ver && npm run build:sw && npm run build:wbn",
+    "build:-sw": "npm run set:hash && npm run build:html && npm run build:sw",
+    "build:-wbn": "npm run set:hash && npm run build:html && npm run build:sw && npm run build:wbn",
     "build": "npm run build:-sw",
     "preview": "astro preview"
   },
