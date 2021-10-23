@@ -2,10 +2,10 @@
 import { SITE_LIB_URL } from '../SETTINGS.mjs';
 const properties = Astro.props;
 properties.storageKey = properties['storage-key'];
-const { global = 'cycleColorSchemes', storageKey="", schemes=[]} = properties;
+const { global = 'cycleBodyClass', storageKey="", schemes=[]} = properties;
 const cycleScript = `
 <script type="module">
-  import localstorageCycler from "${SITE_LIB_URL}js/localstorage-cycler/0.0.0/index.mjs";
+  import localStorageCycler from "${SITE_LIB_URL}js/localstorage-cycler/0.0.0/index.mjs";
   const key = '${storageKey}';
   const values = [${schemes.map((x)=>`"${x}"`).join(",")}];
   const emit = ({value, key, index}) => {
@@ -13,9 +13,8 @@ const cycleScript = `
     if(value){
       globalThis.document.body.classList.add(value);
     }
-    return {value, key, index};
   }
-  window["${global}"] = localstorageCycler(key, emit, ...values);
+  window["${global}"] = localStorageCycler(key, emit, ...values);
 </script>
 `
 ---
