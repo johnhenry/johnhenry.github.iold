@@ -1,9 +1,7 @@
-name: Publish
-
 on:
   push:
     branches:
-      - main
+      - test
 
 jobs:
   build-and-deploy:
@@ -39,3 +37,4 @@ jobs:
         with:
           branch: dist # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
+
