@@ -1,13 +1,22 @@
 ---
-import SitePage from "../../../components/SitePage.astro";
+// Settings
+import {
+  SITE_TITLE,
+  SITE_KEYWORDS,
+  SITE_DESCRIPTION,
+  SITE_AUTHOR,
+  SITE_CANONICAL_URL} from "../../../SETTINGS.mjs";
+// Utilities
 import sortPosts from "../../../utils/sort-posts.mjs";
-import {SITE_TITLE, SITE_KEYWORDS, SITE_DESCRIPTION, SITE_AUTHOR, SITE_CANONICAL_URL} from "../../../SETTINGS.mjs";
+// Components
 import JH from "../../../components/jh/index.astro";
-const pageLinks = [
-  {url:'/blog', text:'Blog'},
-  {url:'/#me', text:'Me'},
-  {url:'/#projects', text:'Projects'}
-];
+import SitePage from "../../../components/SitePage.astro";
+// Content;
+import headerLinks from "../../../content/headerlinks.mjs";
+const { tag } = Astro.request.params;
+const { posts } = Astro.props;
+const title = `${SITE_TITLE} Blog: ${tag}`;
+// Misc.
 export function getStaticPaths() {
 const { byTag } =
     sortPosts(
@@ -21,29 +30,28 @@ const { byTag } =
       }
     }));
 }
-const { tag } = Astro.request.params;
-const { posts } = Astro.props;
-const title = `${SITE_TITLE} -- Weblog: ${tag}`;
 ---
-<SitePage title={title} description={SITE_DESCRIPTION} keywords={SITE_KEYWORDS} author={SITE_AUTHOR} canonical={SITE_CANONICAL_URL} pageLinks ={pageLinks}>
-          <section class="blog-top">
-            <header>
-              <JH path-class="glowey-fill"/>
-              <p>John Henry's Blog: Tagged {tag}</p>
-            </header>
-            <p>This is the place where I muse about technology.</p>
-          </section>
-          {posts.map(({publishDate, url, title, description, heroImage}) =>
-          <section class="blog-preview">
-            <header>
-              <a href={url}><p>{publishDate}</p>{title}</a>
-            </header>
-            <article>
-              <img src={heroImage}>
-              <p>{description}</p>
-            </article>
-            <footer>
-              <a href={url}>Read more</a>
-            </footer>
-          </section>)}
+<SitePage
+  title={title}
+  description={SITE_DESCRIPTION}
+  keywords={SITE_KEYWORDS}
+  author={SITE_AUTHOR}
+  canonical={SITE_CANONICAL_URL}
+  headerLinks={headerLinks}>
+  <section class="blog-top">
+    <header>
+      <JH path-class="glowey-fill"/>
+    </header>
+    <header><p>[{tag}]</p></header>
+    <p>This is the place where I muse about technology.</p>
+  </section>
+  {posts.map(({date, url, title, description, heroImage}) =>
+  <section class="blog-preview">
+    <header><a href={url}><p>{date}</p>{title}</a></header>
+    <article>
+      <img src={heroImage}>
+      <p>{description}</p>
+    </article>
+    <footer><a href={url}>Read more</a></footer>
+  </section>)}
 </SitePage>

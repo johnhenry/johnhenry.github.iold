@@ -5,6 +5,7 @@ const defaults = {
   SITE_TITLE: "John Henry",
   SITE_FAVICON: "/image/iajh.png",
   SITE_FAVICON_TYPE: "image/png",
+  SITE_SERVICE_WORKER: "",
   SITE_BASE_PATH: "",
   SITE_BLOG_PAGE_SIZE: 8,
   SITE_LIB_URL: "http://localhost:3001/",
@@ -26,6 +27,9 @@ export const SITE_FAVICON = process.env.SITE_FAVICON || defaults.SITE_FAVICON;
 
 export const SITE_FAVICON_TYPE =
   process.env.SITE_FAVICON_TYPE || defaults.SITE_FAVICON_TYPE;
+
+export const SITE_SERVICE_WORKER =
+  process.env.SITE_SERVICE_WORKER || defaults.SITE_SERVICE_WORKER;
 
 export const SITE_BASE_PATH =
   process.env.SITE_BASE_PATH || defaults.SITE_BASE_PATH;
